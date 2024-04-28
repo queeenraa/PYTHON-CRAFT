@@ -1,0 +1,7 @@
+{
+  "name": "python-craft",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
