@@ -44,3 +44,23 @@ ion-content {
   margin-bottom: 20px;
   --border-radius: 10px;
 }
+
+#container ion-checkbox {
+  color: white;
+  text-align: left;
+}
+
+#container h3 {
+  margin-bottom: 20px;
+  color: white;
+}
+
+#container hr {
+  border-top: 1px solid white;
+}
+
+#container ion-img {
+  width: 50px; /* Sesuaikan lebar gambar sesuai dengan preferensi Anda */
+  height: 50px; /* Sesuaikan tinggi gambar sesuai dengan preferensi Anda */
+  margin: 10px; /* Sesuaikan jarak antara gambar dengan elemen sekitarnya */
+}
