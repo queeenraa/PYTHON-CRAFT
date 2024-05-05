@@ -1,3 +1,46 @@
 ion-content {
   --background: linear-gradient(to bottom, #3c6f98, #346185, #2d5372, #25455f);
 }
+// HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
+#container {
+  text-align: center;
+  font: "Red Hat Display";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#container strong {
+  font-size: 20px;
+  line-height: 26px;
+  color: white;
+  margin-top: 50px;
+}
+
+#container p {
+  font-size: 16px;
+  line-height: 22px;
+
+  color: #8c8c8c;
+
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#container a {
+  text-decoration: none;
+}
+
+#container ion-icon {
+  position: absolute;
+  vertical-align: middle;
+  top: -20px;
+}
+
+#container ion-item {
+  margin-bottom: 20px;
+  --border-radius: 10px;
+}
