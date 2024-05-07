@@ -1,5 +1,5 @@
 ion-content {
-  --background: linear-gradient(to bottom, #3c6f98, #346185, #2d5372, #25455f);
+  --background: #0f4c81;
 }
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
@@ -73,6 +73,8 @@ ion-content {
   --border-radius: 5px;
   --padding-start: 120px; /* Atur padding awal */
   --padding-end: 120px; /* Atur padding akhir */
+  --color: white;
+  --background: #bc7fcd;
 }
 
 #container ion-card-content {
