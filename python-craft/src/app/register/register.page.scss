@@ -43,11 +43,13 @@ ion-content {
 #container ion-item {
   margin-bottom: 20px;
   --border-radius: 10px;
+  --background: #f1f1f1f1;
 }
 
 #container ion-checkbox {
-  color: white;
+  color: black;
   text-align: left;
+  font-size: 12px;
 }
 
 #container h3 {
@@ -66,7 +68,13 @@ ion-content {
 }
 
 #container ion-button {
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 5px;
+  // margin-top: 5px;
   --border-radius: 5px;
+  --padding-start: 120px; /* Atur padding awal */
+  --padding-end: 120px; /* Atur padding akhir */
+}
+
+#container ion-card-content {
+  margin-bottom: 5px;
 }

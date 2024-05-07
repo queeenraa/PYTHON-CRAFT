@@ -9,24 +9,30 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <h3>Log In</h3>
-    <ion-item>
-      <ion-input
-        label="username"
-        labelPlacement="floating"
-        placeholder="Username"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        label="password"
-        labelPlacement="floating"
-        placeholder="Password"
-      ></ion-input>
-      <ion-input-password-toggle slot="end">
-        label="password" labelPlacement="floating" placeholder="Password"
-      </ion-input-password-toggle>
-    </ion-item>
-    <ion-checkbox labelPlacement="end">Remember me</ion-checkbox>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            label="username"
+            labelPlacement="floating"
+            placeholder="Username"
+            fill="outline"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="password"
+            labelPlacement="floating"
+            placeholder="Password"
+          ></ion-input>
+          <ion-input-password-toggle slot="end">
+            label="password" labelPlacement="floating" placeholder="Password"
+          </ion-input-password-toggle>
+        </ion-item>
+        <ion-checkbox labelPlacement="end">Remember me</ion-checkbox>
+      </ion-card-content>
+    </ion-card>
+
     <br />
     <ion-button shape="round">Login</ion-button>
     <p>New User? Register Now!</p>

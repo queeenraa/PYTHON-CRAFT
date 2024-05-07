@@ -9,61 +9,68 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <h3>Register</h3>
-    <ion-item>
-      <ion-input
-        label="Name"
-        labelPlacement="floating"
-        placeholder="Name"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        label="Email"
-        labelPlacement="floating"
-        type="email"
-        placeholder="email@domain.com"
-      ></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        label="Password"
-        labelPlacement="floating"
-        placeholder="Password"
-        type="password"
-      ></ion-input>
-      <ion-input-password-toggle slot="end">
-        label="password" labelPlacement="floating" placeholder="Password"
-      </ion-input-password-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-input
-        label="Confirm Password"
-        labelPlacement="floating"
-        placeholder="Confirm Password"
-        type="password"
-      ></ion-input>
-      <ion-input-password-toggle slot="end">
-        label="password" labelPlacement="floating" placeholder="Password"
-      </ion-input-password-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Job" placeholder="Choose your job">
-        <ion-select-option value="">Student</ion-select-option>
-        <ion-select-option value="nes">Teacher</ion-select-option>
-        <ion-select-option value="n64">None of them</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-select label="Purpose" placeholder="Choose your Purpose">
-        <ion-select-option value="">Casual learning</ion-select-option>
-        <ion-select-option value="nes">Improving skills</ion-select-option>
-        <ion-select-option value="n64">Career preparation</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ion-card>
+      <ion-card-content>
+        <ion-item>
+          <ion-input
+            label="Name"
+            labelPlacement="floating"
+            placeholder="Name"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Email"
+            labelPlacement="floating"
+            type="email"
+            placeholder="email@domain.com"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Password"
+            labelPlacement="floating"
+            placeholder="Password"
+            type="password"
+          ></ion-input>
+          <ion-input-password-toggle slot="end">
+            label="password" labelPlacement="floating" placeholder="Password"
+          </ion-input-password-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-input
+            label="Confirm Password"
+            labelPlacement="floating"
+            placeholder="Confirm Password"
+            type="password"
+          ></ion-input>
+          <ion-input-password-toggle slot="end">
+            label="password" labelPlacement="floating" placeholder="Password"
+          </ion-input-password-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-select label="Job" placeholder="Choose your job">
+            <ion-select-option value="">Student</ion-select-option>
+            <ion-select-option value="nes">Teacher</ion-select-option>
+            <ion-select-option value="n64">None of them</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-select label="Purpose" placeholder="Choose your Purpose">
+            <ion-select-option value="">Casual learning</ion-select-option>
+            <ion-select-option value="nes">Improving skills</ion-select-option>
+            <ion-select-option value="n64"
+              >Career preparation</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
 
-    <ion-checkbox labelPlacement="end"
-      >I agree to the terms and conditions</ion-checkbox
-    >
+        <ion-checkbox labelPlacement="end"
+          >I agree to the terms and conditions</ion-checkbox
+        >
+      </ion-card-content>
+    </ion-card>
+
     <br />
     <ion-button shape="round">Register</ion-button>
     <p>Already have an account? Please log in</p>
