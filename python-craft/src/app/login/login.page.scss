@@ -4,8 +4,8 @@ ion-content {
   font-family: "Russo One", sans-serif !important;
 }
 html {
-  --ion-dynamic-font: var(--ion-default-dynamic-font);
-  --ion-font-family: "Russo One", sans-serif !important;
+  --ion-default-font: "Russo One", sans-serif !important;
+  --ion-dynamic-font: var(--ion-default-font);
 }
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
