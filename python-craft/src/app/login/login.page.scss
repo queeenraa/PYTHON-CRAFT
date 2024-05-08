@@ -1,5 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 ion-content {
   --background: #0f4c81;
+  font-family: "Russo One", sans-serif !important;
+}
+html {
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
+  --ion-font-family: "Russo One", sans-serif !important;
 }
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
@@ -15,7 +21,7 @@ ion-content {
 #container strong {
   font-size: 20px;
   line-height: 26px;
-  color: white;
+  color: rgb(165, 165, 165);
   margin-top: 50px;
 }
 
@@ -41,8 +47,14 @@ ion-content {
 #container ion-item {
   margin-bottom: 20px;
   --border-radius: 10px;
-  --background: #f1f1f1f1;
+  --background: #ac1d1df1;
   --font-color: black;
+}
+
+#container ion-input {
+  --color: black;
+  --highlight-color-focused: white;
+  --font-family: "Russo One", sans-serif !important;
 }
 
 #container ion-checkbox {
