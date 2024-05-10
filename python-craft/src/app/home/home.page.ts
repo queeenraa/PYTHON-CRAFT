@@ -6,7 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-
   constructor() {}
 
+  slideNext() {
+    const swiper = document.querySelector('swiper-container') as any;
+    if (swiper) {
+      swiper.swiper.slideNext();
+    }
+  }
+
+  slidePrev() {
+    const swiper = document.querySelector('swiper-container') as any;
+    if (swiper) {
+      swiper.swiper.slidePrev();
+    }
+  }
 }

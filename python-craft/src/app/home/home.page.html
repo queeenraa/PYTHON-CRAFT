@@ -1,11 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true">
   <div id="container">
     <ion-col>
@@ -22,21 +14,19 @@
 
     <ion-button shape="round">Get Started</ion-button>
   </div>
-</ion-content>
-<swiper-container navigation="true" pagination="true">
-  <swiper-slide>
-    <img src="../../assets/logo-python.png" alt="" width="300" />
-  </swiper-slide>
-  <swiper-slide>
-    <img src="../../assets/logo-fb.png" alt="" width="300" />
-  </swiper-slide>
-  <swiper-slide>
-    <img src="../../assets/logo-pycraft.png" alt="" width="300" />
-  </swiper-slide>
-</swiper-container>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-/>
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <swiper-container allowSlideNext="true" pagination="true" id="swiperhome">
+    <swiper-slide>Slide 1</swiper-slide>
+    <swiper-slide>Slide 2</swiper-slide>
+    <swiper-slide>Slide 3</swiper-slide>
+  </swiper-container>
+
+  <div class="swiperbutton-container">
+    <ion-button class="swiperbutton" (click)="slidePrev()"
+      >Slide Prev</ion-button
+    >
+    <ion-button class="swiperbutton" (click)="slideNext()"
+      >Slide Next</ion-button
+    >
+  </div>
+</ion-content>
