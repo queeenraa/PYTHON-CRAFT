@@ -39,3 +39,18 @@ ion-content {
   vertical-align: middle;
   top: -20px; /* Sesuaikan dengan jarak vertikal yang diinginkan */
 }
+
+#swiperhome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.swiperbutton-container {
+  display: flex;
+  justify-content: center;
+}
+.swiperbutton {
+  width: 50%; /* Each button takes 50% of the container */
+  text-align: center;
+}
