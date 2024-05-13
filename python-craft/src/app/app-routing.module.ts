@@ -24,6 +24,10 @@ const routes: Routes = [
     path: 'start',
     loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
   },
+  {
+    path: 'get-started',
+    loadChildren: () => import('./get-started/get-started.module').then( m => m.GetStartedPageModule)
+  },
 
 ];
 

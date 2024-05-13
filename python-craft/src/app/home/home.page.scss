@@ -6,9 +6,9 @@ ion-content {
   text-align: center;
   font: "Red Hat Display";
   position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 50%;
+  //left: 10%;
+  //right: 10%;
+  //top: 50%;
   transform: translateY(-50%);
 }
 
@@ -26,8 +26,8 @@ ion-content {
   color: #8c8c8c;
 
   margin: 0;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  //margin-top: 20px;
+  //margin-bottom: 20px;
 }
 
 #container a {
@@ -37,7 +37,7 @@ ion-content {
 #container ion-icon {
   position: absolute;
   vertical-align: middle;
-  top: -20px; /* Sesuaikan dengan jarak vertikal yang diinginkan */
+  // top: -20px; /* Sesuaikan dengan jarak vertikal yang diinginkan */
 }
 
 #swiperhome {
@@ -45,6 +45,9 @@ ion-content {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin-top: 30%;
+  color: white;
+  margin-bottom: 25%;
 }
 .swiperbutton-container {
   display: flex;
@@ -53,4 +56,8 @@ ion-content {
 .swiperbutton {
   width: 50%; /* Each button takes 50% of the container */
   text-align: center;
+}
+
+#swiper-slide {
+  margin-bottom: 10%;
 }
