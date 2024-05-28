@@ -6,10 +6,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-  }
+  //login() {
+  // axios
+  // .post('/login', {
+  //email: 'laura@mail.com',
+  //password: 'laura',
+  //})
+  // .then((res) => {
+  //200, 201
 
+  // alert(res.message);
+  // localStorage.setItem('token', res.token);
+  //})
+  //.catch((err) => {
+  //404, 500, 401, 422
+  //alert(err.message);
+  //});
+  //}
 }
