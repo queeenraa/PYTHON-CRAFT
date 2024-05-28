@@ -28,7 +28,7 @@ html {
 #container p {
   font-size: 16px;
   line-height: 22px;
-  color: #8c8c8c;
+  color: #ffff;
   margin: 0;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -58,11 +58,18 @@ html {
 }
 
 #container ion-checkbox {
+  --border-radius: 0px;
   color: black;
+  text-align: left; /* Meratakan teks ke kiri */
+  display: flex;
+  align-items: left; /* Memastikan elemen di dalam ion-checkbox rata kiri */
+  font-size: 12px;
+  size: 10px;
 }
 
 #container h3 {
   margin-bottom: 20px;
+  font-size: 40px;
   color: white;
 }
 
@@ -80,7 +87,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  ---border-radius: 30px;
+  ---border-radius: 50px;
   --background-color: white;
 }
 #container ion-button {
@@ -88,4 +95,6 @@ html {
   --border-radius: 5px;
   --color: white;
   --background: #bc7fcd;
+  width: 315px;
+  height: 50px;
 }

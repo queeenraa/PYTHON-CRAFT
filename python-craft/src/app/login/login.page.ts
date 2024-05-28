@@ -10,21 +10,21 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {}
 
-  login() {
-    axios
-      .post('/login', {
-        email: 'laura@mail.com',
-        password: 'laura',
-      })
-      .then((res) => {
-        //200, 201
+  //login() {
+  // axios
+  // .post('/login', {
+  //email: 'laura@mail.com',
+  //password: 'laura',
+  //})
+  // .then((res) => {
+  //200, 201
 
-        alert(res.message);
-        localStorage.setItem('token', res.token);
-      })
-      .catch((err) => {
-        //404, 500, 401, 422
-        alert(err.message);
-      });
-  }
+  // alert(res.message);
+  // localStorage.setItem('token', res.token);
+  //})
+  //.catch((err) => {
+  //404, 500, 401, 422
+  //alert(err.message);
+  //});
+  //}
 }
