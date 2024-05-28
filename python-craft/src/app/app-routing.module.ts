@@ -28,6 +28,10 @@ const routes: Routes = [
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then( m => m.GetStartedPageModule)
   },
+  {
+    path: 'awal',
+    loadChildren: () => import('./dashboard/awal/awal.module').then( m => m.AwalPageModule)
+  },
 
 ];
 
