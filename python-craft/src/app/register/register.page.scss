@@ -20,10 +20,10 @@ ion-content {
 }
 
 #container p {
-  font-size: 16px;
+  font-size: 12px;
   line-height: 22px;
 
-  color: #8c8c8c;
+  color: #ffff;
 
   margin: 0;
   margin-top: 20px;
@@ -32,6 +32,7 @@ ion-content {
 
 #container a {
   text-decoration: none;
+  color: #ffff;
 }
 
 #container ion-icon {
@@ -50,11 +51,13 @@ ion-content {
   color: black;
   text-align: left;
   font-size: 12px;
+  --border-radius: 0px;
 }
 
 #container h3 {
   margin-bottom: 20px;
   color: white;
+  font-size: 40px;
 }
 
 #container hr {
@@ -75,6 +78,8 @@ ion-content {
   --padding-end: 120px; /* Atur padding akhir */
   --color: white;
   --background: #bc7fcd;
+  width: 335px;
+  height: 50px;
 }
 
 #container ion-card-content {
