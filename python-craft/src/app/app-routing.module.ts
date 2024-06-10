@@ -16,23 +16,29 @@ const routes: Routes = [
     path: 'login',
     loadChildren: () =>
       import('./login/login.module').then((m) => m.LoginPageModule),
-  },  {
+  },
+  {
     path: 'register',
-    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterPageModule),
   },
   {
     path: 'start',
-    loadChildren: () => import('./start/start.module').then( m => m.StartPageModule)
+    loadChildren: () =>
+      import('./start/start.module').then((m) => m.StartPageModule),
   },
   {
     path: 'get-started',
-    loadChildren: () => import('./get-started/get-started.module').then( m => m.GetStartedPageModule)
+    loadChildren: () =>
+      import('./get-started/get-started.module').then(
+        (m) => m.GetStartedPageModule
+      ),
   },
   {
     path: 'awal',
-    loadChildren: () => import('./dashboard/awal/awal.module').then( m => m.AwalPageModule)
+    loadChildren: () =>
+      import('./dashboard/awal/awal.module').then((m) => m.AwalPageModule),
   },
-
 ];
 
 @NgModule({
