@@ -1,13 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 ion-content {
-  --background: #0f4c81;
+  --background: #ffff;
+  font-family: "Russo One", sans-serif !important;
+}
+html {
+  --ion-default-font: "Russo One", sans-serif !important;
+  --ion-dynamic-font: var(--ion-default-font);
 }
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
   text-align: center;
   font: "Red Hat Display";
   position: absolute;
-  left: 5%;
-  right: 5%;
+  // left: 10%;
+  // right: 10%;
   top: 50%;
   transform: translateY(-50%);
+}
+
+// #container strong {
+//   font-size: 20px;
+//   line-height: 26px;
+//   color: rgb(165, 165, 165);
+//   margin-top: 50px;
+// }
+
+// #container p {
+//   font-size: 16px;
+//   line-height: 22px;
+//   color: #ffff;
+//   margin: 0;
+//   margin-top: 20px;
+//   margin-bottom: 20px;
+// }
+
+// #container a {
+//   text-decoration: none;
+// }
+
+// #container ion-icon {
+//   position: absolute;
+//   vertical-align: middle;
+//   top: -20px;
+// }
+
+// #container ion-item {
+//   margin-bottom: 20px;
+//   --border-radius: 10px;
+//   --background: #f1f1f1f1;
+//   --font-color: black;
+// }
+
+// #container ion-input {
+//   --color: black;
+//   --highlight-color-focused: white;
+//   --font-family: "Russo One", sans-serif !important;
+// }
+
+// #container ion-checkbox {
+//   --border-radius: 0px;
+//   color: black;
+//   text-align: left; /* Meratakan teks ke kiri */
+//   display: flex;
+//   align-items: left; /* Memastikan elemen di dalam ion-checkbox rata kiri */
+//   font-size: 12px;
+//   size: 10px;
+// }
+
+// #container h3 {
+//   margin-bottom: 20px;
+//   font-size: 40px;
+//   color: white;
+// }
+
+// #container hr {
+//   border-top: 1px solid white;
+// }
+
+// #container ion-img {
+//   width: 50px; /* Sesuaikan lebar gambar sesuai dengan preferensi Anda */
+//   height: 50px; /* Sesuaikan tinggi gambar sesuai dengan preferensi Anda */
+//   margin: 10px; /* Sesuaikan jarak antara gambar dengan elemen sekitarnya */
+//   --border-radius: 30px;
+// }
+// #container .center-image {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   ---border-radius: 50px;
+//   --background-color: white;
+// }
+// #container ion-button {
+//   margin-bottom: 20px;
+//   --border-radius: 5px;
+//   --color: white;
+//   --background: #bc7fcd;
+//   width: 315px;
+//   height: 50px;
+// }
+
+// ion-card {
+//   --background: #bc7fcd;
+//   --color: #ffff;
+// }
+
+// ion-card-title {
+//   --color: #ffff;
+// }
+
+#atasan {
+  --background: #bc7fcd;
+  --color: #ffff;
+}
+
+#atasan ion-card-title {
+  --color: #ffff;
+}
+
+#bawahan {
+  --background: #0f4c81;
+  --color: #ffff;
+  height: 650px;
+}
+
+#bawahan ion-card-title {
+  --color: #ffff;
+}
+
+#card-materi {
+  --background: #bc7fcd;
+  --color: #ffff;
+  margin-bottom: 30px;
+}
+
+ion-footer {
+  --background: #f8f9fa; /* Warna latar belakang footer */
+  position: fixed; /* Tetap di bagian bawah */
+  bottom: 0;
+}
+
+ion-toolbar {
+  --background: #fffff; /* Warna latar belakang toolbar */
+  color: #ffffff; /* Warna teks */
+  text-align: center; /* Teks di tengah */
+  --border-color: #bc7fcd;
 }

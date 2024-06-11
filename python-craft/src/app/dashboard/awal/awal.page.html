@@ -1,13 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>awal</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">awal</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div id="container">
+    <ion-card id="atasan">
+      <ion-card-header>
+        <ion-card-title>Hi Jennie!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        Welcome to the PythonCraft, Begin your adventure
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card id="bawahan">
+      <ion-card-header>
+        <ion-card-title>YOUR PROGRESS</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-card id="card-materi">
+          <ion-card-header>
+            <ion-card-title>Materi Looping</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+        <ion-card id="card-materi">
+          <ion-card-header>
+            <ion-card-title>Materi Tipe Data</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
+
+<!-- <ion-footer>
+  <ion-toolbar>
+    <ion-button id="toolbar-dashboard">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-icon name="code-slash-outline"></ion-icon>
+      <ion-icon name="trophy-outline"></ion-icon>
+      <ion-icon name="person-outline"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer> -->
+
+<i-tabs>
+  <i-tabs-bar slot="bottom,top">
+    <ion-tab-button tab="tab1">
+      <ion-icon name="flash"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="tab2">
+      <ion-icon name="flash"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="tab3">
+      <ion-icon name="flash"></ion-icon>
+    </ion-tab-button>
+    <ion-tab-button tab="tab4">
+      <ion-icon name="flash"></ion-icon>
+    </ion-tab-button>
+  </i-tabs-bar>
+</i-tabs>
