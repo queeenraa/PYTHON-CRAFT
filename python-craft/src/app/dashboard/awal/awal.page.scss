@@ -1,82 +1,102 @@
-@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
-
 ion-content {
-  --background: #ffff;
-  font-family: "Russo One", sans-serif !important;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0;
-  margin: 0;
+  --background: #f5f5f5;
 }
 
-#container {
+.container {
   display: flex;
   flex-direction: column;
-  height: 100%;
-}
-
-#container-header {
-  height: 20%;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
-#container-content {
-  flex: 0 70% 0;
+.header {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  flex-direction: row;
   align-items: center;
+  margin-bottom: 20px;
+  background-color: #bc7fcd;
 }
 
-#atasan {
-  --background: #bc7fcd;
-  --color: #ffff;
-  height: 100%;
+.header img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.welcome-text {
+  margin-bottom: 20px;
+}
+
+.welcome-text h1 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.welcome-text p {
+  font-size: 16px;
+  color: #666;
+}
+
+.progress-title {
+  margin-bottom: 20px;
+  background-color: #0f4c81;
+}
+
+.progress-title h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.progress-button {
+  margin-bottom: 10px;
+}
+
+.progress-button ion-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+ion-grid {
   width: 100%;
-  border-radius: 10%;
-  margin-top: -10px;
-  margin: 0;
+  margin-top: 20px;
 }
 
-#atasan ion-card-title {
-  --color: #ffff;
+ion-col {
+  padding: 5px;
 }
 
-#bawahan {
-  --background: #0f4c81;
-  --color: #ffff;
-  width: 100%;
+ion-button {
+  --background: #fff;
+  --color: #333;
+  --border-color: #ccc;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 0;
 }
 
-#bawahan ion-card-title {
-  --color: #ffff;
+ion-button:hover {
+  --background: #f5f5f5;
 }
 
-#card-materi-variabel,
-#card-materi-looping,
-#card-materi-tipedata {
-  --background: #bc7fcd;
-  --color: #ffff;
-  margin-bottom: 30px;
-  width: 90%;
+ion-button:focus {
+  --background: #f5f5f5;
 }
 
 ion-footer {
-  --background: #f8f9fa; /* Warna latar belakang footer */
-  position: fixed; /* Tetap di bagian bawah */
-  bottom: 0;
+  --background: #333;
+  --color: #fff;
+  padding: 0px;
 }
 
 ion-toolbar {
-  --background: #fffff; /* Warna latar belakang toolbar */
-  color: #ffffff; /* Warna teks */
-  text-align: center; /* Teks di tengah */
-  --border-color: #bc7fcd;
+  --padding-start: 0;
+  --padding-end: 0;
 }
 
-ion-tab-bar {
-  --background: white;
+ion-title {
+  font-size: 16px;
+  font-weight: bold;
 }
