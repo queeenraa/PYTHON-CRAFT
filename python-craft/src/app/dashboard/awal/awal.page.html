@@ -1,49 +1,64 @@
 <ion-content [fullscreen]="true">
   <div id="container">
-    <ion-card id="atasan">
-      <ion-card-header>
-        <ion-card-title>Hi Jennie!</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        Welcome to the PythonCraft, Begin your adventure
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card id="bawahan">
-      <ion-card-header>
-        <ion-card-title>YOUR PROGRESS</ion-card-title>
-      </ion-card-header>
-
-      <ion-card-content>
-        <ion-card id="card-materi">
-          <ion-card-header>
-            <ion-card-title>Materi Looping</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-        <ion-card id="card-materi">
-          <ion-card-header>
-            <ion-card-title>Materi Tipe Data</ion-card-title>
-          </ion-card-header>
-        </ion-card>
-      </ion-card-content>
-    </ion-card>
+    <div id="container-header">
+      <ion-card id="atasan">
+        <ion-card-header>
+          <ion-card-title>Hi Jennie!</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          Welcome to the PythonCraft, Begin your adventure
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div id="container-content">
+      <ion-card id="bawahan">
+        <ion-card-header>
+          <ion-card-title>YOUR PROGRESS</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-card id="card-materi-variabel">
+            <ion-card-header>
+              <ion-card-title>Materi Variabel</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+          <ion-card id="card-materi-looping">
+            <ion-card-header>
+              <ion-card-title>Materi Looping</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+          <ion-card id="card-materi-tipedata">
+            <ion-card-header>
+              <ion-card-title>Materi Tipe Data</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>
 
-<!-- <ion-footer>
-  <ion-toolbar>
-    <ion-button id="toolbar-dashboard">
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
       <ion-icon name="home-outline"></ion-icon>
+      Home
+    </ion-tab-button>
+    <ion-tab-button tab="radio">
       <ion-icon name="code-slash-outline"></ion-icon>
+      Learn
+    </ion-tab-button>
+    <ion-tab-button tab="library">
       <ion-icon name="trophy-outline"></ion-icon>
+      Leaderboard
+    </ion-tab-button>
+    <ion-tab-button tab="search">
       <ion-icon name="person-outline"></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-footer> -->
 
-<ion-tabs>
-  <ion-tabs-bar slot="bottom,top">
+<i-tabs>
+  <i-tabs-bar slot="bottom,top">
     <ion-tab-button tab="tab1">
       <ion-icon name="flash"></ion-icon>
     </ion-tab-button>
@@ -56,5 +71,5 @@
     <ion-tab-button tab="tab4">
       <ion-icon name="flash"></ion-icon>
     </ion-tab-button>
-  </ion-tabs-bar>
-</ion-tabs>
+  </i-tabs-bar>
+</i-tabs>
