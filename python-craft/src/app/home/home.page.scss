@@ -1,14 +1,15 @@
 ion-content {
-  --background: linear-gradient(to bottom, #3c6f98, #346185, #2d5372, #25455f);
+  --background: #0f4c81;
 }
-// HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464 adn #0F4C81
+
+/* HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464 and #0F4C81 */
 #container {
   text-align: center;
-  font: "Red Hat Display";
+  font-family: "Russo One", sans-serif;
   position: absolute;
-  //left: 10%;
-  //right: 10%;
-  //top: 50%;
+  left: 10%;
+  right: 10%;
+  top: 50%;
   transform: translateY(-50%);
 }
 
@@ -22,12 +23,9 @@ ion-content {
 #container p {
   font-size: 16px;
   line-height: 22px;
-
+  padding: 5px;
   color: #8c8c8c;
-
   margin: 0;
-  //margin-top: 20px;
-  //margin-bottom: 20px;
 }
 
 #container a {
@@ -37,7 +35,6 @@ ion-content {
 #container ion-icon {
   position: absolute;
   vertical-align: middle;
-  // top: -20px; /* Sesuaikan dengan jarak vertikal yang diinginkan */
 }
 
 #swiperhome {
@@ -47,17 +44,81 @@ ion-content {
   text-align: center;
   margin-top: 30%;
   color: white;
-  margin-bottom: 25%;
+  margin-bottom: 5%;
 }
-.swiperbutton-container {
-  display: flex;
-  justify-content: center;
+swiper-slide p {
+  padding: 0 10px 10px 10px;
+  margin-bottom: 5%;
 }
-.swiperbutton {
-  width: 50%; /* Each button takes 50% of the container */
-  text-align: center;
+.content-getting-started {
+  --padding: 0 0 20px 0;
+}
+.skipButton {
+  --background: #D9D9D9 !important;
+  position: absolute;
+  top: 100px;
+  right: 16px;
+  opacity: 40%;
+  --box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1);
 }
 
+#home {
+  margin-top: 50% !important;
+  --background: none;
+  --border: none;
+  --border-radius: 0;
+  --box-shadow: rgba(255, 255, 255, 0);
+  --outline: 1px;
+}
+.swiperbutton-container {
+  width: 350px;
+  height: 100px;
+  display: block;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px; /* Add margin-top to create space between Swiper and buttons */
+}
+
+.swiperbutton {
+  width: 100%; /* Each button takes 80% of the container */
+  text-align: center;
+  --color: #fff;
+  --background: #bc7fcd;
+  --font-size : 24px
+  --font-style : normal;
+  --font-weight : 400;
+  --line-height : normal;
+}
+.already {
+  --background : none;
+  --border-width : 5px;
+  --border-style : solid;
+}
 #swiper-slide {
   margin-bottom: 10%;
+}
+
+/* Custom styles for pagination */
+/* Override Swiper pagination styles */
+::ng-deep .swiper-pagination-bullet {
+  margin-bottom: -5px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+::ng-deep .swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
+}
+
+/* Additional margin for pagination */
+::ng-deep .swiper-pagination {
+  margin-bottom: -5px; /* Adjust this value as needed */
 }

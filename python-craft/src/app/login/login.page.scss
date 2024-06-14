@@ -10,10 +10,11 @@ html {
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
   text-align: center;
+  justify-content: center;
   font: "Red Hat Display";
   position: absolute;
-  left: 10%;
-  right: 10%;
+  // left: 10%;
+  // right: 10%;
   top: 50%;
   transform: translateY(-50%);
 }
@@ -97,4 +98,11 @@ html {
   --background: #bc7fcd;
   width: 315px;
   height: 50px;
+}
+
+ion-card {
+  width: 390px;
+  height: 290px;
+  --background: #fff;
+  --border-radius: 20px;
 }
