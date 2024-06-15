@@ -1,59 +1,91 @@
-<ion-content [fullscreen]="true">
-  <div id="container">
-    <div id="container-header">
-      <ion-card id="atasan">
-        <ion-card-header>
-          <ion-card-title>Hi Jennie!</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          Welcome to the PythonCraft, Begin your adventure
-        </ion-card-content>
-      </ion-card>
+<ion-header> </ion-header>
+
+<ion-content color="primary">
+  <div class="container">
+    <div class="header">
+      <img src="assets/images/megaphone.png" alt="Megaphone Icon" />
+      <div class="welcome-text">
+        <h1>Hi Jennie!</h1>
+        <p>Welcome to the PythonCraft. Begin your adventure here.</p>
+      </div>
     </div>
-    <div id="container-content">
-      <ion-card id="bawahan">
-        <ion-card-header>
-          <ion-card-title>YOUR PROGRESS</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-card id="card-materi-variabel">
-            <ion-card-header>
-              <ion-card-title>Materi Variabel</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-          <ion-card id="card-materi-looping">
-            <ion-card-header>
-              <ion-card-title>Materi Looping</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-          <ion-card id="card-materi-tipedata">
-            <ion-card-header>
-              <ion-card-title>Materi Tipe Data</ion-card-title>
-            </ion-card-header>
-          </ion-card>
-        </ion-card-content>
-      </ion-card>
+
+    <div class="progress-title">
+      <h2>YOUR PROGRESS</h2>
+      <ion-button
+        expand="block"
+        fill="solid"
+        color="medium"
+        routerLink="/materi-looping"
+        class="progress-button"
+      >
+        <ion-icon slot="start" name="play-circle"></ion-icon>
+        Materi Looping
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="solid"
+        color="medium"
+        routerLink="/materi-tipe-data"
+        class="progress-button"
+      >
+        <ion-icon slot="start" name="play-circle"></ion-icon>
+        Materi Tipe Data
+      </ion-button>
     </div>
   </div>
 </ion-content>
 
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home-outline"></ion-icon>
-      Home
-    </ion-tab-button>
-    <ion-tab-button tab="radio">
-      <ion-icon name="code-slash-outline"></ion-icon>
-      Learn
-    </ion-tab-button>
-    <ion-tab-button tab="library">
-      <ion-icon name="trophy-outline"></ion-icon>
-      Leaderboard
-    </ion-tab-button>
-    <ion-tab-button tab="search">
-      <ion-icon name="person-outline"></ion-icon>
-      Profile
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+<ion-footer>
+  <ion-toolbar color="light">
+    <!-- <ion-grid> -->
+    <ion-row>
+      <ion-col size="3">
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="medium"
+          routerLink="/home"
+        >
+          <ion-icon slot="start" name="home"></ion-icon>
+          HOME
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="medium"
+          routerLink="/learn"
+        >
+          <ion-icon slot="start" name="document"></ion-icon>
+          LEARN
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="medium"
+          routerLink="/leaderboard"
+        >
+          <ion-icon slot="start" name="trophy"></ion-icon>
+          LEADERBOARD
+        </ion-button>
+      </ion-col>
+      <ion-col size="3">
+        <ion-button
+          expand="block"
+          fill="outline"
+          color="medium"
+          routerLink="/profile"
+        >
+          <ion-icon slot="start" name="person-circle"></ion-icon>
+          PROFILE
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <!-- </ion-grid> -->
+  </ion-toolbar>
+</ion-footer>
