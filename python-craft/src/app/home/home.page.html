@@ -1,50 +1,74 @@
 <ion-content [fullscreen]="true">
-  <swiper-container allowSlideNext="true" pagination="true" id="swiperhome">
-    <swiper-slide>
-      <ion-col>
-        <img src="../../assets/logo-python.png" alt="" width="200" />
-      </ion-col>
-      <br />
-      <p><strong>PLATFROM BELAJAR PYTHON</strong></p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
-        nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
-        tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
-        itaque vitae facere.ce
-      </p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-col>
-        <img src="../../assets/logo-python.png" alt="" width="200" />
-      </ion-col>
-      <br />
-      <p><strong>PLATFROM BELAJAR PYTHON</strong></p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
-        nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
-        tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
-        itaque vitae facere.ce
-      </p>
-    </swiper-slide>
-    <swiper-slide>
-      <ion-col>
-        <img src="../../assets/logo-python.png" alt="" width="200" />
-      </ion-col>
-      <br />
-      <p><strong>PLATFROM BELAJAR PYTHON</strong></p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
-        nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
-        tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
-        itaque vitae facere.ce
-      </p>
-    </swiper-slide>
-  </swiper-container>
+  <div id="home">
+    <div>
+      <ion-button class="skipButton" (click)="skipToEnd()">Skip >></ion-button>
+    </div>
+    <swiper-container
+      allowSlideNext="true"
+      pagination="true"
+      id="swiperhome"
+      (slideChange)="onSlideChange($event)"
+    >
+      <swiper-slide>
+        <ion-col>
+          <img
+            src="../../assets/icon/icon-slide-1.png"
+            alt=""
+            width="281"
+            height="281"
+          />
+        </ion-col>
+        <p><strong>PLATFORM BELAJAR PYTHON 1</strong></p>
+        <p class="content-getting-started">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
+          nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
+          tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
+          itaque vitae facere.
+        </p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-col>
+          <img
+            src="../../assets/icon/icon-slide-2.png"
+            alt=""
+            width="281"
+            height="281"
+          />
+        </ion-col>
+        <p><strong>PLATFORM BELAJAR PYTHON 2</strong></p>
+        <p class="content-getting-started">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
+          nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
+          tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
+          itaque vitae facere.
+        </p>
+      </swiper-slide>
+      <swiper-slide>
+        <ion-col>
+          <img
+            src="../../assets/icon/icon-slide-3.png"
+            alt=""
+            width="281"
+            height="281"
+          />
+        </ion-col>
+        <p><strong>PLATFORM BELAJAR PYTHON 3</strong></p>
+        <p class="content-getting-started">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat totam
+          nisi autem nesciunt sapiente, inventore, repellat incidunt dolore
+          tempora quam culpa. Eaque asperiores minus, dolor voluptate laudantium
+          itaque vitae facere.
+        </p>
+      </swiper-slide>
+    </swiper-container>
+  </div>
 
   <div class="swiperbutton-container">
-    <ion-button class="swiperbutton" (click)="slidePrev()">mundur</ion-button>
     <ion-button class="swiperbutton" (click)="slideNext()"
-      >Get Started</ion-button
+      >Getting Started</ion-button
+    >
+    <ion-button class="swiperbutton already" *ngIf="isLastSlide" [@fadeInOut]
+      >Already Have Account</ion-button
     >
   </div>
 </ion-content>

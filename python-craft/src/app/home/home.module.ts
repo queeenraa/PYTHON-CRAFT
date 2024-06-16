@@ -8,6 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
   declarations: [HomePage],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add CUSTOM_ELEMENTS_SCHEMA here
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HomePageModule {}

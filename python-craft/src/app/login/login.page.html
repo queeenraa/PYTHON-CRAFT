@@ -9,41 +9,47 @@
 <ion-content [fullscreen]="true">
   <div id="container">
     <h3>LOGIN</h3>
-    <p>
+    <p id="welcome">
       Hello and welcome! <br />
       Please sign in to start your adventure with us.
     </p>
     <ion-card>
       <ion-card-content>
-        <ion-item>
+        <ion-item id="username">
           <ion-input
             label="Username"
-            labelPlacement="floating"
+            labelPlacement="stacked"
             placeholder="Username"
           >
           </ion-input>
         </ion-item>
-        <ion-item>
+        <ion-item id="password">
           <ion-input
             type="password"
             label="Password"
-            labelPlacement="floating"
+            labelPlacement="stacked"
             placeholder="Password"
           >
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
         </ion-item>
-        <ion-checkbox labelPlacement="end">Remember me</ion-checkbox>
+        <ion-checkbox labelPlacement="end" justify="start"
+          >Remember me</ion-checkbox
+        >
       </ion-card-content>
     </ion-card>
 
     <br />
 
     <ion-button shape="round">LOGIN</ion-button>
-    <p>New User? <span style="color: yellow">Register Now!</span></p>
-
-    <hr />
-    <p>or connect with</p>
+    <p class="register">
+      New User? <span style="color: yellow">Register Now!</span>
+    </p>
+    <div class="pembatas">
+      <div class="garis1"></div>
+      <div class="icon-container">OR</div>
+      <div class="garis2"></div>
+    </div>
     <div class="center-image">
       <ion-img
         src="../../assets/logo-email-lingkaran-3.svg"
