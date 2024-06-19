@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('template.master');
 });
+
+Route::middleware(['admin'])->group(function () {
+    //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    // Tambahkan rute admin lainnya di sini
+});
