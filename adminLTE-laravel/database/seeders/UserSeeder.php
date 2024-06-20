@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use App\Models\User; // Pastikan model User diimpor
+use Illuminate\Support\Facades\Hash; // Impor Hash untuk mengenkripsi password
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
-            'id' => '1',
+            'user_id' => '1',
             'name' => 'Administrator',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin'),
@@ -24,14 +24,12 @@ class UserSeeder extends Seeder
         ]);
 
         User::create([
-            'id' => '2',
+            'user_id' => '2',
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
-       
-
         User::factory()->count(3)->create();
     }
 }

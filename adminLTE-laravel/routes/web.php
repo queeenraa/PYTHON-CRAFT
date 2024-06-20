@@ -17,11 +17,12 @@ Route::get('/', function () {
     return view('template.master');
 });
 
-<<<<<<< HEAD
+// Gabungkan rute admin dengan rute dashboard
 Route::middleware(['admin'])->group(function () {
-    //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // Tambahkan rute admin lainnya di sini
 });
-=======
-Route::get('/dashboard', [dashboardController::class, 'index']);
->>>>>>> 6da4ad5873d832bd1f5bfafe0560c454c6bd81e2
+
+// Tambahkan rute dashboard
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
