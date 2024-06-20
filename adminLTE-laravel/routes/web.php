@@ -17,7 +17,11 @@ Route::get('/', function () {
     return view('template.master');
 });
 
+<<<<<<< HEAD
 Route::middleware(['admin'])->group(function () {
     //Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     // Tambahkan rute admin lainnya di sini
 });
+=======
+Route::get('/dashboard', [dashboardController::class, 'index']);
+>>>>>>> 6da4ad5873d832bd1f5bfafe0560c454c6bd81e2
