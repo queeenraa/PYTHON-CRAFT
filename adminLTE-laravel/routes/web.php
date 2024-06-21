@@ -20,7 +20,3 @@ use App\Http\Controllers\profileController;
 // });
 
 Route::get('/dashboard', [dashboardController::class, 'index']);
-
-Route::get('/', [dashboardController::class, 'index']);
-
-Route::get('/profile', [profileController::class, 'index']);
