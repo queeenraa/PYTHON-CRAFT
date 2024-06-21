@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\profileController;
+use App\Http\Controllers\lessonsController;
+use App\Http\Controllers\quizController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,11 @@ use App\Http\Controllers\profileController;
 // });
 
 Route::get('/dashboard', [dashboardController::class, 'index']);
+
+Route::get('/', [dashboardController::class, 'index']);
+
+Route::get('/profile', [profileController::class, 'index']);
+
+Route::get('/lessons', [lessonsController::class, 'index']);
+
+Route::get('/quiz', [quizController::class, 'index']);
