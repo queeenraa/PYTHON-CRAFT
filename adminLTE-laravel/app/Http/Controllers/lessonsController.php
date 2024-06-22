@@ -16,7 +16,7 @@ class LessonsController extends Controller
     // Menampilkan detail sebuah lesson berdasarkan lesson_id
     public function show($id)
     {
-        $lesson = Lesson::where('lesson_id', $id)->first();
+        $lesson = Lesson::find($id);
 
         if (!$lesson) {
             return response()->json([
@@ -77,41 +77,60 @@ class LessonsController extends Controller
             ], 422);
         }
 
-        $lesson = Lesson::where('lesson_id', $id)->first();
+        // Use the correct primary key
+        try {
+            $lesson = Lesson::findOrFail($id); // This uses 'lesson_id' as primary key if specified in the model
 
-        if (!$lesson) {
+            $lesson->update($validator->validated());
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Lesson updated successfully',
+                'data' => $lesson
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Lesson not found'
             ], 404);
+        } catch (\Exception $e) {
+            // Log unexpected errors
+            error_log("Unexpected error during update: " . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Unexpected error occurred',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        $lesson->update($validator->validated());
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Lesson updated successfully',
-            'data' => $lesson
-        ], 200);
     }
 
     // Menghapus lesson
     public function destroy($id)
     {
-        $lesson = Lesson::where('lesson_id', $id)->first();
+        try {
+            $lesson = Lesson::findOrFail($id); // This uses 'lesson_id' as primary key if specified in the model
 
-        if (!$lesson) {
+            $lesson->delete();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Lesson deleted successfully'
+            ], 200);
+        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Lesson not found'
             ], 404);
+        } catch (\Exception $e) {
+            // Log unexpected errors
+            error_log("Unexpected error during delete: " . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Unexpected error occurred',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        $lesson->delete();
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Lesson deleted successfully'
-        ], 200);
     }
 }
