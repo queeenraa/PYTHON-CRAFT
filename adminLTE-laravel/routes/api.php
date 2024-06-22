@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\lessonsController;
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
 
 Route::get('oauth/register', [UserController::class, 'redirectGoogle']);
 Route::get('oauth/register/call-back', [UserController::class, 'callbackGoogle']);
+
+Route::get('/lessons/{id}', [lessonsController::class, 'show']);
+Route::post('/lessons', [lessonsController::class, 'store']);
+Route::put('/lessons/{id}', [lessonsController::class, 'update']);
+Route::delete('/lessons/{id}', [lessonsController::class, 'destroy']);

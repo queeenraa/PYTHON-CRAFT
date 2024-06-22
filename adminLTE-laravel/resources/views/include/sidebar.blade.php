@@ -90,7 +90,16 @@
                     Profile
                   </p>
                 </a>
-              </li>
+          </li>
+          <li class="nav-item">
+            <a href="courses" class="nav-link">
+              <i class="nav-icon fas fa-solid fa-user"></i>
+              <!-- <i class="fa-solid fa-user"></i> -->
+              <p>
+                Courses
+              </p>
+            </a>
+      </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
