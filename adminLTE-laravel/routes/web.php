@@ -6,6 +6,8 @@ use App\Http\Controllers\profileController;
 use App\Http\Controllers\lessonsController;
 use App\Http\Controllers\quizController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\registerController;
 
 
 /*
@@ -34,3 +36,7 @@ Route::get('/courses', [CoursesController::class, 'index']);
 Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
+
+Route::get('/login', [loginController::class, 'index']);
+
+Route::get('/register', [registerController::class, 'index']);
