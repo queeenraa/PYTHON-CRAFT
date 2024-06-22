@@ -1,37 +1,37 @@
 <?php
 
-namespace Database\Seeders;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use App\Models\User;
-
-class UserSeeder extends Seeder
+return new class extends Migration
 {
     /**
-     * Run the database seeds.
+     * Run the migrations.
      *
      * @return void
      */
-    public function run()
+    public function up()
     {
-        User::create([
-            'id' => '1',
-            'name' => 'Administrator',
-            'email' => 'admin@gmail.com',
-            'password' => bcrypt('admin'),
-            'role' => 'admin',
-        ]);
-
-        User::create([
-            'id' => '2',
-            'name' => 'Admin',
-            'email' => 'admin@mail.com',
-            'password' => bcrypt('admin'),
-            'role' => 'admin',
-        ]);
-       
-
-        User::factory()->count(3)->create();
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('user_id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->enum('role', ['admin', 'user'])->default('user');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+        });
     }
-}
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('users');
+    }
+};

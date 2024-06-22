@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User; // Pastikan model User diimpor
-use Illuminate\Support\Facades\Hash; // Impor Hash untuk mengenkripsi password
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -30,6 +30,8 @@ class UserSeeder extends Seeder
             'password' => bcrypt('admin'),
             'role' => 'admin',
         ]);
+       
+
         User::factory()->count(3)->create();
     }
 }

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\lessonsController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\quizController;
 
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/register', [UserController::class, 'register']);
@@ -32,3 +33,8 @@ Route::get('/courses/{id}', [CoursesController::class, 'show']);
 Route::post('/courses', [CoursesController::class, 'store']);
 Route::put('/courses/{id}', [CoursesController::class, 'update']);
 Route::delete('/courses/{id}', [CoursesController::class, 'destroy']);
+
+Route::get('/quizzes/{id}', [quizController::class, 'show']);
+Route::post('/quizzes', [quizController::class, 'store']);
+Route::put('/quizzes/{id}', [quizController::class, 'update']);
+Route::delete('/quizzes/{id}', [quizController::class, 'destroy']);
