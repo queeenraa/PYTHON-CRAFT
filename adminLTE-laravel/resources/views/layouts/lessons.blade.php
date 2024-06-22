@@ -10,12 +10,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Lessons</h1>
+            <h1>Manage Lessons</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">General Form</li>
+              <li class="breadcrumb-item active">Lessons</li>
             </ol>
           </div>
         </div>
@@ -26,59 +26,147 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <!-- left column -->
-          <div class="col-md-10">
-            <div class="card card-primary">
+          <div class="col-12">
+            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Different Styles</h3>
+                <h3 class="card-title">Lessons List</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLessonModal">
+                    Add Lesson
+                  </button>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <h4>Input</h4>
-                <div class="form-group">
-                  <label for="exampleInputBorder">Bottom Border only <code>.form-control-border</code></label>
-                  <input type="text" class="form-control form-control-border" id="exampleInputBorder" placeholder=".form-control-border">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputBorderWidth2">Bottom Border only 2px Border <code>.form-control-border.border-width-2</code></label>
-                  <input type="text" class="form-control form-control-border border-width-2" id="exampleInputBorderWidth2" placeholder=".form-control-border.border-width-2">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputRounded0">Flat <code>.rounded-0</code></label>
-                  <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder=".rounded-0">
-                </div>
-                <h4>Custom Select</h4>
-                <div class="form-group">
-                  <label for="exampleSelectBorder">Bottom Border only <code>.form-control-border</code></label>
-                  <select class="custom-select form-control-border" id="exampleSelectBorder">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleSelectBorderWidth2">Bottom Border only <code>.form-control-border.border-width-2</code></label>
-                  <select class="custom-select form-control-border border-width-2" id="exampleSelectBorderWidth2">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleSelectRounded0">Flat <code>.rounded-0</code></label>
-                  <select class="custom-select rounded-0" id="exampleSelectRounded0">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Lesson Name</th>
+                      <th>Course</th>
+                      <th>Created By</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Example rows, you should replace with dynamic content -->
+                    <tr>
+                      <td>1</td>
+                      <td>Lesson 1 - Apa itu Python?</td>
+                      <td>Course 1</td>
+                      <td>Admin Farhan</td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
+                          Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- End example rows -->
+                  </tbody>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
+            <!-- /.card -->
           </div>
         </div>
       </div>
     </section>
+  </div>
+
+  <!-- Add Lesson Modal -->
+  <div class="modal fade" id="addLessonModal" tabindex="-1" aria-labelledby="addLessonModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addLessonModalLabel">Add New Lesson</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="course_id">Course</label>
+              <select name="course_id" class="form-control" id="course_id">
+                <option value="1">Course 1</option>
+                <option value="2">Course 2</option>
+                <option value="3">Course 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lesson_name">Lesson Name</label>
+              <input type="text" name="lesson_name" class="form-control" id="lesson_name" placeholder="Enter lesson name">
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="created_by">Created By</label>
+              <select name="created_by" class="form-control" id="created_by">
+                <option value="1">Admin Farhan</option>
+                <option value="2">Admin Laura</option>
+                <option value="3">Admin Aldo</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Lesson Modal -->
+  <div class="modal fade" id="editLessonModal" tabindex="-1" aria-labelledby="editLessonModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editLessonModalLabel">Edit Lesson</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="course_id">Course</label>
+              <select name="course_id" class="form-control" id="course_id">
+                <option value="1">Course 1</option>
+                <option value="2">Course 2</option>
+                <option value="3">Course 3</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="lesson_name">Lesson Name</label>
+              <input type="text" name="lesson_name" class="form-control" id="lesson_name" placeholder="Enter lesson name">
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="created_by">Created By</label>
+              <select name="created_by" class="form-control" id="created_by">
+                <option value="1">Admin Farhan</option>
+                <option value="2">Admin Laura</option>
+                <option value="3">Admin Aldo</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Control Sidebar -->
@@ -88,5 +176,13 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+<script>
+  function confirmDelete() {
+    if (confirm("Are you sure you want to delete this lesson?")) {
+      // Implement the delete functionality here
+    }
+  }
+</script>
 </body>
 @endsection
