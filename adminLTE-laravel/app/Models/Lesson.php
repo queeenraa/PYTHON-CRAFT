@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+    protected $primaryKey = 'lesson_id'; // Specify the primary key
     protected $fillable = [
         'course_id',
         'lesson_name',
