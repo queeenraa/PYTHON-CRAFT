@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Lesson;
 
-class lessonsController extends Controller
+class LessonsController extends Controller
 {
     public function index()
     {
@@ -16,7 +16,7 @@ class lessonsController extends Controller
     // Menampilkan detail sebuah lesson berdasarkan lesson_id
     public function show($id)
     {
-        $lesson = Lesson::find($id);
+        $lesson = Lesson::where('lesson_id', $id)->first();
 
         if (!$lesson) {
             return response()->json([
@@ -77,7 +77,7 @@ class lessonsController extends Controller
             ], 422);
         }
 
-        $lesson = Lesson::find($id);
+        $lesson = Lesson::where('lesson_id', $id)->first();
 
         if (!$lesson) {
             return response()->json([
@@ -98,7 +98,7 @@ class lessonsController extends Controller
     // Menghapus lesson
     public function destroy($id)
     {
-        $lesson = Lesson::find($id);
+        $lesson = Lesson::where('lesson_id', $id)->first();
 
         if (!$lesson) {
             return response()->json([
