@@ -29,10 +29,10 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Lessons List</h3>
+                <h3 class="card-title">List Bab</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addLessonModal">
-                    Add Lesson
+                  <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addLessonModal">
+                    Tambah Bab
                   </button>
                 </div>
               </div>
@@ -41,20 +41,18 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Lesson Name</th>
-                      <th>Course</th>
-                      <th>Content</th>
-                      <th>Actions</th>
+                      <th class="col-tagar">#</th>
+                      <th class="col-nama-bab">Nama Bab</th>
+                      <th class="col-materi">Materi</th>
+                      <th class="col-action">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     <!-- Example rows, you should replace with dynamic content -->
                     <tr>
-                      <td>1</td>
-                      <td>Lesson 1 - Apa itu Python?</td>
-                      <td>Course 1</td>
-                      <td>Pengantar tentang bahasa pemrograman Python...</td>
+                      <td class="col-tagar">1</td>
+                      <td class="col-bab">Lesson 1 - Apa itu Python?</td>
+                      <td class="col-materi">Course 1</td>
                       <td>
                         <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
                           Edit
@@ -75,6 +73,60 @@
         </div>
       </div>
     </section>
+
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">List Materi</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addLessonModal">
+                    Tambah Materi
+                  </button>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="col-tagar">#</th>
+                      <th class="col-materi-nama-bab">Nama Materi</th>
+                      <th class="col-materi-nomor-bab">Bab</th>
+                      <th class="col-materi-materi">Content</th>
+                      <th class="col-materi-action">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Example rows, you should replace with dynamic content -->
+                    <tr>
+                      <td>1</td>
+                      <td class="col-materi-nama-bab">Lesson 1 - Apa itu Python?</td>
+                      <td class="col-materi-nomor-bab">Course 1</td>
+                      <td class="col-materi-materi">Pengantar tentang bahasa pemrograman Python...</td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
+                          Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- End example rows -->
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      </div>
+    </section>
+
   </div>
 
   <!-- Add Lesson Modal -->

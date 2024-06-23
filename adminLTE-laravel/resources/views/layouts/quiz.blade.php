@@ -26,55 +26,51 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
-          <!-- left column -->
-          <div class="col-md-10">
-            <div class="card card-primary">
+          <div class="col-12">
+            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Different Styles</h3>
+                <h3 class="card-title">List Materi</h3>
+                <div class="card-tools">
+                  <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addLessonModal">
+                    Tambah Quiz
+                  </button>
+                </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <h4>Input</h4>
-                <div class="form-group">
-                  <label for="exampleInputBorder">Bottom Border only <code>.form-control-border</code></label>
-                  <input type="text" class="form-control form-control-border" id="exampleInputBorder" placeholder=".form-control-border">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputBorderWidth2">Bottom Border only 2px Border <code>.form-control-border.border-width-2</code></label>
-                  <input type="text" class="form-control form-control-border border-width-2" id="exampleInputBorderWidth2" placeholder=".form-control-border.border-width-2">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputRounded0">Flat <code>.rounded-0</code></label>
-                  <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder=".rounded-0">
-                </div>
-                <h4>Custom Select</h4>
-                <div class="form-group">
-                  <label for="exampleSelectBorder">Bottom Border only <code>.form-control-border</code></label>
-                  <select class="custom-select form-control-border" id="exampleSelectBorder">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleSelectBorderWidth2">Bottom Border only <code>.form-control-border.border-width-2</code></label>
-                  <select class="custom-select form-control-border border-width-2" id="exampleSelectBorderWidth2">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleSelectRounded0">Flat <code>.rounded-0</code></label>
-                  <select class="custom-select rounded-0" id="exampleSelectRounded0">
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                  </select>
-                </div>
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th class="col-tagar">#</th>
+                      <th class="col-materi-nomor-bab">Bab</th>
+                      <th class="col-materi-nama-bab">Nama Materi</th>
+                      <th class="col-materi-materi">Content</th>
+                      <th class="col-materi-action">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <!-- Example rows, you should replace with dynamic content -->
+                    <tr>
+                      <td>1</td>
+                      <td class="col-materi-nomor-bab">Course 1</td>
+                      <td class="col-materi-nama-bab">Lesson 1 - Apa itu Python?</td>
+                      <td class="col-materi-materi">Pengantar tentang bahasa pemrograman Python...</td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
+                          Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    <!-- End example rows -->
+                  </tbody>
+                </table>
               </div>
               <!-- /.card-body -->
             </div>
+            <!-- /.card -->
           </div>
         </div>
       </div>

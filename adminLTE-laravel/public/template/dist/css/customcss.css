@@ -1,0 +1,27 @@
+.custom-button {
+    width: 130px; /* Anda bisa menyesuaikan ukuran sesuai kebutuhan */
+  }
+  .col-nama-bab {
+    width: 20%; /* Lebar untuk kolom Nama Bab */
+  }
+  .col-materi {
+    width: 65%; /* Lebar untuk kolom Materi */
+  }
+  .col-action {
+    width: 8%; /* Lebar untuk kolom Action */
+  }
+  .col-tagar {
+    width: 2%; /* Lebar untuk kolom Action */
+  }
+  .col-materi-nama-bab {
+    width: 18%;
+  }
+  .col-materi-nomor-bab {
+    width: 18%;
+  }
+  .col-materi-materi {
+    width: 53%;
+  }
+  .col-materi-action {
+    width: 20%;
+  }
