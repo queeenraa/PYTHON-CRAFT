@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 use Laravel\Socialite\Facades\Socialite;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\DB;
+
 
 class UserController extends Controller
 {
@@ -98,7 +100,7 @@ class UserController extends Controller
     {
         $parameters = [
             'client_id' => env('GOOGLE_CLIENT_ID'),
-            'redirect_uri' => 'http://127.0.0.1:8000//api/oauth/register/call-back',
+            'redirect_uri' => 'http://127.0.0.1:8000/api/oauth/register/call-back',
             'response_type' => 'code',
             'scope' => 'email profile',
             'access_type' => 'offline',
@@ -124,24 +126,61 @@ class UserController extends Controller
             ], 400);
         }
 
-        $client = new Client();
+        try {
+            $client = new Client();
+            $response = $client->post('https://oauth2.googleapis.com/token', [
+                'form_params' => [
+                    'code' => $code,
+                    'client_id' => env('GOOGLE_CLIENT_ID'),
+                    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+                    'redirect_uri' => env('GOOGLE_REDIRECT_URI'),
+                    'grant_type' => 'authorization_code',
+                ],
+            ]);
 
-        $response = $client->post('https://oauth2.googleapis.com/token', [
-            'form_params' => [
-                'code' => $code,
-                'client_id' => env('GOOGLE_CLIENT_ID'),
-                'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-                'redirect_uri' => env('GOOGLE_REDIRECT_URI'),
-                'grant_type' => 'authorization_code',
-                'access_type' => 'offline',
-            ],
-        ]);
-        $tokenData = json_decode($response->getBody(), true);
-        $accessToken = $tokenData['access_token'];
+            $tokenData = json_decode($response->getBody(), true);
 
-        return response()->json([
-            'success' => true,
-            'data' => $accessToken
-        ], 400);
+            if (!isset($tokenData['access_token'])) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Failed to get access token',
+                    'error' => $tokenData
+                ], 400);
+            }
+
+            $accessToken = $tokenData['access_token'];
+
+            // Fetch user information from Google
+            $response = $client->get('https://www.googleapis.com/oauth2/v1/userinfo?alt=json', [
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $accessToken,
+                ],
+            ]);
+
+            $userInfo = json_decode($response->getBody(), true);
+
+            // Save or update user information in the database
+            $user = User::updateOrCreate(
+                ['email' => $userInfo['email']], // Assuming email is unique
+                [
+                    'name' => $userInfo['name'],
+                    'password' => '', // Set password to empty as it's not used for Google login
+                    'role' => 'user', // Default role
+                    // Additional fields can be handled in your application logic
+                ]
+            );
+
+            return response()->json([
+                'success' => true,
+                'data' => $accessToken,
+                'user' => $user
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred while exchanging the authorization code',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 }
