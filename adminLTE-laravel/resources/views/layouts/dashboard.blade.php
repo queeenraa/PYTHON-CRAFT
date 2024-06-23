@@ -227,7 +227,7 @@
             </div>
             <!-- /.card -->
           </div>
-        </div>
+        </div>`
 
         <!-- Main row -->
         <div class="row">
