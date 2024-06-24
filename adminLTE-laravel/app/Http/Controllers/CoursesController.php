@@ -10,7 +10,11 @@ class CoursesController extends Controller
 {
     public function index()
     {
-        return view('layouts.courses');
+        $courses = Course::all(); // Mengambil semua data courses dari model Course
+
+        return view('layouts.lessons', [
+            'courses' => $courses, // Mengirimkan data courses ke view
+        ]);
     }
 
     // Menampilkan detail course berdasarkan course_id

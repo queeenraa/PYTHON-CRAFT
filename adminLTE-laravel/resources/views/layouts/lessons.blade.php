@@ -62,6 +62,24 @@
                         </button>
                       </td>
                     </tr>
+                    {{-- @foreach ($courses as $course)
+                    <tr>
+                        <td class="col-tagar">{{ $course->course_id }}</td>
+                        <td class="col-nama-course">{{ $course->course_name }}</td>
+                        <td class="col-description">{{ $course->description }}</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
+                                data-target="#editCourseModal{{ $course->course_id }}">
+                                Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm"
+                                onclick="confirmDelete()">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach --}}
+
                     <!-- End example rows -->
                   </tbody>
                 </table>
@@ -115,6 +133,22 @@
                         </button>
                       </td>
                     </tr>
+                    @foreach ($lessons as $lesson)
+                    <tr>
+                      <td class="col-tagar">{{ $lesson->lesson_id }}</td>
+                      <td class="col-bab">{{ $lesson->lesson_name }}</td>
+                      <td class="col-materi">{{ $lesson->course->course_name }}</td>
+                      <td class="col-content">{{ $lesson->content }}</td>
+                      <td>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $lesson->id }}">
+                          Edit
+                        </button>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                    @endforeach
                     <!-- End example rows -->
                   </tbody>
                 </table>

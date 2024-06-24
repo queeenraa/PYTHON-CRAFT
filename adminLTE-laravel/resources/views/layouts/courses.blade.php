@@ -49,6 +49,28 @@
                     </tr>
                   </thead>
                   <tbody>
+                    {{-- @foreach ($courses as $course)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $course->course_name }}</td>
+                        <td>
+                            <ul>
+                                @foreach ($course->lessons as $lesson)
+                                <li>{{ $lesson->lesson_name }}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                        <td>{{ $course->quiz }}</td>
+                        <td>
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editCourseModal{{ $course->id }}">
+                                Edit
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $course->id }})">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach --}}
                     <!-- Example rows, you should replace with dynamic content -->
                     <tr>
                       <td>1</td>
