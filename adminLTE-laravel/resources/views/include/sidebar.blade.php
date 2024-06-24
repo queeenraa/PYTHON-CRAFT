@@ -61,7 +61,7 @@
           </li>
           <li class="nav-item menu-open">
             <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-th"></i>
+            <i class="nav-icon fas fa-book-open"></i>
               <p>
                 Courses
                 <i class="right fas fa-angle-left"></i>
@@ -70,13 +70,13 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="lessons" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-chalkboard-teacher nav-icon"></i>
                   <p>Lessons</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="quiz" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-question-circle nav-icon"></i>
                   <p>Quiz</p>
                 </a>
               </li>
@@ -91,15 +91,6 @@
                   </p>
                 </a>
           </li>
-          <li class="nav-item">
-            <a href="courses" class="nav-link">
-              <i class="nav-icon fas fa-solid fa-user"></i>
-              <!-- <i class="fa-solid fa-user"></i> -->
-              <p>
-                Courses
-              </p>
-            </a>
-      </li>
         </ul>
     </nav>
     <!-- /.sidebar-menu -->
