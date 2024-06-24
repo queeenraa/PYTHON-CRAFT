@@ -38,3 +38,12 @@ Route::get('/quizzes/{id}', [quizController::class, 'show']);
 Route::post('/quizzes', [quizController::class, 'store']);
 Route::put('/quizzes/{id}', [quizController::class, 'update']);
 Route::delete('/quizzes/{id}', [quizController::class, 'destroy']);
+
+Route::middleware(['auth', 'user'])->group(function () {
+    Route::get('/lessons/{id}', [lessonsController::class, 'show']);
+
+    Route::get('/courses/{id}', [CoursesController::class, 'show']);
+
+    Route::get('/quizzes/{id}', [quizController::class, 'show']);
+    
+});
