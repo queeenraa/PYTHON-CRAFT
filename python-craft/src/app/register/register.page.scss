@@ -1,10 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 ion-content {
   --background: #0f4c81;
+  font-family: "Russo One" !important;
 }
+html {
+  --ion-default-font: "Russo One" !important;
+  --ion-dynamic-font: var(--ion-default-font);
+}
+
 // HEX COLOR FOR PYTHON LOGO #4B8BBE, #306998, #FFE873, #FFD43B, and #646464
 #container {
   text-align: center;
-  font: "Red Hat Display";
+  font: "Russo One";
   position: absolute;
   left: 5%;
   right: 5%;
@@ -20,11 +27,8 @@ ion-content {
 }
 
 #container p {
-  font-size: 12px;
+  font-size: 14 px;
   line-height: 22px;
-
-  color: #ffff;
-
   margin: 0;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -41,17 +45,42 @@ ion-content {
   top: -20px;
 }
 
-#container ion-item {
+ion-item {
+  --justify-content: left;
+  --background-color: #d9d9d9;
+  margin-top: 10px;
   margin-bottom: 20px;
-  --border-radius: 10px;
-  --background: #f1f1f1f1;
+  --padding-left: 0px;
+  padding-top: 0px;
+  --border-radius: 12px;
+  --background: none;
+  --box-shadow: none;
+  --border: 0px 0px 0px 0px;
+  --border-color: none;
+  --padding-right: 0px;
+  border-radius: var(--border-radius);
+  padding-top: var(--padding-top);
+  background-color: var(--background-color);
+  border-width: var(--border);
+  border-color: var(--border-color);
+  padding-left: var(--padding-left);
 }
 
 #container ion-checkbox {
-  color: black;
-  text-align: left;
-  font-size: 12px;
-  --border-radius: 0px;
+  padding: 0px 0px 0px 0px;
+  padding: var(--padding);
+  --border-radius: 2px;
+  --background: #bc7fcd;
+  color: #0f4c81;
+  display: block;
+  font-size: 14px;
+  size: 10px;
+  --checkbox-background-checked: #bc7fcd;
+}
+ion-checkbox::part(container) {
+  border-radius: 6px;
+  border: 2px solid #bc7fcd;
+  background: none;
 }
 
 #container h3 {
@@ -71,17 +100,45 @@ ion-content {
 }
 
 #container ion-button {
+  --font-size: 24px;
   margin-bottom: 5px;
   // margin-top: 5px;
-  --border-radius: 5px;
-  --padding-start: 120px; /* Atur padding awal */
-  --padding-end: 120px; /* Atur padding akhir */
+  --border-radius: 20px;
+  // --padding-start: 120px; /* Atur padding awal */
+  // --padding-end: 120px; /* Atur padding akhir */
   --color: white;
   --background: #bc7fcd;
-  width: 335px;
-  height: 50px;
+  font-size: var(--font-size);
+  width: 351px;
+  height: 69px;
+}
+#container ion-card {
+  --margin-bottom: 0px;
+  margin-bottom: var(--margin-bottom);
+  --background-color: none;
+  background-color: var(--background-color);
+  --border-radius: 20px;
+  border-radius: var(--border-radius);
+}
+#container ion-card-content {
+  --background-color: white;
+  background-color: var(--background-color);
+  --border-radius: 20px;
+  border-radius: var(--border-radius);
 }
 
-#container ion-card-content {
-  margin-bottom: 5px;
+#container ion-input,
+password-toggle {
+  --color: #666666;
+  color: var(--color);
+  --font-color: #666666;
+  font-color: var(--font-color);
+  --background-color: #d9d9d9;
+  background-color: var(--background-color);
+  --highlight-color-focused: black;
+  --font-family: "Russo One", sans-serif !important;
+  --padding: 0px 0px 0px 0px;
+  --color-activated: black;
+  --color-focused: black;
+  --color-hover: black;
 }
