@@ -32,10 +32,10 @@
               <div class="inner">
                 <h3>150</h3>
 
-                <p>New Orders</p>
+                <p>Total Course</p>
               </div>
               <div class="icon">
-                <i class="ion ion-bag"></i>
+                <i class="ion ion-ios-book"></i>
               </div>
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
@@ -47,7 +47,7 @@
               <div class="inner">
                 <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                <p>Bounce Rate</p>
+                <p>Pengguna yang aktif</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -62,7 +62,7 @@
               <div class="inner">
                 <h3>44</h3>
 
-                <p>User Registrations</p>
+                <p>Total Pengguna</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>

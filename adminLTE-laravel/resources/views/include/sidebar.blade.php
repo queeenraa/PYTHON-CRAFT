@@ -76,7 +76,7 @@
               </li>
               <li class="nav-item">
                 <a href="quiz" class="nav-link">
-                  <i class="fas fa-question-circle nav-icon"></i>
+                  <i class="fas fa-gamepad nav-icon"></i>
                   <p>Quiz</p>
                 </a>
               </li>
