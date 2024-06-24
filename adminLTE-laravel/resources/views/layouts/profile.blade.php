@@ -21,7 +21,7 @@
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    {{-- <section class="content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-3">
@@ -379,7 +379,87 @@
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
-    </section>
+    </section> --}}
+
+    <section class="content">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-12">
+                  <div class="card">
+                      <div class="card-header">
+                          <h3 class="card-title">Manage Users</h3>
+                          <div class="card-tools">
+                              <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addUserModal">
+                                  Add User
+                              </button>
+                          </div>
+                      </div>
+                      <!-- /.card-header -->
+                      <div class="card-body">
+                          <table class="table table-bordered">
+                              <thead>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Name</th>
+                                      <th>Email</th>
+                                      <th>Role</th>
+                                      <th>Actions</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <!-- Example rows, you should replace with dynamic content -->
+                                  <tr>
+                                      <td>1</td>
+                                      <td>John Doe</td>
+                                      <td>john.doe@example.com</td>
+                                      <td>Admin</td>
+                                      <td>
+                                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editUserModal">
+                                              Edit
+                                          </button>
+                                          <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                                              Delete
+                                          </button>
+                                      </td>
+                                  </tr>
+                                  <!-- End example rows -->
+                              </tbody>
+                          </table>
+                      </div>
+                      <!-- /.card-body -->
+                  </div>
+                  <!-- /.card -->
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <!-- Modal for Adding User -->
+  <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <!-- Modal content for adding user -->
+          </div>
+      </div>
+  </div>
+  
+  <!-- Modal for Editing User -->
+  <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <!-- Modal content for editing user -->
+          </div>
+      </div>
+  </div>
+  
+  <script>
+  function confirmDelete() {
+      if(confirm("Are you sure you want to delete this user?")) {
+          // Add delete functionality here
+      }
+  }
+  </script>
+  
     <!-- /.content -->
   </div>
 
