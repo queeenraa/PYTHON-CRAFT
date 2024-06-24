@@ -40,3 +40,20 @@ Route::get('/quiz', [quizController::class, 'index']);
 Route::get('/login', [loginController::class, 'index']);
 
 Route::get('/register', [registerController::class, 'index']);
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    // courses
+    Route::post('/courses', [CoursesController::class, 'store']);
+    Route::put('/courses/{id}', [CoursesController::class, 'update']);
+    Route::delete('/courses/{id}', [CoursesController::class, 'destroy']);
+
+    // lesson
+    Route::post('/lessons', [lessonsController::class, 'store']);
+    Route::put('/lessons/{id}', [lessonsController::class, 'update']);
+    Route::delete('/lessons/{id}', [lessonsController::class, 'destroy']);
+
+    // quiz
+    Route::post('/quizzes', [quizController::class, 'store']);
+    Route::put('/quizzes/{id}', [quizController::class, 'update']);
+    Route::delete('/quizzes/{id}', [quizController::class, 'destroy']);
+});
