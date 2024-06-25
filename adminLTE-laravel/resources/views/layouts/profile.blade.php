@@ -422,6 +422,22 @@
                                           </button>
                                       </td>
                                   </tr>
+                                  @foreach ($profiles as $profile)
+                                  <tr>
+                                    <td>{{ $profile->user_id }}</td>
+                                    <td>{{ $profile->name }}</td>
+                                    <td>{{ $profile->email }}</td>
+                                    <td>{{ $profile->role }}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $profile->id }}">
+                                        Edit
+                                      </button>
+                                      <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                                        Delete
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  @endforeach
                                   <!-- End example rows -->
                               </tbody>
                           </table>
