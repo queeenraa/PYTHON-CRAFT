@@ -12,7 +12,16 @@ class quizController extends Controller
     {
         $quizzes = Quiz::all();
         
-        return view('layouts.quiz', [
+        return view('layouts.quiz.quiz', [
+            'quizzes' =>$quizzes, // Kirimkan data lessons ke view
+        ]);
+    }
+
+    public function edit()
+    {
+        $quizzes = Quiz::all();
+        
+        return view('layouts.quiz.editQuiz', [
             'quizzes' =>$quizzes, // Kirimkan data lessons ke view
         ]);
     }

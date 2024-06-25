@@ -8,7 +8,7 @@ use App\Http\Controllers\quizController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
-
+use App\Http\Controllers\editLessonsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,16 @@ Route::put('/quizzes/{id}', [quizController::class, 'update']);
 Route::get('/login', [loginController::class, 'index']);
 
 Route::get('/register', [registerController::class, 'index']);
+
+Route::get('/edit-lessons', [lessonsController::class, 'edit'])->name('edit.quiz.form');
+
+Route::get('/edit-courses', [CoursesController::class, 'edit'])->name('edit.bab.form');
+
+Route::get('/edit-quiz', [quizController::class, 'edit'])->name('edit.quiz.form');
+
+Route::get('/edit-profile', [profileController::class, 'edit'])->name('edit.profile.form');
+
+Route::get('/tambah-lessons', [lessonsController::class, 'tambah'])->name('tambah.lessons.form');
 
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     // courses

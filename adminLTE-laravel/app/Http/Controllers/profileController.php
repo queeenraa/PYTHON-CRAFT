@@ -13,7 +13,18 @@ class profileController extends Controller
 
         $profiles = User::all(); // Mengambil semua data courses dari model Course
 
-        return view('layouts.profile', [
+        return view('layouts.profile.profile', [
+            'profiles' => $profiles, // Mengirimkan data courses ke view
+        ]);
+        
+    }
+    public function edit()
+    {
+        // return view('layouts.profile');
+
+        $profiles = User::all(); // Mengambil semua data courses dari model Course
+
+        return view('layouts.profile.editProfile', [
             'profiles' => $profiles, // Mengirimkan data courses ke view
         ]);
     }

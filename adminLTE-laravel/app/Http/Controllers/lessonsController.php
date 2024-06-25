@@ -12,7 +12,25 @@ class LessonsController extends Controller
     {
         $lessons = Lesson::all(); // Ambil semua data lessons dari database
 
-        return view('layouts.lessons', [
+        return view('layouts.lessons.lessons', [
+            'lessons' => $lessons, // Kirimkan data lessons ke view
+        ]);
+    }
+
+    public function edit()
+    {
+        $lessons = Lesson::all(); // Ambil semua data lessons dari database
+
+        return view('layouts.lessons.editLessons', [
+            'lessons' => $lessons, // Kirimkan data lessons ke view
+        ]);
+    }
+
+    public function tambah()
+    {
+        $lessons = Lesson::all(); // Ambil semua data lessons dari database
+
+        return view('layouts.lessons.tambahLessons', [
             'lessons' => $lessons, // Kirimkan data lessons ke view
         ]);
     }

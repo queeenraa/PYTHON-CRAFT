@@ -10,7 +10,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Manage Lessons</h1>
+            <h1>Manage Courses</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -31,9 +31,9 @@
               <div class="card-header">
                 <h3 class="card-title">List Bab</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addLessonModal">
+                  <a href="{{ url('/tambah-lessons') }}" class="btn btn-primary custom-button">
                     Tambah Bab
-                  </button>
+                  </a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -54,9 +54,9 @@
                       <td class="col-bab">Lesson 1 - Apa itu Python?</td>
                       <td class="col-materi">Course 1</td>
                       <td>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
-                          Edit
-                        </button>
+                        <a href="{{ url('/edit-courses') }}" class="btn btn-info btn-sm">
+                            Edit
+                        </a>
                         <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                           Delete
                         </button>
@@ -100,9 +100,9 @@
               <div class="card-header">
                 <h3 class="card-title">List Materi</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addLessonModal">
+                  <a href="{{ url('/tambah-lessons') }}" class="btn btn-primary custom-button">
                     Tambah Materi
-                  </button>
+                  </a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -125,9 +125,9 @@
                       <td class="col-materi-nomor-bab">Course 1</td>
                       <td class="col-materi-materi">Pengantar tentang bahasa pemrograman Python...</td>
                       <td>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal">
-                          Edit
-                        </button>
+                        <a href="{{ url('/edit-lessons') }}" class="btn btn-info btn-sm">
+                            Edit
+                        </a>
                         <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                           Delete
                         </button>
@@ -140,9 +140,9 @@
                       <td class="col-materi">{{ $lesson->course->course_name }}</td>
                       <td class="col-content">{{ $lesson->content }}</td>
                       <td>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $lesson->id }}">
+                      <a href="{{ route('/edit-lessons') }}" class="btn btn-info btn-sm">
                           Edit
-                        </button>
+                      </a>
                         <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                           Delete
                         </button>

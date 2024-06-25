@@ -12,7 +12,16 @@ class CoursesController extends Controller
     {
         $courses = Course::all(); // Mengambil semua data courses dari model Course
 
-        return view('layouts.lessons', [
+        return view('layouts.course.lessons', [
+            'courses' => $courses, // Mengirimkan data courses ke view
+        ]);
+    }
+
+    public function edit()
+    {
+        $courses = Course::all(); // Mengambil semua data courses dari model Course
+
+        return view('layouts.bab.editBab', [
             'courses' => $courses, // Mengirimkan data courses ke view
         ]);
     }

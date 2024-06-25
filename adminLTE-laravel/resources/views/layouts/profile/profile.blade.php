@@ -414,9 +414,9 @@
                                       <td>john.doe@example.com</td>
                                       <td>Admin</td>
                                       <td>
-                                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editUserModal">
-                                              Edit
-                                          </button>
+                                        <a href="{{ url('/edit-profile') }}" class="btn btn-info btn-sm">
+                                            Edit
+                                        </a>
                                           <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                                               Delete
                                           </button>
@@ -429,9 +429,9 @@
                                     <td>{{ $profile->email }}</td>
                                     <td>{{ $profile->role }}</td>
                                     <td>
-                                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $profile->id }}">
+                                    <a href="{{ url('/edit-profile') }}" class="btn btn-info btn-sm">
                                         Edit
-                                      </button>
+                                    </a>
                                       <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                                         Delete
                                       </button>
