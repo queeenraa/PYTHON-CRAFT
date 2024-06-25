@@ -10,7 +10,11 @@ class LessonsController extends Controller
 {
     public function index()
     {
-        return view('layouts.lessons');
+        $lessons = Lesson::all(); // Ambil semua data lessons dari database
+
+        return view('layouts.lessons', [
+            'lessons' => $lessons, // Kirimkan data lessons ke view
+        ]);
     }
 
     // Menampilkan detail sebuah lesson berdasarkan lesson_id
