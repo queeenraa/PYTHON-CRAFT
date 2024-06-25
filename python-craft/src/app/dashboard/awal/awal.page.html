@@ -1,59 +1,69 @@
-<ion-header> </ion-header>
-
 <ion-content>
-  <div id="container">
-    <div class="header">
-      <img src="assets/images/megaphone.png" alt="Megaphone Icon" />
-      <div class="welcome-text">
-        <h1>Hi Jennie!</h1>
-        <p>Welcome to the PythonCraft. Begin your adventure here.</p>
-      </div>
-    </div>
+  <!-- JUDUL ATAS -->
+  <div class="navbar">
+    <ion-icon name="cart-outline" justify="start"></ion-icon>
+    <p justify="end">Python Craft</p>
+  </div>
 
-    <div class="progress-title">
-      <h2>YOUR PROGRESS</h2>
-      <ion-button
-        expand="block"
-        fill="solid"
-        color="medium"
-        routerLink="/materi-looping"
-        class="progress-button"
-      >
-        <ion-icon slot="start" name="play-circle"></ion-icon>
-        Materi Looping
+  <!-- PROFILE -->
+  <div class="card-profile">
+    <ion-icon class="person" name="person-outline"></ion-icon>
+    <p class="nama">Profile</p>
+    <ion-button class="ucapan" disabled>
+      <ion-icon slot="start" name="sunny-outline"></ion-icon>
+      GOOD MORNING
+    </ion-button>
+    <ion-button class="diamond">
+      <ion-icon slot="start" name="diamond-outline"></ion-icon>
+      789
+      <ion-icon slot="end" name="add-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- MATERI -->
+  <div class="container-progress">
+    <div class="header-progress">Your Progress</div>
+    <div class="card-materi">
+      <ion-button class="isi-materi">
+        <ion-icon
+          class="icon-start"
+          slot="start"
+          name="code-outline"
+        ></ion-icon>
+        <p>Materi</p>
+        <ion-progress-bar [value]="progress" color="success"></ion-progress-bar>
+        <ion-icon class="icon-start-2" name="play-outline"></ion-icon>
       </ion-button>
-
-      <ion-button
-        expand="block"
-        fill="solid"
-        color="medium"
-        routerLink="/materi-tipe-data"
-        class="progress-button"
-      >
-        <ion-icon slot="start" name="play-circle"></ion-icon>
-        Materi Tipe Data
+    </div>
+    <div class="card-materi-2">
+      <ion-button class="isi-materi">
+        <ion-icon
+          class="icon-start"
+          slot="start"
+          name="code-outline"
+        ></ion-icon>
+        <p>Materi</p>
+        <ion-progress-bar [value]="0.5"></ion-progress-bar>
+        <ion-icon class="icon-start-2" name="play-outline"></ion-icon>
       </ion-button>
     </div>
   </div>
-</ion-content>
 
-<<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home-outline"></ion-icon>
-      Home
-    </ion-tab-button>
-    <ion-tab-button tab="learn">
-      <ion-icon name="code-slash-outline"></ion-icon>
-      Learn
-    </ion-tab-button>
-    <ion-tab-button tab="leaderboard">
-      <ion-icon name="trophy-outline"></ion-icon>
-      Leaderboard
-    </ion-tab-button>
-    <ion-tab-button tab="profile">
-      <ion-icon name="person-outline"></ion-icon>
-      Profile
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+  <!-- ION TABS -->
+  <!-- <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+        Home
+      </ion-tab-button>
+      <ion-tab-button tab="learn">
+        <ion-icon name="code-slash-outline"></ion-icon>
+        Learn
+      </ion-tab-button>
+      <ion-tab-button tab="profile">
+        <ion-icon name="person-outline"></ion-icon>
+        Profile
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs> -->
+</ion-content>

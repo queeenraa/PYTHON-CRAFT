@@ -6,7 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./awal.page.scss'],
 })
 export class AwalPage implements OnInit {
+  public progress = 0;
+
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    setInterval(() => {
+      this.progress += 0.01;
+
+      if (this.progress > 1) {
+        setTimeout(() => {
+          this.progress = 0;
+        }, 1000);
+      }
+    }, 50);
+  }
 }
