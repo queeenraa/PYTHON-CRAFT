@@ -1,110 +1,171 @@
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
 ion-content {
-  --background: #0f4c81;
+  --background: #bc7fcd;
   font-family: "Russo One" !important;
 }
-#container {
+
+.navbar {
+  --background: #9087e5;
+  display: flex;
+  flex-direction: right;
+  justify-content: space-between;
+  padding: 23px 37px 15px 37px;
+  --border-bottom: 5px solid #0f4c81;
+  border-bottom: var(--border-bottom);
+  background: var(--background);
+}
+.navbar ion-icon {
+  --background: #0f4c81;
+  --border-radius: 50px;
+  padding: 5px 5px 5px 5px;
+  height: 30px;
+  width: 30px;
+  background: var(--background);
+  border-radius: var(--border-radius);
+}
+.navbar p {
+  margin: 7px 0px 0px 0px;
+  font-size: 24px;
+  --padding: 0px 0px 0px 0px;
+  padding: var(--padding);
+}
+.card-profile {
+  padding: 10px 30px 20px 37px;
+  margin-top: 10px;
+  margin-bottom: 100px;
+}
+.person {
+  --background: #ffbfb8;
+  --border-radius: 50px;
+  padding: 15px 15px 15px 15px;
+  height: 55px;
+  width: 55px;
+  position: relative;
+  background: var(--background);
+  border-radius: var(--border-radius);
+}
+.nama {
+  font-size: 36px;
+  position: absolute;
+  margin: 15px 0px 0px 0px;
+  height: 500px;
+}
+.ucapan {
+  --font-family: rubik;
+  font-size: 16px;
+  --background: none;
+  --box-shadow: none;
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  position: absolute;
+  top: 110px;
+  right: 25px;
+  box-shadow: var(--box-shadow);
+  background: var(--background);
+}
+.diamond {
+  position: absolute;
+  color: white;
+  bottom: 670px;
+  right: 37px;
+  width: 110px;
+  --border-radius: 20px;
+  border-radius: var(--border-radius);
+  --background: rgb(102, 0, 18, 20%);
+  background: var(--background);
+}
+.container-progress {
+  --background: #0f4c81;
+  justify-content: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-#container .header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-bottom: 20px;
-  --background: #bc7fcd;
-  --height: 294px;
-  background: var(--background);
-  height: var(--height);
-}
-
-#container .header img {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-}
-
-#container .welcome-text {
-  margin-bottom: 20px;
-}
-
-#container .welcome-text h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-#container .welcome-text p {
-  font-size: 16px;
-  color: #666;
-}
-
-#container .progress-title {
-  margin-bottom: 20px;
-  background-color: #0f4c81;
   position: absolute;
-  margin-top: 208px;
+  --border-radius: 40px;
+  border-radius: var(--border-radius);
+  height: 100%;
+  width: 100%;
+  background: var(--background);
+}
+
+.header-progress {
+  position: absolute;
+  top: 50px;
+  font-size: 32px;
+  padding-bottom: 60px;
+}
+.card-materi {
+  padding: 15px 0px 15px 15px;
+  position: absolute;
+  top: 150px;
+  margin-bottom: 50px;
+  --background: white;
+  --padding: 0px 35px 0px 35px;
   border-radius: 20px;
-  padding: 20px;
+  height: 125px;
+  width: 345px;
+  background: var(--background);
+}
+.card-materi-2 {
+  padding: 15px 0px 15px 15px;
+  position: absolute;
+  top: 325px;
+  margin-bottom: 50px;
+  --background: white;
+  --padding: 0px 35px 0px 35px;
+  border-radius: 20px;
+  height: 125px;
+  width: 345px;
+  background: var(--background);
+}
+.isi-materi {
+  --background: none;
+  --box-shadow: none;
+  --margin: 0px 0px 20px 0px;
+  --padding: 0px 0px 0px 0px;
+  margin: var(--margin);
   width: 100%;
+  height: 100%;
+  padding: var(--padding);
+  background: var(--background);
+  box-shadow: var(--box-shadow);
 }
 
-.progress-title h2 {
-  font-size: 20px;
-  font-weight: bold;
-  color: #333;
+.icon-start {
+  font-size: 64px;
+  position: absolute;
+  left: 0px;
+  --margin: 0px 40px 0px 0px;
+  margin: var(--margin);
 }
 
-.progress-button {
-  margin-bottom: 10px;
+.icon-start-2 {
+  font-size: 48px;
+  position: absolute;
+  right: 0px;
+  --margin: 0px 0px 0px 60px;
+  margin: var(--margin);
+}
+ion-progress-bar {
+  top: 10px;
+  width: 150px;
+}
+ion-button p {
+  font-size: 22px;
+  position: absolute;
+  top: 10px;
+  left: 75px;
+  --margin: 0px 0px 0px 0px;
+  margin: var(--margin);
+}
+ion-tab-bar {
+  --background: #ffffff;
+  background: var(--background);
 }
 
-.progress-button ion-icon {
-  font-size: 24px;
-  margin-right: 10px;
-}
-
-ion-grid {
-  width: 100%;
-  margin-top: 20px;
-}
-
-ion-col {
-  padding: 5px;
-}
-
-ion-button {
-  --background: #fff;
-  --color: #333;
-  --border-color: #ccc;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 10px 0;
-}
-
-ion-button:hover {
-  --background: #f5f5f5;
-}
-
-ion-button:focus {
-  --background: #f5f5f5;
-}
-
-ion-footer {
-  --background: #333;
-  --color: #fff;
-  padding: 0px;
-}
-
-ion-toolbar {
-  --padding-start: 0;
-  --padding-end: 0;
-}
-
-ion-title {
-  font-size: 16px;
-  font-weight: bold;
+ion-tab-bar ion-icon {
+  --color: #bc7fcd;
+  color: var(--color);
+  --ionicon-stroke-width: 48px;
 }

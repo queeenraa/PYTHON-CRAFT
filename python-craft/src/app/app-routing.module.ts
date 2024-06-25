@@ -38,7 +38,11 @@ const routes: Routes = [
     path: 'awal',
     loadChildren: () =>
       import('./dashboard/awal/awal.module').then((m) => m.AwalPageModule),
+  },  {
+    path: 'materi',
+    loadChildren: () => import('./materi/materi.module').then( m => m.MateriPageModule)
   },
+
 ];
 
 @NgModule({

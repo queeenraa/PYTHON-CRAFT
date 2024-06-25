@@ -9,12 +9,7 @@ import { AwalPageRoutingModule } from './awal-routing.module';
 import { AwalPage } from './awal.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    AwalPageRoutingModule
-  ],
-  declarations: [AwalPage]
+  imports: [CommonModule, FormsModule, IonicModule, AwalPageRoutingModule],
+  declarations: [AwalPage],
 })
 export class AwalPageModule {}
