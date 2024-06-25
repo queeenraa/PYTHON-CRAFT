@@ -37,6 +37,7 @@ Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
 Route::post('/quizzes', [QuizController::class, 'store']);
+Route::put('/quizzes/{id}', [quizController::class, 'update']);
 
 Route::get('/login', [loginController::class, 'index']);
 

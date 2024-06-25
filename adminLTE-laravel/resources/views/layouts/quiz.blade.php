@@ -64,9 +64,10 @@
                                     <td>{{ $quiz->option_d }}</td>
                                     <td>{{ $quiz->correct_answer }}</td>
                                     <td>
-                                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $quiz->id }}">
+                                      <button type="button" class="btn btn-info btn-sm" onclick="editQuiz({{ json_encode($quiz) }})" data-toggle="modal" data-target="#editQuizModal">
                                         Edit
                                       </button>
+                                      {{-- <button class="btn btn-primary" onclick="editQuiz({{ json_encode($quiz) }})">Edit</button> --}}
                                       <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                                         Delete
                                       </button>
@@ -170,12 +171,116 @@
   
   <!-- Modal for Editing Quiz -->
   <div class="modal fade" id="editQuizModal" tabindex="-1" role="dialog" aria-labelledby="editQuizModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <!-- Modal content for editing quiz -->
-          </div>
-      </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editQuizModalLabel">Edit Quiz</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editQuizForm">
+                    <input type="hidden" id="edit_quiz_id" name="id">
+                    <div class="form-group">
+                        <label for="edit_course_id">Course ID</label>
+                        <input type="text" class="form-control" id="edit_course_id" name="course_id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_question">Question</label>
+                        <input type="text" class="form-control" id="edit_question" name="question" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_option_a">Option A</label>
+                        <input type="text" class="form-control" id="edit_option_a" name="option_a" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_option_b">Option B</label>
+                        <input type="text" class="form-control" id="edit_option_b" name="option_b" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_option_c">Option C</label>
+                        <input type="text" class="form-control" id="edit_option_c" name="option_c" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_option_d">Option D</label>
+                        <input type="text" class="form-control" id="edit_option_d" name="option_d" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_correct_answer">Correct Answer</label>
+                        <select class="form-control" id="edit_correct_answer" name="correct_answer" required>
+                            <option value="a">A</option>
+                            <option value="b">B</option>
+                            <option value="c">C</option>
+                            <option value="d">D</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
   </div>
+
+  <!-- Place this script before the closing </body> tag -->
+  <script>
+    document.getElementById('editQuizForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        let quizId = document.getElementById('edit_quiz_id').value;
+        let formData = new FormData(this);
+
+        fetch('/quizzes/' + quizId, {
+            method: 'PUT',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                alert('Quiz updated successfully!');
+                $('#editQuizModal').modal('hide'); // Hide the modal after successful update
+                location.reload(); // Reload the page to see the updated quiz
+            } else {
+                alert('Error: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while updating the quiz.');
+        });
+    });
+
+    // Function to fill the edit form with existing quiz data
+    function editQuiz(quiz) {
+        document.getElementById('edit_quiz_id').value = quiz.id;
+        document.getElementById('edit_course_id').value = quiz.course_id;
+        document.getElementById('edit_question').value = quiz.question;
+        document.getElementById('edit_option_a').value = quiz.option_a;
+        document.getElementById('edit_option_b').value = quiz.option_b;
+        document.getElementById('edit_option_c').value = quiz.option_c;
+        document.getElementById('edit_option_d').value = quiz.option_d;
+        document.getElementById('edit_correct_answer').value = quiz.correct_answer;
+
+        $('#editQuizModal').modal('show'); // Show the modal with filled data
+    }
+
+    function confirmDelete() {
+        if(confirm("Are you sure you want to delete this quiz?")) {
+            // Add delete functionality here
+        }
+    }
+  </script>
+
+    
+
   
   <script>
   function confirmDelete() {
