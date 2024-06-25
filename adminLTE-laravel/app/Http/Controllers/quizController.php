@@ -10,7 +10,11 @@ class quizController extends Controller
 {
     public function index()
     {
-        return view('layouts.quiz');
+        $quizzes = Quiz::all();
+        
+        return view('layouts.quiz', [
+            'quizzes' =>$quizzes, // Kirimkan data lessons ke view
+        ]);
     }
 
     // Menampilkan detail quiz berdasarkan quiz_id

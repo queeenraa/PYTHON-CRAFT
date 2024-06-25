@@ -43,7 +43,6 @@
                                   <tr>
                                       <th class="col-tagar">#</th>
                                       <th>Course ID</th>
-                                      <th>Quiz Name</th>
                                       <th>Question</th>
                                       <th>Option A</th>
                                       <th>Option B</th>
@@ -74,6 +73,26 @@
                                           </button>
                                       </td>
                                   </tr>
+                                  @foreach ($quizzes as $quiz)
+                                  <tr>
+                                    <td>{{ $quiz->id }}</td>
+                                    <td>{{ $quiz->course_id }}</td>
+                                    <td>{{ $quiz->question }}</td>
+                                    <td>{{ $quiz->option_a }}</td>
+                                    <td>{{ $quiz->option_b }}</td>
+                                    <td>{{ $quiz->option_c }}</td>
+                                    <td>{{ $quiz->option_d }}</td>
+                                    <td>{{ $quiz->correct_answer }}</td>
+                                    <td>
+                                      <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editLessonModal{{ $quiz->id }}">
+                                        Edit
+                                      </button>
+                                      <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                                        Delete
+                                      </button>
+                                    </td>
+                                  </tr>
+                                  @endforeach
                                   <!-- End example rows -->
                               </tbody>
                           </table>
