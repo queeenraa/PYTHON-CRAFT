@@ -69,6 +69,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
+                <a href="courses" class="nav-link">
+                  <i class="fas fa-chalkboard-teacher nav-icon"></i>
+                  <p>Courses</p>
+                </a>
+              </li>
+              <li class="nav-item">
                 <a href="lessons" class="nav-link">
                   <i class="fas fa-chalkboard-teacher nav-icon"></i>
                   <p>Lessons</p>

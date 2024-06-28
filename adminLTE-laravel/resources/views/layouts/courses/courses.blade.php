@@ -1,6 +1,11 @@
 @extends('template.master')
 
 @section('content')
+@php
+use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\CoursesController;
+@endphp
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -29,11 +34,11 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Courses List</h3>
+                <h3 class="card-title">List Bab</h3>
                 <div class="card-tools">
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCourseModal">
-                    Add Course
-                  </button>
+                  <a href="{{ url('/tambah-courses') }}" class="btn btn-primary custom-button">
+                    Tambah Bab
+                  </a>
                 </div>
               </div>
               <!-- /.card-header -->
@@ -41,56 +46,29 @@
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Course Name</th>
-                      <th>Lessons</th>
-                      <th>Quiz</th>
-                      <th>Actions</th>
+                      <th class="col-tagar">#</th>
+                      <th class="col-nama-bab">Nama Bab</th>
+                      <th class="col-materi">Materi</th>
+                      <th class="col-action">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {{-- @foreach ($courses as $course)
+                    <!-- Example rows, you should replace with dynamic content -->
+                    @foreach ($courses as $course)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $course->course_name }}</td>
+                        <td class="col-tagar">{{ $course->course_id }}</td>
+                        <td class="col-nama-bab">{{ $course->course_name }}</td>
+                        <td class="col-materi">{{ $course->description }}</td>
                         <td>
-                            <ul>
-                                @foreach ($course->lessons as $lesson)
-                                <li>{{ $lesson->lesson_name }}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>{{ $course->quiz }}</td>
-                        <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editCourseModal{{ $course->id }}">
+                            <a href="{{ route('courses.edit', ['id' => $course->course_id]) }}" class="btn btn-info btn-sm">
                                 Edit
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $course->id }})">
+                            </a>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                                 Delete
                             </button>
                         </td>
                     </tr>
-                    @endforeach --}}
-                    <!-- Example rows, you should replace with dynamic content -->
-                    <tr>
-                      <td>1</td>
-                      <td>Course 1</td>
-                      <td>
-                        <ul>
-                          <li>Lesson 1</li>
-                          <li>Lesson 2</li>
-                        </ul>
-                      </td>
-                      <td>Quiz 1</td>
-                      <td>
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#editCourseModal">
-                          Edit
-                        </button>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(1)">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
+                    @endforeach
                     <!-- End example rows -->
                   </tbody>
                 </table>
@@ -102,43 +80,36 @@
         </div>
       </div>
     </section>
-  </div>
 
-  <!-- Add Course Modal -->
-  <div class="modal fade" id="addCourseModal" tabindex="-1" aria-labelledby="addCourseModalLabel" aria-hidden="true">
+
+
+  <!-- Add Lesson Modal -->
+  <div class="modal fade" id="addLessonModal" tabindex="-1" aria-labelledby="addLessonModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addCourseModalLabel">Add New Course</h5>
+          <h5 class="modal-title" id="addLessonModalLabel">Add New Lesson</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form id="addCourseForm">
+          <form>
             <div class="form-group">
-              <label for="course_name">Course Name</label>
-              <input type="text" name="course_name" class="form-control" id="course_name" placeholder="Enter course name">
+              <label for="lesson_name">Lesson Name</label>
+              <input type="text" name="lesson_name" class="form-control" id="lesson_name" placeholder="Enter lesson name">
             </div>
             <div class="form-group">
-              <label for="course_lessons">Lessons</label>
-              <select multiple name="course_lessons[]" class="form-control" id="course_lessons">
-                <!-- Example lessons, you should replace with dynamic content -->
-                <option value="1">Lesson 1</option>
-                <option value="2">Lesson 2</option>
-                <option value="3">Lesson 3</option>
-                <!-- End example lessons -->
+              <label for="course_id">Course</label>
+              <select name="course_id" class="form-control" id="course_id">
+                <option value="1">Course 1</option>
+                <option value="2">Course 2</option>
+                <option value="3">Course 3</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="course_quiz">Quiz</label>
-              <select name="course_quiz" class="form-control" id="course_quiz">
-                <!-- Example quizzes, you should replace with dynamic content -->
-                <option value="1">Quiz 1</option>
-                <option value="2">Quiz 2</option>
-                <option value="3">Quiz 3</option>
-                <!-- End example quizzes -->
-              </select>
+              <label for="content">Content</label>
+              <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content"></textarea>
             </div>
           </form>
         </div>
@@ -150,41 +121,33 @@
     </div>
   </div>
 
-  <!-- Edit Course Modal -->
-  <div class="modal fade" id="editCourseModal" tabindex="-1" aria-labelledby="editCourseModalLabel" aria-hidden="true">
+  <!-- Edit Lesson Modal -->
+  <div class="modal fade" id="editLessonModal" tabindex="-1" aria-labelledby="editLessonModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="editCourseModalLabel">Edit Course</h5>
+          <h5 class="modal-title" id="editLessonModalLabel">Edit Lesson</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <form id="editCourseForm">
+          <form>
             <div class="form-group">
-              <label for="edit_course_name">Course Name</label>
-              <input type="text" name="edit_course_name" class="form-control" id="edit_course_name" placeholder="Enter course name">
+              <label for="edit_lesson_name">Lesson Name</label>
+              <input type="text" name="edit_lesson_name" class="form-control" id="edit_lesson_name" placeholder="Enter lesson name">
             </div>
             <div class="form-group">
-              <label for="edit_course_lessons">Lessons</label>
-              <select multiple name="edit_course_lessons[]" class="form-control" id="edit_course_lessons">
-                <!-- Example lessons, you should replace with dynamic content -->
-                <option value="1">Lesson 1</option>
-                <option value="2">Lesson 2</option>
-                <option value="3">Lesson 3</option>
-                <!-- End example lessons -->
+              <label for="edit_course_id">Course</label>
+              <select name="edit_course_id" class="form-control" id="edit_course_id">
+                <option value="1">Course 1</option>
+                <option value="2">Course 2</option>
+                <option value="3">Course 3</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="edit_course_quiz">Quiz</label>
-              <select name="edit_course_quiz" class="form-control" id="edit_course_quiz">
-                <!-- Example quizzes, you should replace with dynamic content -->
-                <option value="1">Quiz 1</option>
-                <option value="2">Quiz 2</option>
-                <option value="3">Quiz 3</option>
-                <!-- End example quizzes -->
-              </select>
+              <label for="edit_content">Content</label>
+              <textarea name="edit_content" class="form-control" id="edit_content" placeholder="Enter lesson content"></textarea>
             </div>
           </form>
         </div>
@@ -205,18 +168,10 @@
 <!-- ./wrapper -->
 
 <script>
-  function confirmDelete(courseId) {
-    if (confirm("Are you sure you want to delete this course?")) {
+  function confirmDelete() {
+    if (confirm("Are you sure you want to delete this lesson?")) {
       // Implement the delete functionality here
     }
-  }
-
-  function saveCourse() {
-    // Implement the save functionality here
-  }
-
-  function updateCourse() {
-    // Implement the update functionality here
   }
 </script>
 </body>

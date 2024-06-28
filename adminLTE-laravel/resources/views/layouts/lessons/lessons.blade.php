@@ -1,6 +1,11 @@
 @extends('template.master')
 
 @section('content')
+@php
+use App\Http\Controllers\LessonsController;
+use App\Http\Controllers\CoursesController;
+@endphp
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
@@ -31,7 +36,7 @@
               <div class="card-header">
                 <h3 class="card-title">List Bab</h3>
                 <div class="card-tools">
-                  <a href="{{ url('/tambah-lessons') }}" class="btn btn-primary custom-button">
+                  <a href="{{ url('/tambah-courses') }}" class="btn btn-primary custom-button">
                     Tambah Bab
                   </a>
                 </div>
@@ -49,37 +54,21 @@
                   </thead>
                   <tbody>
                     <!-- Example rows, you should replace with dynamic content -->
-                    <tr>
-                      <td class="col-tagar">1</td>
-                      <td class="col-bab">Lesson 1 - Apa itu Python?</td>
-                      <td class="col-materi">Course 1</td>
-                      <td>
-                        <a href="{{ url('/edit-courses') }}" class="btn btn-info btn-sm">
-                            Edit
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
                     {{-- @foreach ($courses as $course)
                     <tr>
                         <td class="col-tagar">{{ $course->course_id }}</td>
-                        <td class="col-nama-course">{{ $course->course_name }}</td>
-                        <td class="col-description">{{ $course->description }}</td>
+                        <td class="col-nama-bab">{{ $course->course_name }}</td>
+                        <td class="col-materi">{{ $course->description }}</td>
                         <td>
-                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal"
-                                data-target="#editCourseModal{{ $course->course_id }}">
+                            <a href="{{ route('courses.edit', ['id' => $course->course_id]) }}" class="btn btn-info btn-sm">
                                 Edit
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm"
-                                onclick="confirmDelete()">
+                            </a>
+                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                                 Delete
                             </button>
                         </td>
                     </tr>
                     @endforeach --}}
-
                     <!-- End example rows -->
                   </tbody>
                 </table>
@@ -100,7 +89,7 @@
               <div class="card-header">
                 <h3 class="card-title">List Materi</h3>
                 <div class="card-tools">
-                  <a href="{{ url('/tambah-lessons') }}" class="btn btn-primary custom-button">
+                  <a href="{{ url('/tambahLessons') }}" class="btn btn-primary custom-button">
                     Tambah Materi
                   </a>
                 </div>
@@ -119,30 +108,16 @@
                   </thead>
                   <tbody>
                     <!-- Example rows, you should replace with dynamic content -->
-                    <tr>
-                      <td>1</td>
-                      <td class="col-materi-nama-bab">Lesson 1 - Apa itu Python?</td>
-                      <td class="col-materi-nomor-bab">Course 1</td>
-                      <td class="col-materi-materi">Pengantar tentang bahasa pemrograman Python...</td>
-                      <td>
-                        <a href="{{ url('/edit-lessons') }}" class="btn btn-info btn-sm">
-                            Edit
-                        </a>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                          Delete
-                        </button>
-                      </td>
-                    </tr>
                     @foreach ($lessons as $lesson)
                     <tr>
                       <td class="col-tagar">{{ $lesson->lesson_id }}</td>
-                      <td class="col-bab">{{ $lesson->lesson_name }}</td>
-                      <td class="col-materi">{{ $lesson->course->course_name }}</td>
-                      <td class="col-content">{{ $lesson->content }}</td>
+                      <td class="col-materi-nama-bab">{{ $lesson->lesson_name }}</td>
+                      <td class="col-materi-nomor-bab">{{ $lesson->course->course_name }}</td>
+                      <td class="col-materi-materi">{{ $lesson->content }}</td>
                       <td>
-                      <a href="{{ route('/edit-lessons') }}" class="btn btn-info btn-sm">
-                          Edit
-                      </a>
+                        <a href="{{ route('lessons.edit', ['id' => $lesson->lesson_id]) }}" class="btn btn-info btn-sm">
+                            Edit
+                        </a>
                         <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
                           Delete
                         </button>

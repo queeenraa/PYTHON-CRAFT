@@ -17,23 +17,13 @@ class LessonsController extends Controller
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $lessons = Lesson::all(); // Ambil semua data lessons dari database
+        $lesson = Lesson::findOrFail($id); 
 
-        return view('layouts.lessons.editLessons', [
-            'lessons' => $lessons, // Kirimkan data lessons ke view
-        ]);
+        return view('layouts.lessons.editLessons', compact('lesson'));
     }
 
-    public function tambah()
-    {
-        $lessons = Lesson::all(); // Ambil semua data lessons dari database
-
-        return view('layouts.lessons.tambahLessons', [
-            'lessons' => $lessons, // Kirimkan data lessons ke view
-        ]);
-    }
 
     // Menampilkan detail sebuah lesson berdasarkan lesson_id
     public function show($id)

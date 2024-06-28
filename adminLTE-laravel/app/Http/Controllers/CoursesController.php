@@ -12,18 +12,16 @@ class CoursesController extends Controller
     {
         $courses = Course::all(); // Mengambil semua data courses dari model Course
 
-        return view('layouts.course.lessons', [
+        return view('layouts.lessons.lessons', [
             'courses' => $courses, // Mengirimkan data courses ke view
         ]);
     }
 
-    public function edit()
+    public function edit($id)
     {
-        $courses = Course::all(); // Mengambil semua data courses dari model Course
+        $course = Course::findOrFail($id); 
 
-        return view('layouts.bab.editBab', [
-            'courses' => $courses, // Mengirimkan data courses ke view
-        ]);
+        return view('layouts.courses.editCourses', compact('courses'));
     }
 
     // Menampilkan detail course berdasarkan course_id
