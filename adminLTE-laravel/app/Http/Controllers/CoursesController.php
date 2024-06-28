@@ -21,7 +21,7 @@ class CoursesController extends Controller
     {
         $course = Course::findOrFail($id); 
 
-        return view('layouts.courses.editCourses', compact('courses'));
+        return view('layouts.courses.editCourses', compact('course'));
     }
 
     // Menampilkan detail course berdasarkan course_id
@@ -49,7 +49,7 @@ class CoursesController extends Controller
         $validator = Validator::make($request->all(), [
             'course_name' => 'required',
             'description' => 'nullable',
-            'created_by' => 'required|exists:users,user_id',
+            'created_by' => 'required|exists:users,user_id', // ini nanti ganti admin yg login
         ]);
 
         if ($validator->fails()) {

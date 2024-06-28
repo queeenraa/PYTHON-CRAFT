@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'jwt-auth' => \App\Http\Middleware\AuthMiddleware::class,
         'role-admin' => \App\Http\Middleware\AdminMiddleware::class,
         'role-user' => \App\Http\Middleware\UserMiddleware::class,
-        'role-everyone' => \App\Http\Middleware\EveryoneMiddleware::class
+        'role-everyone' => \App\Http\Middleware\EveryoneMiddleware::class,
+        'auth' => \App\Http\Middleware\Authenticate::class
     ];
 }
