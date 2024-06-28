@@ -27,60 +27,6 @@ use App\Http\Controllers\CoursesController;
       </div>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">List Bab</h3>
-                <div class="card-tools">
-                  <a href="{{ url('/tambah-courses') }}" class="btn btn-primary custom-button">
-                    Tambah Bab
-                  </a>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th class="col-tagar">#</th>
-                      <th class="col-nama-bab">Nama Bab</th>
-                      <th class="col-materi">Materi</th>
-                      <th class="col-action">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Example rows, you should replace with dynamic content -->
-                    {{-- @foreach ($courses as $course)
-                    <tr>
-                        <td class="col-tagar">{{ $course->course_id }}</td>
-                        <td class="col-nama-bab">{{ $course->course_name }}</td>
-                        <td class="col-materi">{{ $course->description }}</td>
-                        <td>
-                            <a href="{{ route('courses.edit', ['id' => $course->course_id]) }}" class="btn btn-info btn-sm">
-                                Edit
-                            </a>
-                            <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                                Delete
-                            </button>
-                        </td>
-                    </tr>
-                    @endforeach --}}
-                    <!-- End example rows -->
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="content">
       <div class="container-fluid">
         <div class="row">
