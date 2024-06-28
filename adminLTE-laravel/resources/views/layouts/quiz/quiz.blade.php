@@ -70,7 +70,7 @@
                                           <a href="{{ url('/editQuiz/'.$quiz->id) }}" class="btn btn-sm btn-primary">
                                             Edit
                                           </a>
-                                          <button class="btn btn-sm btn-danger">Delete</button>
+                                          <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $quiz->id }}')">Delete</button>
                                       </td>
                                   </tr>
                                 @endforeach
@@ -86,33 +86,95 @@
       </div>
   </section>
   
-  <!-- Modal for Adding Quiz -->
-  <div class="modal fade" id="addQuizModal" tabindex="-1" role="dialog" aria-labelledby="addQuizModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <!-- Modal content for adding quiz -->
-          </div>
-      </div>
-  </div>
+<!-- Modal for Delete Confirmation -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this quiz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Success Message -->
+<div class="modal fade" id="successMessageModal" tabindex="-1" role="dialog" aria-labelledby="successMessageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successMessageModalLabel">Success</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="successMessageText">Quiz deleted successfully.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
   
-  <!-- Modal for Editing Quiz -->
-  <div class="modal fade" id="editQuizModal" tabindex="-1" role="dialog" aria-labelledby="editQuizModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <!-- Modal content for editing quiz -->
-          </div>
-      </div>
-  </div>
-  
-  <script>
-  function confirmDelete() {
-      if(confirm("Are you sure you want to delete this quiz?")) {
-          // Add delete functionality here
-      }
-  }
-  </script>
-  
-  </div>
+<!-- Tambahkan jQuery jika belum ada -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    // Global variable to store the quiz ID for deletion
+    let quizIdToDelete = null;
+
+    function confirmDelete(id) {
+        quizIdToDelete = id; // Set the global variable
+        $('#confirmDeleteModal').modal('show'); // Show the modal
+    }
+
+    $('#confirmDeleteBtn').click(function() {
+        if (quizIdToDelete) {
+            fetch('{{ url("/quizzes") }}/' + quizIdToDelete, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    $('#successMessageModal').modal('show'); // Show success modal
+                    // Optionally, you can update the message in the success modal
+                    // $('#successMessageText').text('Quiz deleted successfully.');
+                    //location.reload(); // Refresh halaman setelah penghapusan berhasil
+                } else {
+                    alert('Error: ' + data.message);
+                }
+                $('#confirmDeleteModal').modal('hide'); // Hide the modal after deletion
+            })
+            .catch(error => console.error('Error:', error));
+        }
+        // Refresh the page after closing the success modal
+        $('#successMessageModal').on('hidden.bs.modal', function () {
+            location.reload(); // Refresh halaman setelah modal sukses ditutup
+        });
+    });
+</script>
+
+
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

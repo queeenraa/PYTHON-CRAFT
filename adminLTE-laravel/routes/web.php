@@ -46,6 +46,8 @@ Route::get('/editQuiz/{id}', function () {
 });
 Route::get('/editQuiz/{id}', [quizController::class, 'editQuiz'])->name('editQuiz'); // Rute untuk halaman edit
 
+Route::delete('/quizzes/{id}', 'App\Http\Controllers\QuizController@destroy')->name('quizzes.destroy');
+
 
 Route::get('/login', [loginController::class, 'index']);
 
