@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a href="{{asset('template/index.html')}}" class="brand-link">
     <img src="{{ asset('template/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">Administrator</span>
+    <span class="brand-text font-weight-light">PYTHON CRAFT</span>
   </a>
 
   <!-- Sidebar -->
