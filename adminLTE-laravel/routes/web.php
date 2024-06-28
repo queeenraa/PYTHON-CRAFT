@@ -37,10 +37,15 @@ Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
 Route::post('/quizzes', [QuizController::class, 'store']);
-Route::put('/quizzes/{id}', [quizController::class, 'update']);
+Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 Route::get('/tambahQuiz', function () {
     return view('layouts.quiz.tambahQuiz');
 });
+Route::get('/editQuiz/{id}', function () {
+    return view('layouts.quiz.editQuiz');
+});
+Route::get('/editQuiz/{id}', [quizController::class, 'editQuiz'])->name('editQuiz'); // Rute untuk halaman edit
+
 
 Route::get('/login', [loginController::class, 'index']);
 

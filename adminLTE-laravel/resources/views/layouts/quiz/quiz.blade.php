@@ -31,7 +31,7 @@
                       <div class="card-header">
                           <h3 class="card-title">List Quiz</h3>
                           <div class="card-tools">
-                              <a href="{{ url('/tambahQuiz') }}" class="btn btn-primary custom-button">
+                            <a href="{{ url('/tambahQuiz') }}" class="btn btn-primary custom-button">
                                 Tambah Quiz
                             </a>
                           </div>
@@ -67,6 +67,9 @@
                                       <td>
                                           <!-- Actions buttons here (edit, delete, etc.) -->
                                           <button class="btn btn-sm btn-primary">Edit</button>
+                                          <a href="{{ url('/editQuiz/'.$quiz->id) }}" class="btn btn-sm btn-primary">
+                                            Edit
+                                          </a>
                                           <button class="btn btn-sm btn-danger">Delete</button>
                                       </td>
                                   </tr>

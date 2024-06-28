@@ -112,6 +112,9 @@ class quizController extends Controller
             'message' => 'Quiz updated successfully',
             'data' => $quiz
         ], 200);
+
+        //return view('layouts.quiz.editQuiz', ['id' => $id, 'quiz' => $quiz]);
+
     }
 
     // Menghapus quiz
@@ -133,4 +136,20 @@ class quizController extends Controller
             'message' => 'Quiz deleted successfully'
         ], 200);
     }
+
+    public function editQuiz($id)
+    {
+        $quiz = Quiz::find($id);
+    
+        if (!$quiz) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Quiz not found'
+            ], 404);
+        }
+    
+        return view('layouts.quiz.editQuiz', ['quiz' => $quiz]);
+    }
 }
+
+
