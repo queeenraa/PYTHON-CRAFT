@@ -68,14 +68,18 @@ Route::post('/update-lessons/{id}', [lessonsController::class, 'update'])->name(
 
 // nampilin page courses
 Route::get('/tambahCourses', function () {
-    return view('layouts.quiz.tambahCourses');
+    return view('layouts.courses.tambahCourses');
 });
+// Route untuk menyimpan course baru
+Route::post('/courses', [CoursesController::class, 'store']);
+
 Route::get('/editCourses/{id}', function () {
     return view('layouts.quiz.editLessons');
 });
-// ngeroute function lessons
+// ngeroute function courses
 Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
 Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
+Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 
 
 Route::get('/login', [LoginController::class, 'index']);
