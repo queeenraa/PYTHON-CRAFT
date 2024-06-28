@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class loginController extends Controller
+class LoginController extends Controller
 {
     public function index()
     {
@@ -21,7 +21,7 @@ class loginController extends Controller
 
         if (Auth::attempt($credentials, $request->remember)) {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard'); // Redirect to dashboard after successful login
         }
 
         return back()->withErrors([
