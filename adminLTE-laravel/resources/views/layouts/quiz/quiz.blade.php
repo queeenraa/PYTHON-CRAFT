@@ -31,9 +31,9 @@
                       <div class="card-header">
                           <h3 class="card-title">List Quiz</h3>
                           <div class="card-tools">
-                              <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addQuizModal">
-                                  Tambah Quiz
-                              </button>
+                              <a href="{{ url('/tambahQuiz') }}" class="btn btn-primary custom-button">
+                                Tambah Quiz
+                            </a>
                           </div>
                       </div>
                       <!-- /.card-header -->
@@ -42,8 +42,7 @@
                               <thead>
                                   <tr>
                                       <th class="col-tagar">#</th>
-                                      <th>Course ID</th>
-                                      <th>Quiz Name</th>
+                                      <th>Course ID</th>                                    
                                       <th>Question</th>
                                       <th>Option A</th>
                                       <th>Option B</th>
@@ -55,25 +54,23 @@
                               </thead>
                               <tbody>
                                   <!-- Example rows, you should replace with dynamic content -->
+                                @foreach($quizzes as $quiz)
                                   <tr>
-                                      <td>1</td>
-                                      <td>101</td>
-                                      <td>Quiz 1</td>
-                                      <td>What is Laravel?</td>
-                                      <td>PHP Framework</td>
-                                      <td>JavaScript Library</td>
-                                      <td>CSS Framework</td>
-                                      <td>Database</td>
-                                      <td>PHP Framework</td>
+                                      <td>{{ $loop->iteration }}</td>
+                                      <td>{{ $quiz->course_id }}</td>                                   
+                                      <td>{{ $quiz->question }}</td>
+                                      <td>{{ $quiz->option_a }}</td>
+                                      <td>{{ $quiz->option_b }}</td>
+                                      <td>{{ $quiz->option_c }}</td>
+                                      <td>{{ $quiz->option_d }}</td>
+                                      <td>{{ $quiz->correct_answer }}</td>
                                       <td>
-                                        <a href="{{ url('/edit-quiz') }}" class="btn btn-info btn-sm">
-                                            Edit
-                                        </a>
-                                          <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                                              Delete
-                                          </button>
+                                          <!-- Actions buttons here (edit, delete, etc.) -->
+                                          <button class="btn btn-sm btn-primary">Edit</button>
+                                          <button class="btn btn-sm btn-danger">Delete</button>
                                       </td>
                                   </tr>
+                                @endforeach
                                   <!-- End example rows -->
                               </tbody>
                           </table>
