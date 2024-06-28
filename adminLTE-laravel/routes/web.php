@@ -74,8 +74,8 @@ Route::get('/editCourses/{id}', function () {
     return view('layouts.quiz.editLessons');
 });
 // ngeroute function lessons
-Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('lessons.edit');
-Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('lessons.update');
+Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
+Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
 
 
 Route::get('/login', [loginController::class, 'index']);
