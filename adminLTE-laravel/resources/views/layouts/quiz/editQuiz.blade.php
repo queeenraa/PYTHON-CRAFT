@@ -34,14 +34,14 @@
                       <div class="card-body">
                         <form id="editQuizForm" action="{{ route('quizzes.update', ['id' => $quiz->id]) }}" method="POST">
                               @csrf
-                              @method('PUT')
+                              {{-- @method('PUT') --}}
                               <div class="form-group">
                                   <label for="course_id">Course ID</label>
                                   <input type="text" class="form-control" id="course_id" name="course_id" value="{{ $quiz->course_id }}" required>
                               </div>
                               <div class="form-group">
                                   <label for="question">Question</label>
-                                  <input type="text" class="form-control" id="question" name="question" value="{{ $quiz->question }}" required>
+                                  <textarea class="form-control" id="question" name="question" required>{{ $quiz->question }}</textarea>
                               </div>
                               <div class="form-group">
                                   <label for="option_a">Option A</label>
@@ -99,35 +99,50 @@
     </div>
 </div>
 
+<!-- jQuery and Bootstrap JavaScript -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 <script>
-    document.getElementById('editQuizForm').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
+    document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('editQuizForm');
 
-        const formData = new FormData(this);
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
 
-        fetch(this.action, {
-            method: 'PUT',
-            headers: {
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                $('#successModal').modal('show'); // Show Bootstrap modal on success
+            var formData = new FormData(form);
 
-                // Redirect to quiz page after modal is closed (optional)
-                $('#successModal').on('hidden.bs.modal', function () {
-                    window.location.href = '{{ url("/quiz") }}'; // Redirect to quiz page
-                });
-            } else {
-                alert('Error: ' + JSON.stringify(data.errors));
-            }
-        })
-        .catch(error => console.error('Error:', error));
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    $('#successModal').modal('show'); // Show Bootstrap modal on success
+
+                    // Redirect to quiz page after modal is closed (optional)
+                    $('#successModal').on('hidden.bs.modal', function () {
+                        window.location.href = '{{ url("/quiz") }}'; // Redirect to quiz page
+                    });
+                } else {
+                    alert('Error: ' + JSON.stringify(data.errors));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while submitting the form.');
+            });
+        });
     });
-
 </script>
 </body>
 @endsection

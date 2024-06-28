@@ -38,30 +38,43 @@ Route::get('/lessons', [lessonsController::class, 'index']);
 Route::get('/quiz', [quizController::class, 'index']);
 Route::post('/quizzes', [QuizController::class, 'store']);
 Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
+
+// nampilin page quiz
 Route::get('/tambahQuiz', function () {
     return view('layouts.quiz.tambahQuiz');
 });
 Route::get('/editQuiz/{id}', function () {
     return view('layouts.quiz.editQuiz');
 });
-Route::get('/editQuiz/{id}', [quizController::class, 'editQuiz'])->name('editQuiz'); // Rute untuk halaman edit
 
-Route::delete('/quizzes/{id}', 'App\Http\Controllers\QuizController@destroy')->name('quizzes.destroy');
+// ngeroute function quiz
+Route::get('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update'); 
+Route::delete('/quizzes/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
 
+Route::get('/edit-quiz/{id}', [quizController::class, 'edit'])->name('quizzes.edit');
+Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizzes.update');
+
+// nampilin page quiz lesson
+Route::get('/tambahLessons', function () {
+    return view('layouts.quiz.tambahLessons');
+});
+Route::get('/editQuiz/{id}', function () {
+    return view('layouts.quiz.editQuiz');
+});
 
 Route::get('/login', [loginController::class, 'index']);
 
 Route::get('/register', [registerController::class, 'index']);
 
-Route::get('/edit-lessons', [lessonsController::class, 'edit'])->name('edit.quiz.form');
+// Route::get('/edit-lessons', [lessonsController::class, 'edit'])->name('edit.quiz.form');
 
-Route::get('/edit-courses', [CoursesController::class, 'edit'])->name('edit.bab.form');
+// Route::get('/edit-courses', [CoursesController::class, 'edit'])->name('edit.bab.form');
 
-Route::get('/edit-quiz', [quizController::class, 'edit'])->name('edit.quiz.form');
+// Route::get('/edit-quiz', [quizController::class, 'edit'])->name('edit.quiz.form');
 
-Route::get('/edit-profile', [profileController::class, 'edit'])->name('edit.profile.form');
+// Route::get('/edit-profile', [profileController::class, 'edit'])->name('edit.profile.form');
 
-Route::get('/tambah-lessons', [lessonsController::class, 'tambah'])->name('tambah.lessons.form');
+// Route::get('/tambah-lessons', [lessonsController::class, 'tambah'])->name('tambah.lessons.form');
 
 // Route::middleware(['auth', 'admin'])->group(function () {
 //     // courses

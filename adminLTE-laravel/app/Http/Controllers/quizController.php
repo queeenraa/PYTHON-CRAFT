@@ -17,14 +17,16 @@ class quizController extends Controller
         ]);
     }
 
-    public function edit()
-    {
-        $quizzes = Quiz::all();
-        
-        return view('layouts.quiz.editQuiz', [
-            'quizzes' =>$quizzes, // Kirimkan data lessons ke view
-        ]);
-    }
+    // public function edit($id)
+    // {
+    //     $quiz = Quiz::find($id);
+
+    //     // if (!$quiz) {
+    //     //     return redirect()->route('quizzes.index')->with('error', 'Quiz not found.');
+    //     // }
+
+    //     return view('layouts.quiz.editQuiz',compact('quiz'));
+    // }
 
     // Menampilkan detail quiz berdasarkan quiz_id
     public function show($id)
@@ -78,6 +80,7 @@ class quizController extends Controller
     // Mengupdate quiz
     public function update(Request $request, $id)
     {
+        // Validasi data yang diterima dari request
         $validator = Validator::make($request->all(), [
             'course_id' => 'required|exists:courses,course_id',
             'question' => 'required',
@@ -87,7 +90,8 @@ class quizController extends Controller
             'option_d' => 'required',
             'correct_answer' => 'required|string|size:1|in:a,b,c,d',
         ]);
-
+    
+        // Jika validasi gagal, kembalikan response dengan error
         if ($validator->fails()) {
             return response()->json([
                 'success' => false,
@@ -95,27 +99,39 @@ class quizController extends Controller
                 'errors' => $validator->errors()
             ], 422);
         }
-
-        $quiz = Quiz::find($id);
-
-        if (!$quiz) {
+    
+        try {
+            // Temukan quiz berdasarkan ID atau tampilkan error jika tidak ditemukan
+            $quiz = Quiz::findOrFail($id);
+    
+            // Update quiz dengan data yang valid
+            $quiz->update($validator->validated());
+    
+            return response()->json([
+                'success' => true,
+                'message' => 'Quiz updated successfully',
+                'data' => $quiz
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Tangani exception umum
             return response()->json([
                 'success' => false,
-                'message' => 'Quiz not found'
-            ], 404);
+                'message' => 'Failed to update quiz',
+                'error' => $e->getMessage()
+            ], 500);
         }
-
-        $quiz->update($validator->validated());
-
-        return response()->json([
-            'success' => true,
-            'message' => 'Quiz updated successfully',
-            'data' => $quiz
-        ], 200);
-
-        //return view('layouts.quiz.editQuiz', ['id' => $id, 'quiz' => $quiz]);
-
     }
+    
+
+
+    public function edit($id)
+    {
+        $quiz = Quiz::findOrFail($id); 
+
+        return view('layouts.quiz.editQuiz', compact('quiz'));
+    }
+
 
     // Menghapus quiz
     public function destroy($id)
@@ -136,20 +152,8 @@ class quizController extends Controller
             'message' => 'Quiz deleted successfully'
         ], 200);
     }
+    
 
-    public function editQuiz($id)
-    {
-        $quiz = Quiz::find($id);
-    
-        if (!$quiz) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Quiz not found'
-            ], 404);
-        }
-    
-        return view('layouts.quiz.editQuiz', ['quiz' => $quiz]);
-    }
 }
 
 
