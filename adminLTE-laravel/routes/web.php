@@ -25,7 +25,7 @@ use App\Http\Controllers\editLessonsController;
 //     return view('template.master');
 // });
 
-Route::get('/dashboard', [dashboardController::class, 'index']);
+Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/', [dashboardController::class, 'index']);
 
@@ -79,8 +79,14 @@ Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name(
 
 
 Route::get('/login', [loginController::class, 'index']);
+Route::post('/login', [loginController::class, 'authenticate']);
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware('auth');
 
 Route::get('/register', [registerController::class, 'index']);
+
+
 
 // Route::get('/edit-lessons', [lessonsController::class, 'edit'])->name('edit.quiz.form');
 
