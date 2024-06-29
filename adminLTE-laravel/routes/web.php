@@ -88,11 +88,11 @@ Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name(
 Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
 
 
-Route::get('/login', [loginController::class, 'index']);
-Route::post('/login', [loginController::class, 'authenticate']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware('auth');
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware('auth');
 
 Route::get('/register', [registerController::class, 'index']);
 
