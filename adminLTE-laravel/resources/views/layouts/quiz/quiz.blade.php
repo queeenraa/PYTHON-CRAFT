@@ -137,7 +137,7 @@
 
         $('#confirmDeleteBtn').click(function() {
             if (quizIdToDelete) {
-                fetch('{{ url("/quizzes") }}/' + quizIdToDelete, {
+                fetch('{{ url("/delete-quiz") }}/' + quizIdToDelete, {
                     method: 'DELETE',
                     headers: {
                         'X-CSRF-TOKEN': '{{ csrf_token() }}',

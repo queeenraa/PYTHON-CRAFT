@@ -1,10 +1,6 @@
 @extends('template.master')
 
 @section('content')
-@php
-use App\Http\Controllers\LessonsController;
-use App\Http\Controllers\CoursesController;
-@endphp
 
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

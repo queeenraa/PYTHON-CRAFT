@@ -36,19 +36,21 @@ Route::get('/courses', [CoursesController::class, 'index']);
 Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
-Route::post('/quizzes', [QuizController::class, 'store']);
+
 Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
 Route::get('/tambahQuiz', function () {
     return view('layouts.quiz.tambahQuiz');
 });
+Route::post('/quizzes', [QuizController::class, 'store']);
+
 Route::get('/editQuiz/{id}', function () {
     return view('layouts.quiz.editQuiz');
 });
 // ngeroute function quiz
 Route::get('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update'); 
-Route::delete('/quizzes/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
+Route::delete('/delete-quiz/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
 
 Route::get('/edit-quiz/{id}', [quizController::class, 'edit'])->name('quizzes.edit');
 Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizzes.update');
@@ -58,13 +60,17 @@ Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizz
 Route::get('/tambahLessons', function () {
     return view('layouts.lessons.tambahLessons');
 });
+
+Route::get('/createLessons', [lessonsController::class, 'create'])->name('lessons.create');
+Route::post('/lessons', [lessonsController::class, 'store'])->name('lessons.store');
+
 Route::get('/editLessons/{id}', function () {
     return view('layouts.lessons.editLessons');
 });
 // ngeroute function lessons
 Route::get('/edit-lessons/{id}', [lessonsController::class, 'edit'])->name('lessons.edit');
 Route::post('/update-lessons/{id}', [lessonsController::class, 'update'])->name('lessons.update');
-
+Route::delete('/delete-lessons/{id}', [lessonsController::class, 'destroy'])->name('lessons.destroy');
 
 // nampilin page courses
 Route::get('/tambahCourses', function () {

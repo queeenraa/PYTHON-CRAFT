@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Lesson;
+use App\Models\Course;
 
 class LessonsController extends Controller
 {
@@ -42,6 +43,12 @@ class LessonsController extends Controller
             'message' => 'Lesson details',
             'data' => $lesson
         ], 200);
+    }
+
+    public function create()
+    {
+        $courses = Course::all();
+        return view('layouts.lessons.tambahLessons', compact('courses'));
     }
 
     // Menyimpan lesson baru
