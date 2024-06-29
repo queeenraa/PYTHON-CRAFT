@@ -15,6 +15,10 @@ class CoursesController extends Controller
         return view('layouts.courses.courses', [
             'courses' => $courses, // Mengirimkan data courses ke view
         ]);
+
+        return view('layouts.lessons.tambahLessons', [
+            'courses' => $courses, // Mengirimkan data courses ke view
+        ]);
     }
 
     public function edit($id)

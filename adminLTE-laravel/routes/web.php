@@ -61,7 +61,8 @@ Route::get('/tambahLessons', function () {
     return view('layouts.lessons.tambahLessons');
 });
 
-Route::get('/createLessons', [lessonsController::class, 'create'])->name('lessons.create');
+Route::get('/tambahLessons', [LessonsController::class, 'create'])->name('lessons.create');
+
 Route::post('/lessons', [lessonsController::class, 'store'])->name('lessons.store');
 
 Route::get('/editLessons/{id}', function () {

@@ -16,6 +16,9 @@ class LessonsController extends Controller
         return view('layouts.lessons.lessons', [
             'lessons' => $lessons, // Kirimkan data lessons ke view
         ]);
+
+        $courses = Course::all();
+        return view('layouts.lessons.tambahLessons', compact('courses'));
     }
 
     public function edit($id)
@@ -48,7 +51,7 @@ class LessonsController extends Controller
     public function create()
     {
         $courses = Course::all();
-        return view('layouts.lessons.tambahLessons', compact('courses'));
+        return view('layouts.lessons.tambahLessons', compact('courses')); // Kirimkan $courses ke view
     }
 
     // Menyimpan lesson baru

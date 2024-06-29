@@ -37,12 +37,18 @@
                                 <label for="lesson_name">Lesson Name</label>
                                 <input type="text" name="lesson_name" class="form-control" id="lesson_name" placeholder="Enter lesson name" required>
                             </div>
+                            {{-- <div class="form-group">
+                              <label for="course_id">course_id</label>
+                              <input type="text" name="course_id" class="form-control" id="course_id" placeholder="Enter course_id" required>
+                            </div> --}}
                             <div class="form-group">
                                 <label for="course_id">Course</label>
                                 <select name="course_id" class="form-control" id="course_id" required>
-                                    @foreach($courses as $course)
-                                        <option value="{{ $course->course_id }}">{{ $course->course_name }}</option>
-                                    @endforeach
+                                  @isset($courses)
+                                      @foreach($courses as $course)
+                                          <option value="{{ $course->course_id }}">{{ $course->course_name }}</option>
+                                      @endforeach
+                                  @endisset
                                 </select>
                             </div>
                             <div class="form-group">
