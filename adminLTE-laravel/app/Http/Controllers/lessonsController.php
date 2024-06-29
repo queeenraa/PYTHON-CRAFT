@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Lesson;
 use App\Models\Course;
 
-class LessonsController extends Controller
+class lessonsController extends Controller
 {
     public function index()
     {
@@ -17,8 +17,6 @@ class LessonsController extends Controller
             'lessons' => $lessons, // Kirimkan data lessons ke view
         ]);
 
-        $courses = Course::all();
-        return view('layouts.lessons.tambahLessons', compact('courses'));
     }
 
     public function edit($id)
@@ -51,8 +49,9 @@ class LessonsController extends Controller
     public function create()
     {
         $courses = Course::all();
-        return view('layouts.lessons.tambahLessons', compact('courses')); // Kirimkan $courses ke view
+        return view('layouts.lessons.tambahLessons', compact('courses'));
     }
+
 
     // Menyimpan lesson baru
     public function store(Request $request)
