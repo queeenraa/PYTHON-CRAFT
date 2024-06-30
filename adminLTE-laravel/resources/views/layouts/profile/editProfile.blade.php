@@ -31,7 +31,7 @@
                         <h3>Edit User</h3>
                     </div>
                     <div class="card-body">
-                        <form id="editQuizForm" action="" method="POST">
+                        <form id="editProfileForm" action="" method="POST">
                             <input type="hidden" id="edit_quiz_id" name="id">
                             <div class="form-group">
                                 <label for="edit_question">Nama</label>

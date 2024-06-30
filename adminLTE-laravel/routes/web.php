@@ -36,19 +36,21 @@ Route::get('/courses', [CoursesController::class, 'index']);
 Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
-Route::post('/quizzes', [QuizController::class, 'store']);
+
 Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
 Route::get('/tambahQuiz', function () {
     return view('layouts.quiz.tambahQuiz');
 });
+Route::post('/quizzes', [QuizController::class, 'store']);
+
 Route::get('/editQuiz/{id}', function () {
     return view('layouts.quiz.editQuiz');
 });
 // ngeroute function quiz
 Route::get('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update'); 
-Route::delete('/quizzes/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
+Route::delete('/delete-quiz/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
 
 Route::get('/edit-quiz/{id}', [quizController::class, 'edit'])->name('quizzes.edit');
 Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizzes.update');
@@ -58,13 +60,18 @@ Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizz
 Route::get('/tambahLessons', function () {
     return view('layouts.lessons.tambahLessons');
 });
+
+Route::get('/tambahLessons', [LessonsController::class, 'create'])->name('lessons.create');
+
+Route::post('/lessons', [lessonsController::class, 'store'])->name('lessons.store');
+
 Route::get('/editLessons/{id}', function () {
     return view('layouts.lessons.editLessons');
 });
 // ngeroute function lessons
 Route::get('/edit-lessons/{id}', [lessonsController::class, 'edit'])->name('lessons.edit');
 Route::post('/update-lessons/{id}', [lessonsController::class, 'update'])->name('lessons.update');
-
+Route::delete('/delete-lessons/{id}', [lessonsController::class, 'destroy'])->name('lessons.destroy');
 
 // nampilin page courses
 Route::get('/tambahCourses', function () {
@@ -79,7 +86,12 @@ Route::get('/editCourses/{id}', function () {
 // ngeroute function courses
 Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
 Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
-Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
+
+
+// PROFILE
+Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
+Route::delete('/delete-user/{id}', [CoursesController::class, 'destroy'])->name('users.destroy');
 
 
 Route::get('/login', [LoginController::class, 'index']);

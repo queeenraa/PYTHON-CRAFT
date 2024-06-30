@@ -432,9 +432,9 @@
                                     <a href="{{ url('/edit-profile') }}" class="btn btn-info btn-sm">
                                         Edit
                                     </a>
-                                      <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
-                                        Delete
-                                      </button>
+                                    <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $profile->user_id }})">
+                                      Delete
+                                    </button>
                                     </td>
                                   </tr>
                                   @endforeach
@@ -450,31 +450,92 @@
       </div>
   </section>
   
-  <!-- Modal for Adding User -->
-  <div class="modal fade" id="addUserModal" tabindex="-1" role="dialog" aria-labelledby="addUserModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <!-- Modal content for adding user -->
-          </div>
+  <!-- Modal for Delete Confirmation -->
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirm Delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-  </div>
-  
-  <!-- Modal for Editing User -->
-  <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="editUserModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <!-- Modal content for editing user -->
-          </div>
+      <div class="modal-body">
+        Are you sure you want to delete this profile?
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
   </div>
-  
-  <script>
-  function confirmDelete() {
-      if(confirm("Are you sure you want to delete this user?")) {
-          // Add delete functionality here
-      }
+</div>
+
+<!-- Modal for Success Message -->
+<div class="modal fade" id="successMessageModal" tabindex="-1" role="dialog" aria-labelledby="successMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successMessageModalLabel">Success</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="successMessageText">Profile deleted successfully.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Include jQuery if not already included -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+  // Global variable to store the profile ID for deletion
+  let profileIdToDelete = null;
+
+  // Function to confirm delete and show modal
+  function confirmDelete(id) {
+    profileIdToDelete = id; // Set the global variable
+    $('#confirmDeleteModal').modal('show'); // Show the modal
   }
+
+  // Function to perform delete operation
+  $('#confirmDeleteBtn').click(function() {
+    if (profileIdToDelete) {
+        axios.delete(`/delete-user/${profileIdToDelete}`, {
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.data.success) {
+                $('#successMessageModal').modal('show'); // Show success modal
+                // Optionally, you can update the message in the success modal
+                // $('#successMessageText').text('User deleted successfully.');
+            } else {
+                alert('Error: ' + response.data.error);
+            }
+            $('#confirmDeleteModal').modal('hide'); // Hide the modal after deletion
+        })
+        .catch(error => console.error('Error:', error));
+    }
+  });
+
+    // Refresh the page after closing the success modal
+    $('#successMessageModal').on('hidden.bs.modal', function () {
+        location.reload(); // Refresh the page after success modal is closed
+    });
   </script>
+
+
+    
   
     <!-- /.content -->
   </div>

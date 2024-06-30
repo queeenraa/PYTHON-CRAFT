@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Lesson;
+use App\Models\Course;
 
-class LessonsController extends Controller
+class lessonsController extends Controller
 {
     public function index()
     {
@@ -15,6 +16,7 @@ class LessonsController extends Controller
         return view('layouts.lessons.lessons', [
             'lessons' => $lessons, // Kirimkan data lessons ke view
         ]);
+
     }
 
     public function edit($id)
@@ -43,6 +45,13 @@ class LessonsController extends Controller
             'data' => $lesson
         ], 200);
     }
+
+    public function create()
+    {
+        $courses = Course::all();
+        return view('layouts.lessons.tambahLessons', compact('courses'));
+    }
+
 
     // Menyimpan lesson baru
     public function store(Request $request)
