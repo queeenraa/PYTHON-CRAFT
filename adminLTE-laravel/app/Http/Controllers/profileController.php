@@ -18,6 +18,7 @@ class profileController extends Controller
         ]);
         
     }
+
     public function edit()
     {
         // return view('layouts.profile');
@@ -28,4 +29,17 @@ class profileController extends Controller
             'profiles' => $profiles, // Mengirimkan data courses ke view
         ]);
     }
+    
+    public function destroy($id)
+    {
+        // Find the user by ID and delete
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return response()->json(['message' => 'User deleted successfully']);
+        } else {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+    }
+
 }

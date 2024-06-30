@@ -86,7 +86,12 @@ Route::get('/editCourses/{id}', function () {
 // ngeroute function courses
 Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
 Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
-Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy'])->name('courses.destroy');
+Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
+
+
+// PROFILE
+Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
+Route::delete('/delete-user/{id}', [CoursesController::class, 'destroy'])->name('users.destroy');
 
 
 Route::get('/login', [LoginController::class, 'index']);
