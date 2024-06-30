@@ -31,7 +31,7 @@
                         <h3>Tambah Lessons</h3>
                     </div>
                     <div class="card-body">
-                        <form action="{{ URL('/lessons') }}" method="POST">
+                        <form id="addLessonsForm"action="{{ URL('/lessons') }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="lesson_name">Lesson Name</label>
@@ -55,7 +55,7 @@
                                 <label for="content">Content</label>
                                 <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content" required></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Save Lesson</button>
+                            <button type="submit" class="btn btn-primary"  data-dismiss="modal">Save Lesson</button>
                         </form>
                     </div>
                 </div>
@@ -64,4 +64,54 @@
     </div>
 </div>
 </body>
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Tambah Lessons</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Lessons baru telah berhasil ditambahkan.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById('addLessonsForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+    
+        const formData = new FormData(this);
+    
+        fetch('{{ url("/lessons") }}', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                $('#successModal').modal('show'); // Show Bootstrap modal on success
+                // Alternatively, you can use vanilla JS to show the modal:
+                // document.getElementById('successModal').classList.add('show');
+                // document.getElementById('successModal').style.display = 'block';
+    
+                // Redirect to quiz page after modal is closed (optional)
+                $('#successModal').on('hidden.bs.modal', function () {
+                    window.location.href = '{{ url("/lessons") }}'; // Redirect to quiz page
+                });
+            } else {
+                alert('Error: ' + JSON.stringify(data.errors));
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
 @endsection

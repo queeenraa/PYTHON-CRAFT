@@ -55,12 +55,15 @@ class lessonsController extends Controller
 
     // Menyimpan lesson baru
     public function store(Request $request)
-    {
+    {   
+        // Nilai created_by diambil dari variabel atau sumber lain
+        $created_by = 1; // Anda bisa mengganti ini sesuai kebutuhan
+
         $validator = Validator::make($request->all(), [
             'course_id' => 'required|exists:courses,course_id',
             'lesson_name' => 'required',
             'content' => 'required',
-            'created_by' => 'required|exists:users,user_id',
+            // 'created_by' => 'required|exists:users,user_id', // Tidak perlu divalidasi di sini
         ]);
 
         if ($validator->fails()) {
@@ -71,7 +74,12 @@ class lessonsController extends Controller
             ], 422);
         }
 
-        $lesson = Lesson::create($validator->validated());
+        // Menggabungkan data yang sudah divalidasi dengan nilai created_by
+        $validatedData = $validator->validated();
+        $validatedData['created_by'] = $created_by;
+
+        // Menyimpan data ke database
+        $lesson = Lesson::create($validatedData);
 
         return response()->json([
             'success' => true,
@@ -79,7 +87,6 @@ class lessonsController extends Controller
             'data' => $lesson
         ], 201);
     }
-
     // Mengupdate lesson
     public function update(Request $request, $id)
     {

@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Quiz;
+use App\Models\Course;
 use Illuminate\Support\Facades\Validator;
 
 class quizController extends Controller
 {
+    public function create()
+    {
+        $courses = Course::all();
+        return view('layouts.quiz.tambahQuiz', compact('courses'));
+    }
+    
     public function index()
     {
         $quizzes = Quiz::all();
