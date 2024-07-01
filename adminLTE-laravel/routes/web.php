@@ -51,6 +51,7 @@ Route::get('/editQuiz/{id}', function () {
 // ngeroute function quiz
 Route::get('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update'); 
 Route::delete('/delete-quiz/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
+Route::get('/tambahQuiz', [QuizController::class, 'create']);
 
 Route::get('/edit-quiz/{id}', [quizController::class, 'edit'])->name('quizzes.edit');
 Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizzes.update');

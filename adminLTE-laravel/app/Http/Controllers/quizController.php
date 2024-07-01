@@ -36,6 +36,7 @@ class quizController extends Controller
     // }
 
     // Menampilkan detail quiz berdasarkan quiz_id
+
     public function show($id)
     {
         $quiz = Quiz::find($id);
