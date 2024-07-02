@@ -42,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Tentukan nama tabel jika tidak menggunakan konvensi default
+    protected $table = 'users'; // atau 'profiles' sesuai dengan nama tabel di database
+
+    // Tentukan primary key jika tidak menggunakan konvensi default
+    protected $primaryKey = 'user_id'; // Sesuaikan dengan nama kolom primary key di tabel
 }

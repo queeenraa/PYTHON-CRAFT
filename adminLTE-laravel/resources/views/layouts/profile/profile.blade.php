@@ -408,7 +408,7 @@
                               </thead>
                               <tbody>
                                   <!-- Example rows, you should replace with dynamic content -->
-                                  <tr>
+                                  <!-- <tr>
                                       <td>1</td>
                                       <td>John Doe</td>
                                       <td>john.doe@example.com</td>
@@ -421,7 +421,7 @@
                                               Delete
                                           </button>
                                       </td>
-                                  </tr>
+                                  </tr> -->
                                   @foreach ($profiles as $profile)
                                   <tr>
                                     <td>{{ $profile->user_id }}</td>
@@ -429,12 +429,19 @@
                                     <td>{{ $profile->email }}</td>
                                     <td>{{ $profile->role }}</td>
                                     <td>
-                                    <a href="{{ url('/edit-profile') }}" class="btn btn-info btn-sm">
+                                    <a href="{{ route('update.profile', ['id' => $profile->user_id]) }}" class="btn btn-info btn-sm">
                                         Edit
                                     </a>
                                     <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $profile->user_id }})">
                                       Delete
                                     </button>
+                                    <!-- <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete({{ $profile->id }})">
+                                        Delete
+                                    </button>
+                                    <form id="delete-form-{{ $profile->id }}" action="{{ url('/profile/' . $profile->id) }}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form> -->
                                     </td>
                                   </tr>
                                   @endforeach

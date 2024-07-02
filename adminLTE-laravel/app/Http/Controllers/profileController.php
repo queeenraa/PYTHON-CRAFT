@@ -19,32 +19,37 @@ class profileController extends Controller
         
     }
 
-    public function edit()
+    public function edit($user_id)
     {
         // return view('layouts.profile');
 
         // $profiles = User::all();  // Mengambil semua data courses dari model Course
-        $user = User::findOrFail($id);
+        // $user = User::findOrFail($user_id);
 
-        return view('layouts.profile.editProfile', [
-            'profiles' => $profiles, // Mengirimkan data courses ke view
-        ]);
+        // return view('layouts.profile.editProfile', [
+        //     'profiles' => $profiles, // Mengirimkan data courses ke view
+        // ]);
             // Mengambil data pengguna berdasarkan ID
-        $user = User::findOrFail($id);
+        $user = User::findOrFail($user_id);
+        // $profiles = User::where('id', $id)->get();
+        // $profiles = User::all();
+
 
         // Mengirim data pengguna ke view
         return view('layouts.profile.editProfile', compact('user'));
     }
 
-    public function edit($id)
-    {
-        $user = User::findOrFail($id);
+    // public function edit($id)
+    // {
+    //     $user = User::findOrFail($id);
 
-        return view('layouts.profile.editProfile', compact('user'));
-    }
+    //     return view('layouts.profile.editProfile', compact('user'));
+    // }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $user_id)
     {
+
+        $user = User::findOrFail($user_id);
 
     // Validasi input
     $request->validate([
@@ -54,13 +59,13 @@ class profileController extends Controller
     ]);
 
     // Temukan pengguna berdasarkan ID dan perbarui data
-    $user = User::findOrFail($id);
+    $user = User::findOrFail($user_id);
     $user->name = $request->input('name');
     $user->email = $request->input('email');
     $user->role = $request->input('role');
     $user->save();
 
-    return redirect()->route('profile.index')->with('success', 'Profile updated successfully');
+    return redirect()->route('edit-profile')->with('success', 'Profile updated successfully');
     }
     
     public function destroy($id)
