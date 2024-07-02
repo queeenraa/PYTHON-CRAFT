@@ -30,7 +30,7 @@
                     <div class="card-header">
                         <h3>Edit User</h3>
                     </div>
-                    <div class="card-body">
+                    <!-- <div class="card-body">
                         <form id="editProfileForm" action="" method="POST">
                             <input type="hidden" id="edit_quiz_id" name="id">
                             <div class="form-group">
@@ -52,7 +52,33 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
-                    </div>
+                    </div> -->
+                    <div class="card-body">
+                    <form id="editProfileForm" action="{{ route('update.profile', ['id' => $user->user_id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" id="edit_user_id" name="id" value="{{ $user->user_id }}">
+                        <div class="form-group">
+                            <label for="edit_name">Nama</label>
+                            <input type="text" class="form-control" id="edit_name" name="name" value="{{ $user->name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="edit_email">Email</label>
+                            <input type="email" class="form-control" id="edit_email" name="email" value="{{ $user->email }}" required>
+                        </div>
+                        <div class="form-group">  
+                            <label for="edit_role">Role</label>
+                            <select class="form-control" id="edit_role" name="role" required>
+                                <option value="">Select a Role</option>
+                                <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
+                                <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
+                                <!-- Tambahkan opsi role lainnya di sini -->
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update</button>
+                    </form>
+                  </div>
+
                 </div>
             </div>
         </div>

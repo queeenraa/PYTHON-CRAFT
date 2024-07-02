@@ -9,6 +9,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\editLessonsController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
 
+Route::get('/payments', [PaymentController::class, 'index']);
+
 Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
@@ -51,6 +54,7 @@ Route::get('/editQuiz/{id}', function () {
 // ngeroute function quiz
 Route::get('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update'); 
 Route::delete('/delete-quiz/{id}', [quizController::class, 'destroy'])->name('quizzes.destroy');
+Route::get('/tambahQuiz', [QuizController::class, 'create']);
 
 Route::get('/edit-quiz/{id}', [quizController::class, 'edit'])->name('quizzes.edit');
 Route::post('/update-quiz/{id}', [quizController::class, 'update'])->name('quizzes.update');
@@ -86,12 +90,14 @@ Route::get('/editCourses/{id}', function () {
 // ngeroute function courses
 Route::get('/edit-courses/{id}', [CoursesController::class, 'edit'])->name('courses.edit');
 Route::post('/update-courses/{id}', [CoursesController::class, 'update'])->name('courses.update');
+Route::delete('/delete-user/{id}', [CoursesController::class, 'destroy'])->name('users.destroy');
 Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
 
 
 // PROFILE
-Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
-Route::delete('/delete-user/{id}', [CoursesController::class, 'destroy'])->name('users.destroy');
+// Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
+Route::put('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit.profile');
+Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
 
 
 Route::get('/login', [LoginController::class, 'index']);
