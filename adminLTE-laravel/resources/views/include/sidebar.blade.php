@@ -90,6 +90,15 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a href="payments" class="nav-link">
+              <i class="nav-icon fas fa-money-bill"></i>
+              <!-- <i class="fa-solid fa-user"></i> -->
+              <p>
+                Payment
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
                 <a href="profile" class="nav-link">
                   <i class="nav-icon fas fa-solid fa-user"></i>
                   <!-- <i class="fa-solid fa-user"></i> -->
