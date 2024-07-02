@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./materi.page.scss'],
 })
 export class MateriPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  accordionGroupChange(event: any) {
+    console.log('Accordion changed:', event);
   }
-
 }

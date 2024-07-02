@@ -42,6 +42,10 @@ const routes: Routes = [
     path: 'materi',
     loadChildren: () => import('./materi/materi.module').then( m => m.MateriPageModule)
   },
+  {
+    path: 'isi-materi',
+    loadChildren: () => import('./isi-materi/isi-materi.module').then( m => m.IsiMateriPageModule)
+  },
 
 ];
 

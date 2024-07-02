@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+ion-content {
+  --background: #0f4c81;
+  font-family: "Russo One" !important;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  margin-top: 30px;
+  font-size: 32px;
+  padding: 0px 0px 35px 0px;
+}
+.card-materi {
+  --padding: 0px 0px 0px 0px;
+  --background: #9087e5;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: right;
+  margin-bottom: 15px;
+  border-radius: 40px;
+  width: 80%;
+  background: var(--background);
+  padding: var(--padding);
+}
+ion-accordion-group,
+ion-accordion {
+  --width: 100%;
+  --height: 100%;
+  height: var(--height);
+  width: var(--width);
+  padding: var(--padding);
+  border-radius: 20px;
+}
+
+ion-accordion.accordion-collapsed ion-item[slot="header"],
+ion-accordion.accordion-collapsing ion-item[slot="header"] {
+  --background: #9087e5;
+  background: var(--background);
+}
+
+ion-accordion.accordion-expanded ion-item[slot="header"],
+ion-accordion.accordion-expanding ion-item[slot="header"] {
+  --background: #9087e5;
+  background: var(--background);
+}
+
+div[slot="content"] {
+  --color: #50555c;
+  color: var(--color);
+  --background: #d9d9d9;
+  background: var(--background);
+  --padding: 16px 16px 16px 16px;
+  padding: var(--padding);
+  --box-shadow: none;
+  box-shadow: var(--box-shadow);
+  --border-style: none;
+  border-style: var(--border-style);
+  --border-color: none;
+  border-color: var(--border-color);
+  --border: none;
+  border: var(--border);
+}
+.materi {
+  justify-content: center;
+  align-items: center;
+  --display: flex;
+  --flex-direction: column;
+  --background: white;
+  background: var(--background);
+  --color: #50555c;
+  color: var(--color);
+  --box-shadow: none;
+  box-shadow: var(--box-shadow);
+  --border-style: none;
+  border-style: var(--border-style);
+  --border-color: none;
+  border-color: var(--border-color);
+  --border-radius: 20px 20px 0px 0px;
+  border-radius: var(--border-radius);
+  --border-width: 0px;
+  border-width: var(--border-width);
+}
+
+ion-item[slot="header"] ion-icon {
+  width: 30px;
+  --color: #9087e5;
+  color: var(--color);
+  --background: #ffffff;
+  background: var(--background);
+  --border-radius: 15px;
+  border-radius: var(--border-radius);
+  --ionicon-stroke-width: 60px;
+  padding: 8px 5px 8px 5px;
+}
+
+.materi ion-icon[slot="start"] {
+  --color: #0f4c81;
+  color: var(--color);
+}
+.materi ion-icon[slot="end"] {
+  --color: #898a8d;
+  color: var(--color);
+}
+
+.belajar {
+  --margin: 0px 0px 0px 0px;
+  margin: var(--margin);
+  --display: absolute;
+  --background: #9087e5;
+  background: var(--background);
+  --color: #ffffff;
+  color: var(--color);
+  --border-radius: 0px 0px 20px 20px;
+  display: var(--display);
+}
