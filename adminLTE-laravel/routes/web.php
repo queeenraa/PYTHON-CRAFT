@@ -9,6 +9,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\editLessonsController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::get('/courses', [CoursesController::class, 'index']);
 Route::get('/lessons', [lessonsController::class, 'index']);
 
 Route::get('/quiz', [quizController::class, 'index']);
+
+Route::get('/payments', [PaymentController::class, 'index']);
 
 Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
