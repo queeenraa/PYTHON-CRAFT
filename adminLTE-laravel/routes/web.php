@@ -96,8 +96,10 @@ Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
 
 // PROFILE
 // Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
-Route::put('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit.profile');
-Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
+Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit-profile');
+
+// Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
+Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update-profile');
 
 
 Route::get('/login', [LoginController::class, 'index']);
