@@ -37,9 +37,9 @@
                       <div class="card-header">
                           <h3 class="card-title">Manage Users</h3>
                           <div class="card-tools">
-                              <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addUserModal">
+                              <!-- <button type="button" class="btn btn-primary custom-button" data-toggle="modal" data-target="#addUserModal">
                                   Add User
-                              </button>
+                              </button> -->
                           </div>
                       </div>
                       <!-- /.card-header -->

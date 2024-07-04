@@ -55,6 +55,8 @@
                     </div> -->
                     <div class="card-body">
                     <form id="editProfileForm" action="{{ route('update-profile', ['id' => $user->user_id]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
                         <input type="hidden" id="edit_user_id" name="id" value="{{ $user->user_id }}">
                         <div class="form-group">
                             <label for="edit_name">Nama</label>

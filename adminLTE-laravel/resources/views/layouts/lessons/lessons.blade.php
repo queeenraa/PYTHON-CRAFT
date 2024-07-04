@@ -51,8 +51,8 @@
                   <thead>
                     <tr>
                       <th class="col-tagar">#</th>
-                      <th class="col-materi-nama-bab">Nama Materi</th>
                       <th class="col-materi-nomor-bab">Bab</th>
+                      <th class="col-materi-nama-bab">Nama Materi</th>
                       <th class="col-materi-materi">Content</th>
                       <th class="col-materi-action">Actions</th>
                     </tr>
@@ -62,8 +62,8 @@
                     @foreach ($lessons as $lesson)
                     <tr>
                       <td class="col-tagar">{{ $lesson->lesson_id }}</td>
-                      <td class="col-materi-nama-bab">{{ $lesson->lesson_name }}</td>
                       <td class="col-materi-nomor-bab">{{ $lesson->course->course_name }}</td>
+                      <td class="col-materi-nama-bab">{{ $lesson->lesson_name }}</td>
                       <td class="col-materi-materi">{{ $lesson->content }}</td>
                       <td>
                         <a href="{{ route('lessons.edit', ['id' => $lesson->lesson_id]) }}" class="btn btn-info btn-sm">
