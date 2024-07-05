@@ -46,6 +46,10 @@ const routes: Routes = [
     path: 'isi-materi',
     loadChildren: () => import('./isi-materi/isi-materi.module').then( m => m.IsiMateriPageModule)
   },
+  {
+    path: 'quiz',
+    loadChildren: () => import('./quiz/quiz.module').then( m => m.QuizPageModule)
+  },
 
 ];
 

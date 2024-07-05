@@ -1,13 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>isiMateri</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">isiMateri</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="navbar">
+    <p class="satu">Bab</p>
+    <div class="pembatas"></div>
+    <p class="dua">Judul Bab</p>
+  </div>
+  <div class="materi">
+    <swiper-container
+      allowSlideNext="true"
+      pagination="true"
+      class="content-materi"
+      (slideChange)="onSlideChange($event)"
+    >
+      <swiper-slide *ngFor="let i of [].constructor(3);">
+        <ion-col>
+          <img src="../../assets/piton-logo.jpeg" alt="" />
+        </ion-col>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi
+          cupiditate obcaec ati rem error reprehenderit odio nobis laborum
+          repellendus ad nesciunt!
+        </p>
+      </swiper-slide>
+    </swiper-container>
+
+    <ion-button *ngIf="!isLastSlide" (click)="slideNext()">Next</ion-button>
+    <ion-button *ngIf="isLastSlide" (click)="continueToQuiz()"
+      >Continue to Quiz</ion-button
+    >
+  </div>
 </ion-content>

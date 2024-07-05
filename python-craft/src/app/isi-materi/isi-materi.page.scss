@@ -1,0 +1,84 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+ion-content {
+  --background: #0f4c81;
+  font-family: "Russo One" !important;
+}
+.navbar {
+  --background: #9087e5;
+  --margin: 0px 0px 0px 0px;
+  justify-content: center;
+  align-items: center;
+  height: 95px;
+  display: flex;
+  flex-direction: right;
+  margin: var(--margin);
+  background: var(--background);
+}
+
+.satu {
+  font-size: 30px;
+  --position: absolute;
+  left: 30px;
+  position: var(--position);
+}
+.dua {
+  font-size: 20px;
+  --position: absolute;
+  right: 30px;
+  position: var(--position);
+}
+
+.pembatas {
+  border-left: 5px solid white;
+  height: 50px;
+  position: absolute;
+  left: 150px;
+}
+
+.materi {
+  justify-content: center;
+  margin: 20px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
+  --background: #eaf2ff;
+  --border-radius: 20px;
+  background: var(--background);
+  border-radius: var(--border-radius);
+  width: 90%;
+  height: 780px;
+}
+
+.materi .content-materi {
+  font-family: "Red Hat Display";
+  font-size: 16px;
+  color: #000;
+  top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.materi ion-button {
+  position: absolute;
+  bottom: 40px;
+  color: white;
+  --background: #9087e5;
+  --border-radius: 20px;
+  background: var(--background);
+  border-radius: var(--border-radius);
+  width: 80%;
+  height: 60px;
+}
+.materi img {
+  display: block;
+  width: 90%;
+  height: 160px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.materi p {
+  height: 380px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
