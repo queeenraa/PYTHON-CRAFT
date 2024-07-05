@@ -41,6 +41,12 @@ Route::get('/quiz', [quizController::class, 'index']);
 
 Route::get('/payments', [PaymentController::class, 'index']);
 
+Route::post('/logout', [loginController::class, 'logout'])->name('logout');
+// Route::get('/logout', function() {
+//     return 'This is a GET request.';
+// })->name('logout');
+
+
 // Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
