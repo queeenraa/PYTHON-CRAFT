@@ -27,7 +27,7 @@ use App\Http\Controllers\TransactionController;
 //     return view('template.master');
 // });
 
-Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+// Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
 Route::get('/', [dashboardController::class, 'index']);
 
@@ -41,7 +41,7 @@ Route::get('/quiz', [quizController::class, 'index']);
 
 Route::get('/payments', [PaymentController::class, 'index']);
 
-Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
+// Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
 Route::get('/tambahQuiz', function () {
@@ -105,12 +105,14 @@ Route::put('/update-profile/{id}', [profileController::class, 'update'])->name('
 
 
 
-Route::get('/', [LoginController::class, 'index']);
+
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 
 Route::get('/register', [registerController::class, 'index']);
 
-Route::middleware(['auth', 'admin'])->group(function () {
-
+Route::get('/', [LoginController::class, 'index']);
+Route::middleware(['auth', 'role-admin'])->group(function () {
+    Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
+    
 
 });
