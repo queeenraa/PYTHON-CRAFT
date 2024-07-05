@@ -10,6 +10,7 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\editLessonsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,10 +95,21 @@ Route::delete('/delete-user/{id}', [CoursesController::class, 'destroy'])->name(
 Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
 
 
+// PAYMENT
+Route::get('/payments', [TransactionController::class, 'index']);
+
+
+// // PROFILE
+// // Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
+// Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit-profile');
+
+// // Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
+// Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update-profile');
 // PROFILE
-// Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
-Route::put('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit.profile');
-Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
+Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit-profile');
+Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
+Route::put('/update-profile/{id}', [profileController::class, 'update'])->name('update-profile');
+
 
 
 Route::get('/login', [LoginController::class, 'index']);

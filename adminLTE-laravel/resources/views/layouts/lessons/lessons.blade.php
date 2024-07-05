@@ -26,6 +26,15 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-sm-6">
+            <h1>Manage Lessons</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Lessons</li>
+            </ol>
+          </div>
           <div class="col-12">
             <div class="card">
               <div class="card-header">
@@ -42,10 +51,11 @@
                   <thead>
                     <tr>
                       <th class="col-tagar">#</th>
-                      <th class="col-materi-nama-bab">Nama Materi</th>
                       <th class="col-materi-nomor-bab">Bab</th>
+                      <th class="col-materi-nama-bab">Nama Materi</th>
                       <th class="col-materi-materi">Content</th>
-                      <th class="col-materi-action">Actions</th>
+                      <th class="col-materi-image">Image</th>
+                      <th class="col-materi-action">Actions</th>                     
                     </tr>
                   </thead>
                   <tbody>
@@ -53,14 +63,23 @@
                     @foreach ($lessons as $lesson)
                     <tr>
                       <td class="col-tagar">{{ $lesson->lesson_id }}</td>
-                      <td class="col-materi-nama-bab">{{ $lesson->lesson_name }}</td>
                       <td class="col-materi-nomor-bab">{{ $lesson->course->course_name }}</td>
-                      <td class="col-materi-materi">{{ $lesson->content }}</td>
+                      <td class="col-materi-nama-bab">{{ $lesson->lesson_name }}</td>
+                      <td class="col-materi-materi">{{ $lesson->content }}</td>                      
+                      <td class="col-materi-image">
+                        @if ($lesson->image_path)
+                          <a href="{{ asset('storage/' . $lesson->image_path) }}" class="btn btn-sm btn-success" target="_blank">
+                            Lihat
+                          </a>
+                        @else
+                          No Image
+                        @endif
+                      </td>
                       <td>
                         <a href="{{ route('lessons.edit', ['id' => $lesson->lesson_id]) }}" class="btn btn-info btn-sm">
                             Edit
                         </a>
-                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete()">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete('{{ $lesson->lesson_id }}')">  
                           Delete
                         </button>
                       </td>
@@ -80,82 +99,6 @@
 
   </div>
 
-  <!-- Add Lesson Modal -->
-  <div class="modal fade" id="addLessonModal" tabindex="-1" aria-labelledby="addLessonModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addLessonModalLabel">Add New Lesson</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="lesson_name">Lesson Name</label>
-              <input type="text" name="lesson_name" class="form-control" id="lesson_name" placeholder="Enter lesson name">
-            </div>
-            <div class="form-group">
-              <label for="course_id">Course</label>
-              <select name="course_id" class="form-control" id="course_id">
-                <option value="1">Course 1</option>
-                <option value="2">Course 2</option>
-                <option value="3">Course 3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="content">Content</label>
-              <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Edit Lesson Modal -->
-  <div class="modal fade" id="editLessonModal" tabindex="-1" aria-labelledby="editLessonModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editLessonModalLabel">Edit Lesson</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="edit_lesson_name">Lesson Name</label>
-              <input type="text" name="edit_lesson_name" class="form-control" id="edit_lesson_name" placeholder="Enter lesson name">
-            </div>
-            <div class="form-group">
-              <label for="edit_course_id">Course</label>
-              <select name="edit_course_id" class="form-control" id="edit_course_id">
-                <option value="1">Course 1</option>
-                <option value="2">Course 2</option>
-                <option value="3">Course 3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="edit_content">Content</label>
-              <textarea name="edit_content" class="form-control" id="edit_content" placeholder="Enter lesson content"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
@@ -164,12 +107,94 @@
 </div>
 <!-- ./wrapper -->
 
+<!-- Bootstrap modal for delete confirmation -->
+<div class="modal fade" id="deleteLessonModal" tabindex="-1" role="dialog" aria-labelledby="deleteLessonModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="deleteLessonModalLabel">Delete Lesson</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              Are you sure you want to delete this lesson?
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Delete</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Bootstrap modal for success message -->
+<div class="modal fade" id="successMessageModal" tabindex="-1" role="dialog" aria-labelledby="successMessageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="successMessageModalLabel">Success</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p id="successMessageText">Lesson deleted successfully.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Include jQuery if not already included -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- JavaScript for delete confirmation and redirection -->
 <script>
-  function confirmDelete() {
-    if (confirm("Are you sure you want to delete this lesson?")) {
-      // Implement the delete functionality here
-    }
+// Global variable to store the lesson ID for deletion
+let lessonIdToDelete = null;
+
+// Function to confirm delete and show modal
+function confirmDelete(id) {
+  lessonIdToDelete = id; // Set the global variable
+  $('#deleteLessonModal').modal('show'); // Show the modal
+}
+
+// Function to perform delete operation
+$('#confirmDeleteBtn').click(function() {
+  if (lessonIdToDelete) {
+      fetch('{{ url("/delete-lessons") }}/' + lessonIdToDelete, {
+          method: 'DELETE',
+          headers: {
+              'X-CSRF-TOKEN': '{{ csrf_token() }}',
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok');
+          }
+          return response.json();
+      })
+      .then(data => {
+          if (data.success) {
+              $('#successMessageModal').modal('show'); // Show success modal
+          } else {
+              alert('Error: ' + data.message);
+          }
+          $('#deleteLessonModal').modal('hide'); // Hide the modal after deletion
+      })
+      .catch(error => console.error('Error:', error));
   }
+      // Refresh the page after closing the success modal
+    $('#successMessageModal').on('hidden.bs.modal', function () {
+        location.reload(); // Refresh the page after success modal is closed
+    });
+});
+
+
 </script>
 </body>
 @endsection

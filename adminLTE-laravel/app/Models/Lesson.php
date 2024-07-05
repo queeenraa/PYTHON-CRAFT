@@ -10,6 +10,7 @@ class Lesson extends Model
     protected $fillable = [
         'lesson_name',
         'course_id',
+        'image_path',
         'content',
         'created_by',
     ];

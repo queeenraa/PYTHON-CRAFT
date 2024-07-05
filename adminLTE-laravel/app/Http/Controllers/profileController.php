@@ -46,6 +46,13 @@ class profileController extends Controller
     //     return view('layouts.profile.editProfile', compact('user'));
     // }
 
+    public function show($id)
+    {
+        $user = User::findOrFail($id);
+        return view('layouts.profile.profile', compact('user'));
+    }
+    
+
     public function update(Request $request, $user_id)
     {
 
@@ -65,7 +72,7 @@ class profileController extends Controller
     $user->role = $request->input('role');
     $user->save();
 
-    return redirect()->route('edit-profile')->with('success', 'Profile updated successfully');
+    return redirect()->route('profile', ['id' => $user->user_id])->with('success', 'Profile updated successfully');
     }
     
     public function destroy($id)

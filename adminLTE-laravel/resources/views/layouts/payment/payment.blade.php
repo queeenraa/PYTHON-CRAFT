@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('/dashboard') }}">Home</a></li>
               <li class="breadcrumb-item active">Payment</li>
             </ol>
           </div>
@@ -26,53 +26,58 @@
     <section class="content">
       <div class="container-fluid">
         <div class="row">
+          <div class="col-sm-6">
+            <h1>Payment History</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Payment History</li>
+            </ol>
+          </div>
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">List Materi</h3>
-                {{-- <div class="card-tools">
-                  <a href="{{ url('/tambahLessons') }}" class="btn btn-primary custom-button">
-                    Tambah Materi
-                  </a>
-                </div> --}}
+                <h3 class="card-title">Payment History</h3>
               </div>
               <!-- /.card-header -->
-              <div class="card-body">
+              <!DOCTYPE html>
+            <div class="card-body">
                 <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th class="col-tagar">No. Transaksi</th>
-                      <th class="col-materi-nama-bab">Username</th>
-                      <th class="col-materi-nomor-bab">Jumlah Hati</th>
-                      <th class="col-materi-materi">Total Harga</th>
-                      <th class="col-materi-action">Status</th>
-                    </tr>
-                  </thead>
+                    <thead>
+                        <tr>
+                            <th>No. Transaksi</th>
+                            <th>Username</th>
+                            <th>Jumlah Hati</th>
+                            <th>Total Harga</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr>
-                            <td>TRX001</td>
-                            <td>user123</td>
-                            <td>3</td>
-                            <td>$150</td>
-                            <td><span class="badge bg-success">Selesai</span></td>
-                        </tr>
-                        <tr>
-                            <td>TRX002</td>
-                            <td>customer456</td>
-                            <td>1</td>
-                            <td>$50</td>
-                            <td><span class="badge bg-warning text-dark">Menunggu Pembayaran</span></td>
-                        </tr>
-                        <tr>
-                            <td>TRX003</td>
-                            <td>admin</td>
-                            <td>2</td>
-                            <td>$100</td>
-                            <td><span class="badge bg-danger">Gagal</span></td>
-                        </tr>
+                        @foreach ($transactions as $transaction)
+                            <tr>
+                                <td>{{ $transaction->no_transaksi }}</td>
+                                <td>{{ $transaction->username }}</td>
+                                <td>{{ $transaction->jumlah_hati }}</td>
+                                <td>${{ number_format($transaction->total_harga, 2) }}</td>
+                                <td>
+                                    @if ($transaction->status == 'Selesai')
+                                        <span class="badge bg-success">{{ $transaction->status }}</span>
+                                    @elseif ($transaction->status == 'Menunggu Pembayaran')
+                                        <span class="badge bg-warning text-dark">{{ $transaction->status }}</span>
+                                    @elseif ($transaction->status == 'Gagal')
+                                        <span class="badge bg-danger">{{ $transaction->status }}</span>
+                                    @else
+                                        <span class="badge bg-secondary">{{ $transaction->status }}</span>
+                                    @endif
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
-              </div>
+            </div>
+        </div>
+    </div>
               <!-- /.card-body -->
             </div>
             <!-- /.card -->

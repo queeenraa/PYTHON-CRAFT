@@ -50,8 +50,8 @@
                           <table class="table table-bordered">
                               <thead>
                                   <tr>
-                                      <th class="col-tagar">#</th>
-                                      <th>Course ID</th>                                    
+                                      {{-- <th class="col-tagar">#</th> --}}
+                                      <th>Course</th>                                    
                                       <th>Question</th>
                                       <th>Option A</th>
                                       <th>Option B</th>
@@ -65,7 +65,7 @@
                                   <!-- Example rows, you should replace with dynamic content -->
                                 @foreach($quizzes as $quiz)
                                   <tr>
-                                      <td>{{ $loop->iteration }}</td>
+                                      {{-- <td>{{ $loop->iteration }}</td> --}}
                                       <td>{{ $quiz->course_id }}</td>                                   
                                       <td>{{ $quiz->question }}</td>
                                       <td>{{ $quiz->option_a }}</td>

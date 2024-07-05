@@ -52,6 +52,10 @@
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label for="image">Image</label>
+                                <input type="file" name="image" class="form-control-file" id="image">
+                            </div>
+                            <div class="form-group">
                                 <label for="content">Content</label>
                                 <textarea name="content" class="form-control" id="content" placeholder="Enter lesson content" required></textarea>
                             </div>

@@ -9,7 +9,7 @@ class PaymentController extends Controller
     public function index()
     {
         // Tampilkan halaman pembayaran
-        return view('layouts.payment');
+        return view('layouts.payment.payment');
     }
 
     public function processPayment(Request $request)
