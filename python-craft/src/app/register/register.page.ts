@@ -1,4 +1,6 @@
+// src/app/register/register.page.ts
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../service.service'; // Sesuaikan path sesuai dengan struktur proyek Anda
 
 @Component({
   selector: 'app-register',
@@ -6,10 +8,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
+  name: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPassword: string = '';
 
-  constructor() { }
+  constructor(private apiService: ApiService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  async register() {
+    if (this.password !== this.confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+
+    const data = {
+      name: this.name,
+      email: this.email,
+      password: this.password,
+    };
+
+    try {
+      const response = await this.apiService.postData('register', data);
+      console.log('Registration successful:', response);
+      // Lakukan sesuatu setelah pendaftaran berhasil, misalnya mengarahkan ke halaman lain
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
   }
-
 }

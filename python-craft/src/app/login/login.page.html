@@ -1,11 +1,4 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
+<!-- src/app/login/login.page.html -->
 <ion-content [fullscreen]="true">
   <div id="container">
     <h3>LOGIN</h3>
@@ -17,14 +10,15 @@
       <ion-card-content>
         <ion-item id="username">
           <ion-input
-            label="Username"
+            [(ngModel)]="email"
+            label="Email"
             labelPlacement="stacked"
-            placeholder="Username"
-          >
-          </ion-input>
+            placeholder="Email"
+          ></ion-input>
         </ion-item>
         <ion-item id="password">
           <ion-input
+            [(ngModel)]="password"
             type="password"
             label="Password"
             labelPlacement="stacked"
@@ -41,7 +35,7 @@
 
     <br />
 
-    <ion-button shape="round">LOGIN</ion-button>
+    <ion-button shape="round" (click)="login()">LOGIN</ion-button>
     <p class="register">
       New User? <span style="color: yellow">Register Now!</span>
     </p>
