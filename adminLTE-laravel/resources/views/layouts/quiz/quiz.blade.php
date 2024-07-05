@@ -74,6 +74,15 @@
                                       <td>{{ $quiz->option_d }}</td>
                                       <td>{{ $quiz->correct_answer }}</td>
                                       <td>
+                                        @if ($quiz->image)
+                                            <a href="{{ asset('storage/' . $quiz->image) }}" class="btn btn-sm btn-success" target="_blank">
+                                                Lihat
+                                            </a>
+                                        @else
+                                            No Image
+                                        @endif
+                                      </td>
+                                      <td>
                                           <!-- Actions buttons here (edit, delete, etc.) -->
                                           <a href="{{ url('/edit-quiz/' . $quiz->id) }}" class="btn btn-sm btn-primary">Edit</a>
                                           <button class="btn btn-sm btn-danger" onclick="confirmDelete('{{ $quiz->id }}')">Delete</button>

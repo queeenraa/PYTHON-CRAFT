@@ -17,6 +17,7 @@ class CreateQuizzesTableV2 extends Migration
             $table->string('option_c');
             $table->string('option_d');
             $table->char('correct_answer', 1); // 'a', 'b', 'c', 'd'
+            $table->string('image')->nullable();
             $table->timestamps();
 
             $table->foreign('course_id')->references('course_id')->on('courses')->onDelete('cascade');

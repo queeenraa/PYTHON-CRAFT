@@ -41,7 +41,7 @@
                           <h3>Edit Quiz</h3>
                       </div>
                       <div class="card-body">
-                        <form id="editQuizForm" action="{{ route('quizzes.update', ['id' => $quiz->id]) }}" method="POST">
+                        <form id="editQuizForm" action="{{ route('quizzes.update', ['id' => $quiz->id]) }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               {{-- @method('PUT') --}}
                               <div class="form-group">
@@ -81,6 +81,18 @@
                                       <option value="d" {{ $quiz->correct_answer === 'd' ? 'selected' : '' }}>D</option>
                                   </select>
                               </div>
+                              <div class="form-group">
+                                <label for="image">Upload Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
+                              </div>
+                                @if($quiz->image)
+                                    <div class="form-group">
+                                        <label>Current Image</label>
+                                        <div>
+                                            <img src="{{ asset('storage/' . $quiz->image) }}" alt="Current Image" width="100">
+                                        </div>
+                                    </div>
+                                @endif
                               <button type="submit" class="btn btn-primary">Submit</button>
                           </form>
                       </div>
