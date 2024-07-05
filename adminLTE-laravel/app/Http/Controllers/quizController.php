@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Quiz;
 use App\Models\Course;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class quizController extends Controller
 {
@@ -68,6 +69,7 @@ class quizController extends Controller
             'option_c' => 'required',
             'option_d' => 'required',
             'correct_answer' => 'required|string|size:1|in:a,b,c,d',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($validator->fails()) {
@@ -79,6 +81,19 @@ class quizController extends Controller
         }
 
         $quiz = Quiz::create($validator->validated());
+
+        
+        $validatedData = $validator->validated();
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = uniqid() . '_' . $file->getClientOriginalName();
+            $filePath = $file->storeAs('D:/PYTHON CRAFT/adminLTE-laravel/public/storage/images', $fileName);
+            $validatedData['image'] = 'storage/images/' . $fileName;
+        }
+        
+        
+        
 
         return response()->json([
             'success' => true,
@@ -109,6 +124,7 @@ class quizController extends Controller
             'option_c' => 'required',
             'option_d' => 'required',
             'correct_answer' => 'required|string|size:1|in:a,b,c,d',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
     
         // Jika validasi gagal, kembalikan response dengan error
@@ -123,6 +139,17 @@ class quizController extends Controller
         try {
             // Temukan quiz berdasarkan ID atau tampilkan error jika tidak ditemukan
             $quiz = Quiz::findOrFail($id);
+
+            if ($request->hasFile('image')) {
+                // Hapus gambar lama jika ada
+                if ($quiz->image && Storage::exists('public/' . $quiz->image)) {
+                    Storage::delete('public/' . $quiz->image);
+                }
+        
+                $image = $request->file('image');
+                $imagePath = $image->store('quiz_images', 'public');
+                $data['image'] = $imagePath;
+            }
     
             // Update quiz dengan data yang valid
             $quiz->update($validator->validated());

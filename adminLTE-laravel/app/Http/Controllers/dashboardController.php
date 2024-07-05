@@ -10,4 +10,10 @@ class dashboardController extends Controller
     {
         return view('layouts.dashboard');
     }
+
+    public function __construct()
+    {
+        $this->middleware('role-admin');
+    }
+
 }

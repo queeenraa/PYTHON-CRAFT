@@ -41,7 +41,7 @@ Route::get('/quiz', [quizController::class, 'index']);
 
 Route::get('/payments', [PaymentController::class, 'index']);
 
-Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
+// Route::put('/quizzes/{id}', [quizController::class, 'update'])->name('quizzes.update');
 
 // nampilin page quiz
 Route::get('/tambahQuiz', function () {
@@ -98,13 +98,6 @@ Route::delete('/delete-courses/{id}', [CoursesController::class, 'destroy']);
 // PAYMENT
 Route::get('/payments', [TransactionController::class, 'index']);
 
-
-// // PROFILE
-// // Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('profile.edit');
-// Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit-profile');
-
-// // Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update.profile');
-// Route::get('/update-profile/{id}', [profileController::class, 'update'])->name('update-profile');
 // PROFILE
 Route::get('/edit-profile/{id}', [profileController::class, 'edit'])->name('edit-profile');
 Route::get('/profile/{id}', [profileController::class, 'index'])->name('profile');
@@ -112,39 +105,14 @@ Route::put('/update-profile/{id}', [profileController::class, 'update'])->name('
 
 
 
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware('auth');
+
+
 
 Route::get('/register', [registerController::class, 'index']);
 
+Route::get('/', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate');
 
-
-// Route::get('/edit-lessons', [lessonsController::class, 'edit'])->name('edit.quiz.form');
-
-// Route::get('/edit-courses', [CoursesController::class, 'edit'])->name('edit.bab.form');
-
-// Route::get('/edit-quiz', [quizController::class, 'edit'])->name('edit.quiz.form');
-
-// Route::get('/edit-profile', [profileController::class, 'edit'])->name('edit.profile.form');
-
-// Route::get('/tambah-lessons', [lessonsController::class, 'tambah'])->name('tambah.lessons.form');
-
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     // courses
-//     Route::post('/courses', [CoursesController::class, 'store']);
-//     Route::put('/courses/{id}', [CoursesController::class, 'update']);
-//     Route::delete('/courses/{id}', [CoursesController::class, 'destroy']);
-
-//     // lesson
-//     Route::post('/lessons', [lessonsController::class, 'store']);
-//     Route::put('/lessons/{id}', [lessonsController::class, 'update']);
-//     Route::delete('/lessons/{id}', [lessonsController::class, 'destroy']);
-
-//     // quiz
-//     Route::post('/quizzes', [quizController::class, 'store']);
-//     Route::put('/quizzes/{id}', [quizController::class, 'update']);
-//     Route::delete('/quizzes/{id}', [quizController::class, 'destroy']);
+// Route::middleware(['auth', 'role-admin'])->group(function () {
+//     Route::get('/dashboard', [dashboardController::class, 'index']);
 // });

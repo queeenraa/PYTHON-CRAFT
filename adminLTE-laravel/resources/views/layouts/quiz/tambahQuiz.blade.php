@@ -41,7 +41,7 @@
                           <h3>Tambah Quiz</h3>
                       </div>
                       <div class="card-body">
-                        <form id="addQuizForm" action="{{ url('/quizzes') }}" method="POST">
+                        <form id="addQuizForm" action="{{ url('/quizzes') }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               <div class="form-group">
                                 <label for="course_id">Course</label>
@@ -79,6 +79,10 @@
                                       <option value="c">C</option>
                                       <option value="d">D</option>
                                   </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="image">Upload Image</label>
+                                <input type="file" class="form-control" id="image" name="image">
                               </div>
                               <button type="submit" class="btn btn-primary">Submit</button>
                           </form>

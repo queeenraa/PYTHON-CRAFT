@@ -19,6 +19,7 @@ class Quiz extends Model
         'option_c',
         'option_d',
         'correct_answer',
+        'image'
     ];
 
     protected $casts = [
