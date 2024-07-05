@@ -28,8 +28,7 @@ class LoginController extends Controller
 
             // Cek role user setelah berhasil login
             if ($user->role === 'admin') {
-                dd('Redirecting to dashboard');
-                return redirect()->route('/dashboard'); // Jika admin, arahkan ke dashboard
+                return redirect()->route('dashboard'); // Jika admin, arahkan ke dashboard
             } else {
                 // Jika bukan admin, beri pesan error
                 Auth::logout(); // Logout user untuk keamanan
@@ -42,5 +41,14 @@ class LoginController extends Controller
         return back()->withErrors([
             'email' => 'Kredensial yang diberikan tidak sesuai dengan catatan kami.',
         ])->onlyInput('email');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/login');
     }
 }
