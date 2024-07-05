@@ -24,6 +24,8 @@ class quizController extends Controller
         ]);
     }
 
+    
+
     // public function edit($id)
     // {
     //     $quiz = Quiz::find($id);
@@ -85,9 +87,19 @@ class quizController extends Controller
         ], 201);
     }
 
+    public function edit($id)
+    {
+        $quiz = Quiz::findOrFail($id);
+        $courses = Course::all(); // Retrieve all courses
+        
+        return view('layouts.quiz.editQuiz', compact('quiz', 'courses'));
+    }
+
+
     // Mengupdate quiz
     public function update(Request $request, $id)
     {
+
         // Validasi data yang diterima dari request
         $validator = Validator::make($request->all(), [
             'course_id' => 'required|exists:courses,course_id',
@@ -133,12 +145,7 @@ class quizController extends Controller
     
 
 
-    public function edit($id)
-    {
-        $quiz = Quiz::findOrFail($id); 
-
-        return view('layouts.quiz.editQuiz', compact('quiz'));
-    }
+    
 
 
     // Menghapus quiz

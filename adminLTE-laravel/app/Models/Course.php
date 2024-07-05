@@ -17,4 +17,10 @@ class Course extends Model
     {
         return $this->belongsTo(User::class, 'created_by', 'user_id');
     }
+
+    public function quizzes()
+    {
+        return $this->hasMany(Quiz::class, 'course_id', 'id');
+    }
+
 }

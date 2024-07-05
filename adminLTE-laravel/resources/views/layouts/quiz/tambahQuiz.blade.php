@@ -46,13 +46,11 @@
                               <div class="form-group">
                                 <label for="course_id">Course</label>
                                 <select name="course_id" class="form-control" id="course_id" required>
-                                 
-                                      @foreach($courses as $course)
-                                          <option value="{{ $course->course_id }}">{{ $course->course_name }}</option>
-                                      @endforeach
-                               
+                                    @foreach($courses as $course)
+                                        <option value="{{ $course->course_id }}">{{ $course->course_name }}</option>
+                                    @endforeach
                                 </select>
-                            </div>
+                              </div>
                               <div class="form-group">
                                   <label for="question">Question</label>
                                   <textarea class="form-control" id="question" name="question" required></textarea>

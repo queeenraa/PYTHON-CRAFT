@@ -11,6 +11,7 @@ class Quiz extends Model
 
     protected $fillable = [
         'course_id',
+        'course_name',
         
         'question',
         'option_a',
@@ -23,4 +24,10 @@ class Quiz extends Model
     protected $casts = [
         'correct_answer' => 'string', // Sesuaikan dengan tipe data yang sesuai, misalnya 'string' atau 'char'
     ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
+
 }
