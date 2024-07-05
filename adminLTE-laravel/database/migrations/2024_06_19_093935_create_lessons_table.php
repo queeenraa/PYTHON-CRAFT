@@ -17,6 +17,7 @@ class CreateLessonsTable extends Migration
             $table->id('lesson_id');
             $table->unsignedBigInteger('course_id');
             $table->string('lesson_name');
+            $table->string('image_path')->nullable();
             $table->text('content');
             $table->unsignedBigInteger('created_by');
             $table->timestamps();

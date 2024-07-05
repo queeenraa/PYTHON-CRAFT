@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Lesson;
 use App\Models\Course;
+use Illuminate\Support\Facades\Storage;
 
 class lessonsController extends Controller
 {
@@ -63,6 +64,7 @@ class lessonsController extends Controller
             'course_id' => 'required|exists:courses,course_id',
             'lesson_name' => 'required',
             'content' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'created_by' => 'required|exists:users,user_id', // Tidak perlu divalidasi di sini
         ]);
 
@@ -78,6 +80,11 @@ class lessonsController extends Controller
         $validatedData = $validator->validated();
         $validatedData['created_by'] = $created_by;
 
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images', 'public');
+            $validatedData['image_path'] = $imagePath;
+        }
+
         // Menyimpan data ke database
         $lesson = Lesson::create($validatedData);
 
@@ -87,6 +94,7 @@ class lessonsController extends Controller
             'data' => $lesson
         ], 201);
     }
+    
     // Mengupdate lesson
     public function update(Request $request, $id)
     {
@@ -94,7 +102,8 @@ class lessonsController extends Controller
             'course_id' => 'required|exists:courses,course_id',
             'lesson_name' => 'required',
             'content' => 'required',
-            'created_by' => 'required|exists:users,user_id',
+            // 'created_by' => 'required|exists:users,user_id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         if ($validator->fails()) {
@@ -111,11 +120,26 @@ class lessonsController extends Controller
 
             $lesson->update($validator->validated());
 
+            // Mengelola gambar jika ada file gambar baru diunggah
+            if ($request->hasFile('image')) {
+                // Menghapus gambar lama jika ada
+                if ($lesson->image_path && Storage::disk('public')->exists('images/' . $lesson->image_path)) {
+                    Storage::disk('public')->delete('images/' . $lesson->image_path);
+                }
+
+                // Menyimpan gambar baru ke storage dalam direktori public/images
+                $imagePath = $request->file('image')->store('images', 'public');
+                $lesson->image_path = $imagePath;
+                $lesson->save();
+            }
+
+
             return response()->json([
                 'success' => true,
                 'message' => 'Lesson updated successfully',
                 'data' => $lesson
             ], 200);
+            
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
             return response()->json([
                 'success' => false,
