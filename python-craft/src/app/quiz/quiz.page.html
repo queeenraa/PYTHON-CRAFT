@@ -1,1 +1,33 @@
-<ion-content [fullscreen]="true"> div </ion-content>
+<ion-content [fullscreen]="true">
+  <div class="navbar">
+    <button class="kembali">
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <button class="nyawa">
+      <ion-icon name="heart" slot="start" class="hati"></ion-icon>
+      <ion-label>3/3</ion-label>
+      <ion-icon name="add-outline" slot="end" class="tambah"></ion-icon>
+    </button>
+  </div>
+  <div class="soal">
+    <ion-label>Soal No 1 : Apa yang dimaksud python</ion-label>
+  </div>
+  <div class="jawaban">
+    <button
+      *ngFor="let answer of answers"
+      [class.selected]="selectedAnswer === answer.value"
+      (click)="selectAnswer(answer.value)"
+    >
+      {{ answer.label }}
+    </button>
+  </div>
+  <div class="validasi" *ngIf="validationMessage">
+    <div
+      class="notif"
+      [ngClass]="{'correct': isAnswerCorrect, 'incorrect': !isAnswerCorrect}"
+    >
+      {{ validationMessage }}
+    </div>
+  </div>
+  <button class="cekjawaban" (click)="checkAnswer()">Cek Jawaban</button>
+</ion-content>
