@@ -29,7 +29,7 @@ class LoginController extends Controller
             // Cek role user setelah berhasil login
             if ($user->role === 'admin') {
                 dd('Redirecting to dashboard');
-                return redirect()->route('dashboard'); // Jika admin, arahkan ke dashboard
+                return redirect()->route('/dashboard'); // Jika admin, arahkan ke dashboard
             } else {
                 // Jika bukan admin, beri pesan error
                 Auth::logout(); // Logout user untuk keamanan
