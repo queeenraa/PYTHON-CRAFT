@@ -61,6 +61,11 @@ class CoursesController extends Controller
             ], 422);
         }
 
+        // Assuming you have authentication set up and 'created_by' is automatically filled
+        // $course = Course::create(array_merge($validator->validated(), [
+        //     'created_by' => auth()->id() // Assuming 'created_by' is the user ID of the logged-in user
+        // ]));
+
         $course = Course::create($validator->validated());
 
         return response()->json([
