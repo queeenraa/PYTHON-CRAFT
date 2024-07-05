@@ -48,11 +48,11 @@
                                     <option value="admin">Admin</option>
                                     <option value="user">User</option>
                                     <!-- Tambahkan opsi kursus lainnya di sini -->
-                                </select>
+                                {{-- </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
-                    </div> -->
+                    </div> --> --}}
                     <div class="card-body">
                     <form id="editProfileForm" action="{{ route('update-profile', ['id' => $user->user_id]) }}" method="POST">
                     @csrf
@@ -69,7 +69,7 @@
                         <div class="form-group">  
                             <label for="edit_role">Role</label>
                             <select class="form-control" id="edit_role" name="role" required>
-                                <option value="">Select a Role</option>
+                                {{-- <option value="">Select a Role</option> --}}
                                 <option value="admin" {{ $user->role == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="user" {{ $user->role == 'user' ? 'selected' : '' }}>User</option>
                                 <!-- Tambahkan opsi role lainnya di sini -->
