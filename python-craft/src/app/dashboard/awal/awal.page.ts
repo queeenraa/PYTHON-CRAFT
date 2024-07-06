@@ -13,15 +13,6 @@ export class AwalPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    setInterval(() => {
-      this.progress += 0.01;
-
-      if (this.progress > 1) {
-        setTimeout(() => {
-          this.progress = 0;
-        }, 1000);
-      }
-    }, 50);
     this.userName = localStorage.getItem('userName') || 'Profile';
   }
 

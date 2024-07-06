@@ -1,5 +1,6 @@
 // src/app/pages/materi/materi.page.ts
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from '../service.service';
 
 @Component({
@@ -8,29 +9,18 @@ import { ApiService } from '../service.service';
   styleUrls: ['./materi.page.scss'],
 })
 export class MateriPage implements OnInit {
-  courses: any[] = [];
-  lessons: { [key: number]: any[] } = {};
-  quizzes: { [key: number]: any[] } = {};
+  constructor(private apiService: ApiService, private router: Router) {}
 
-  constructor(private apiService: ApiService) {}
+  ngOnInit() {}
 
-  async ngOnInit() {
-    try {
-      // Fetch all courses
-      this.courses = await this.apiService.getAllCourses();
-      console.log('Courses:', this.courses); // Debug log
+  navigateToPage(type: string, levelIndex: number, subIndex?: number) {
+    const data = { type, levelIndex, subIndex };
+    localStorage.setItem('selectedLearnData', JSON.stringify(data));
 
-      // Fetch lessons and quizzes for each course
-      for (let course of this.courses) {
-        const courseId = course.course_id;
-        this.lessons[courseId] = await this.apiService.getAllLessons(courseId);
-        console.log(`Lessons for course ${courseId}:`, this.lessons[courseId]); // Debug log
-
-        this.quizzes[courseId] = await this.apiService.getAllQuizzes(courseId);
-        console.log(`Quizzes for course ${courseId}:`, this.quizzes[courseId]); // Debug log
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
+    if (type === 'materi') {
+      this.router.navigate(['/isi-materi']);
+    } else if (type === 'quiz') {
+      this.router.navigate(['/quiz']);
     }
   }
 

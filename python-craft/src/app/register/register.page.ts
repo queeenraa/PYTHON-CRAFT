@@ -32,7 +32,7 @@ export class RegisterPage implements OnInit {
     try {
       const response = await this.apiService.postData('register', data);
       console.log('Registration successful:', response);
-      // Lakukan sesuatu setelah pendaftaran berhasil, misalnya mengarahkan ke halaman lain
+      this.router.navigate(['/login']);
     } catch (error) {
       console.error('Registration error:', error);
     }
