@@ -1,7 +1,7 @@
 // src/app/register/register.page.ts
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../service.service'; // Sesuaikan path sesuai dengan struktur proyek Anda
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -13,7 +13,7 @@ export class RegisterPage implements OnInit {
   password: string = '';
   confirmPassword: string = '';
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -36,5 +36,8 @@ export class RegisterPage implements OnInit {
     } catch (error) {
       console.error('Registration error:', error);
     }
+  }
+  login() {
+    this.router.navigate(['/login']);
   }
 }

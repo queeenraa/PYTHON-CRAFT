@@ -1,16 +1,25 @@
+// src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
-  },
   {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
+  },
+  {
+    path: 'awal',
+    loadChildren: () =>
+      import('./dashboard/awal/awal.module').then((m) => m.AwalPageModule),
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'login',
@@ -26,6 +35,7 @@ const routes: Routes = [
     path: 'start',
     loadChildren: () =>
       import('./start/start.module').then((m) => m.StartPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'get-started',
@@ -33,24 +43,34 @@ const routes: Routes = [
       import('./get-started/get-started.module').then(
         (m) => m.GetStartedPageModule
       ),
+    canActivate: [AuthGuard],
   },
   {
-    path: 'awal',
-    loadChildren: () =>
-      import('./dashboard/awal/awal.module').then((m) => m.AwalPageModule),
-  },  {
     path: 'materi',
-    loadChildren: () => import('./materi/materi.module').then( m => m.MateriPageModule)
+    loadChildren: () =>
+      import('./materi/materi.module').then((m) => m.MateriPageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'isi-materi',
-    loadChildren: () => import('./isi-materi/isi-materi.module').then( m => m.IsiMateriPageModule)
+    loadChildren: () =>
+      import('./isi-materi/isi-materi.module').then(
+        (m) => m.IsiMateriPageModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'quiz',
-    loadChildren: () => import('./quiz/quiz.module').then( m => m.QuizPageModule)
+    loadChildren: () =>
+      import('./quiz/quiz.module').then((m) => m.QuizPageModule),
+    canActivate: [AuthGuard],
   },
-
+  {
+    path: 'profile',
+    loadChildren: () =>
+      import('./profile/profile.module').then((m) => m.ProfilePageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

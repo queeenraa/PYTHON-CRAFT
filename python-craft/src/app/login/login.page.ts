@@ -1,4 +1,3 @@
-// src/app/login/login.page.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from '../service.service';
@@ -25,10 +24,15 @@ export class LoginPage implements OnInit {
     try {
       const response = await this.apiService.postData('login', data);
       console.log('Login successful:', response);
+      const { name } = response;
+      localStorage.setItem('userName', name);
       // Redirect to 'awal' page after successful login
       this.router.navigate(['/awal']);
     } catch (error) {
       console.error('Login error:', error);
     }
+  }
+  register() {
+    this.router.navigate(['/register']);
   }
 }

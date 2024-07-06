@@ -6,8 +6,22 @@ import { AwalPage } from './awal.page';
 const routes: Routes = [
   {
     path: '',
-    component: AwalPage
-  }
+    component: AwalPage,
+    children: [
+      {
+        path: 'materi',
+        loadChildren: () =>
+          import('../../materi/materi.module').then((m) => m.MateriPageModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../../profile/profile.module').then(
+            (m) => m.ProfilePageModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({
