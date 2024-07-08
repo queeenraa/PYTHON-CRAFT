@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+
+ion-content {
+  --background: white;
+  font-family: "Rubik", sans-serif !important;
+}
+
+.navbar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nyawa {
+  border-radius: 20px;
+  --background: #bc7fcd;
+  background: var(--background);
+  width: 90px;
+  height: 30px;
+}
+
+.nyawa ion-icon[slot="start"] {
+  position: absolute;
+  left: 175px;
+  top: 25px;
+  --color: red;
+  color: var(--color);
+  font-size: 20px;
+}
+
+.nyawa ion-label {
+  position: absolute;
+  left: 200px;
+  top: 27px;
+  --color: white;
+  color: var(--color);
+  font-size: 16px;
+}
+
+.nyawa ion-icon[slot="end"] {
+  position: absolute;
+  left: 230px;
+  top: 25px;
+  --color: white;
+  color: var(--color);
+  font-size: 20px;
+  --ionicon-stroke-width: 48px;
+}
+
+.kembali {
+  position: absolute;
+  left: 25px;
+  border-radius: 5px;
+  --background: #bc7fcd;
+  padding: 2px;
+  background: var(--background);
+  height: auto;
+  width: auto;
+}
+
+.kembali ion-icon {
+  font-size: 20px;
+}
+
+.soal {
+  padding: 0px 10px 0px 10px;
+  --background: #d9d9d9;
+  background: var(--background);
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 20px;
+  width: 80%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.soal ion-label {
+  font-size: 20px;
+  --color: #000;
+  color: var(--color);
+  font-weight: bold;
+}
+
+.jawaban {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: space-between;
+  margin: 50px 10px 0px 10px; /* Add some margin around the container */
+}
+
+.jawaban button {
+  --background: #bc7fcd;
+  background: var(--background);
+  border-radius: 20px;
+  width: calc(
+    50% - 20px
+  ); /* Adjust width to fit two items per row with margin */
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px; /* Add margin for spacing */
+  cursor: pointer; /* Add cursor pointer */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.jawaban button.selected {
+  --background: #069219; /* Change background color for selected answer */
+  background: var(--background);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cekjawaban {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 80%;
+  height: 60px;
+  --background: #bc7fcd;
+  background: var(--background);
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+.validasi {
+  width: 80%;
+  height: 100px;
+  margin-top: 170px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notif {
+  display: flex;
+  padding: 10px 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.correct {
+  --background: #f5ffd8; /* Green background for correct answer */
+  background: var(--background);
+}
+
+.incorrect {
+  --background: #ffddd8; /* Red background for incorrect answer */
+  background: var(--background);
+}

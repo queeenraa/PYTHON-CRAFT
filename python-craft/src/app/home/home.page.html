@@ -67,7 +67,11 @@
     <ion-button class="swiperbutton" (click)="slideNext()"
       >Getting Started</ion-button
     >
-    <ion-button class="swiperbutton already" *ngIf="isLastSlide" [@fadeInOut]
+    <ion-button
+      class="swiperbutton already"
+      *ngIf="isLastSlide"
+      [@fadeInOut]
+      (click)="ToLogin()"
       >Already Have Account</ion-button
     >
   </div>

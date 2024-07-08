@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ApiService } from '../service.service';
 
 @Component({
   selector: 'app-login',
@@ -6,25 +8,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  constructor() {}
+  email: string = '';
+  password: string = '';
+
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit() {}
 
-  //login() {
-  // axios
-  // .post('/login', {
-  //email: 'laura@mail.com',
-  //password: 'laura',
-  //})
-  // .then((res) => {
-  //200, 201
+  async login() {
+    const data = {
+      email: this.email,
+      password: this.password,
+    };
 
-  // alert(res.message);
-  // localStorage.setItem('token', res.token);
-  //})
-  //.catch((err) => {
-  //404, 500, 401, 422
-  //alert(err.message);
-  //});
-  //}
+    try {
+      const response = await this.apiService.postData('login', data);
+      console.log('Login successful:', response);
+      const { name } = response;
+      localStorage.setItem('userName', name);
+      // Redirect to 'awal' page after successful login
+      this.router.navigate(['/awal']);
+    } catch (error) {
+      console.error('Login error:', error);
+    }
+  }
+  register() {
+    this.router.navigate(['/register']);
+  }
 }

@@ -6,7 +6,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -43,7 +43,7 @@ import {
 export class HomePage implements AfterViewInit {
   isLastSlide: boolean = false;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngAfterViewInit() {
     const swiperContainer = document.querySelector('swiper-container') as any;
@@ -70,5 +70,8 @@ export class HomePage implements AfterViewInit {
 
   onSlideChange(swiper: any) {
     this.isLastSlide = swiper.isEnd;
+  }
+  ToLogin() {
+    this.router.navigate(['/login']);
   }
 }

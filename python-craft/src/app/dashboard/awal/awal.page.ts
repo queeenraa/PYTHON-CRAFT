@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-awal',
@@ -7,18 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AwalPage implements OnInit {
   public progress = 0;
+  userName: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {
-    setInterval(() => {
-      this.progress += 0.01;
+    this.userName = localStorage.getItem('userName') || 'Profile';
+  }
 
-      if (this.progress > 1) {
-        setTimeout(() => {
-          this.progress = 0;
-        }, 1000);
-      }
-    }, 50);
+  awal() {
+    this.router.navigate(['/awal']);
+  }
+
+  materi() {
+    this.router.navigate(['/materi']);
+  }
+
+  profile() {
+    this.router.navigate(['/profile']);
   }
 }

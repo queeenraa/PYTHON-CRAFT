@@ -6,10 +6,9 @@ import { MateriPage } from './materi.page';
 const routes: Routes = [
   {
     path: '',
-    component: MateriPage
-  }
+    component: MateriPage,
+  },
 ];
-
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],

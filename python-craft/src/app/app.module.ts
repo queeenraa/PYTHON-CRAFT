@@ -5,9 +5,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AwalPage } from './dashboard/awal/awal.page'; // Adjust the path if necessary
-import { HomePage } from './home/home.page'; // Adjust the path if necessary
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,7 +13,9 @@ import { HomePage } from './home/home.page'; // Adjust the path if necessary
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    BrowserAnimationsModule, // Import BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

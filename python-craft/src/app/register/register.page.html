@@ -1,11 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true">
   <div id="container">
     <h3>REGISTER</h3>
@@ -13,6 +5,7 @@
       <ion-card-content>
         <ion-item>
           <ion-input
+            [(ngModel)]="name"
             label="Name"
             labelPlacement="floating"
             placeholder="Name"
@@ -20,14 +13,16 @@
         </ion-item>
         <ion-item>
           <ion-input
+            [(ngModel)]="email"
             label="Email"
             labelPlacement="floating"
             type="email"
             placeholder="email@domain.com"
           ></ion-input>
         </ion-item>
-        <ion-item id="password">
+        <ion-item>
           <ion-input
+            [(ngModel)]="password"
             type="password"
             label="Password"
             labelPlacement="stacked"
@@ -36,8 +31,9 @@
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
         </ion-item>
-        <ion-item id="password">
+        <ion-item>
           <ion-input
+            [(ngModel)]="confirmPassword"
             type="password"
             label="Confirm Password"
             labelPlacement="stacked"
@@ -46,14 +42,17 @@
             <ion-input-password-toggle slot="end"></ion-input-password-toggle>
           </ion-input>
         </ion-item>
-        <ion-checkbox labelPlacement="end" justify="start"
-          >I agree to the terms and conditions</ion-checkbox
-        >
+        <ion-checkbox labelPlacement="end" justify="start">
+          I agree to the terms and conditions
+        </ion-checkbox>
       </ion-card-content>
     </ion-card>
 
     <br />
-    <ion-button shape="round">REGISTER</ion-button>
-    <p>Already have an account? <span style="color: yellow">Login !</span></p>
+    <ion-button shape="round" (click)="register()">REGISTER</ion-button>
+    <p>
+      Already have an account?
+      <span style="color: yellow" (click)="login()">Login!</span>
+    </p>
   </div>
 </ion-content>

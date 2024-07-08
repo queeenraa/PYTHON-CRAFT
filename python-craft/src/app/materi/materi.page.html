@@ -1,3 +1,4 @@
+<!-- src/app/pages/materi/materi.page.html -->
 <ion-content [fullscreen]="true">
   <div class="container">
     <div class="header">Learn</div>
@@ -10,24 +11,53 @@
         <ion-accordion value="first">
           <ion-item slot="header">
             <ion-icon name="play-outline" slot="start"></ion-icon>
-            <ion-label>Level {{ index + 1 }} - Materi 1</ion-label>
+            <ion-label>Level {{ index + 1 }}</ion-label>
           </ion-item>
           <div
             slot="content"
-            *ngFor="let i of [].constructor(3); let index = index"
+            *ngFor="let j of [].constructor(3); let subIndex = index"
           >
             <ion-item class="materi">
               <ion-icon name="terminal" slot="start"></ion-icon>
               <ion-label>
-                Content for Level {{ index + 1 }} - Materi 1
+                Materi {{ subIndex + 1 }} Level - {{ index + 1 }}
               </ion-label>
               <ion-icon name="checkmark-circle-outline" slot="end"></ion-icon>
             </ion-item>
-
-            <ion-button class="belajar">Learn</ion-button>
+            <ion-button
+              class="belajar"
+              (click)="navigateToPage('materi', index + 1, subIndex + 1)"
+              >Learn</ion-button
+            >
+          </div>
+          <div slot="content">
+            <ion-item class="materi">
+              <ion-icon name="bookmark" slot="start"></ion-icon>
+              <ion-label> Quiz Level {{ index + 1 }} </ion-label>
+              <ion-icon name="checkmark-circle-outline" slot="end"></ion-icon>
+            </ion-item>
+            <ion-button
+              class="belajar"
+              (click)="navigateToPage('quiz', index + 1)"
+              >Learn</ion-button
+            >
           </div>
         </ion-accordion>
       </ion-accordion-group>
     </div>
+  </div>
+  <div class="button-navigation">
+    <ion-button [routerLink]="['/awal']">
+      <ion-icon name="home-outline"></ion-icon>
+      Home
+    </ion-button>
+    <ion-button [routerLink]="['/materi']">
+      <ion-icon name="code-slash-outline"></ion-icon>
+      Learn
+    </ion-button>
+    <ion-button [routerLink]="['/profile']">
+      <ion-icon name="person-outline"></ion-icon>
+      Profile
+    </ion-button>
   </div>
 </ion-content>

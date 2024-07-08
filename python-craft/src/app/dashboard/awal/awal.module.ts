@@ -1,15 +1,13 @@
+import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
-
 import { AwalPageRoutingModule } from './awal-routing.module';
-
 import { AwalPage } from './awal.page';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, AwalPageRoutingModule],
+  imports: [IonicModule, CommonModule, FormsModule, AwalPageRoutingModule],
   declarations: [AwalPage],
 })
 export class AwalPageModule {}
