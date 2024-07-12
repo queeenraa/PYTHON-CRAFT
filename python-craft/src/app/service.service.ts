@@ -123,4 +123,9 @@ export class ApiService {
     }
     return quizzes;
   }
+
+  // Metode untuk mendapatkan data materi berdasarkan ID
+  async getLessonById(id: number) {
+    return this.getData(`lessons/${id}`);
+  }
 }

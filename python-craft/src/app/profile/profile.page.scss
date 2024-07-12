@@ -29,3 +29,130 @@ ion-content {
   color: var(--color);
   --ionicon-stroke-width: 48px;
 }
+
+/* General styling */
+body {
+  font-family: "Arial", sans-serif;
+  background-color: #f0f4ff;
+  margin: 0;
+  padding: 0;
+}
+
+/* Profile container */
+.profile-container {
+  justify-content: centera;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Profile picture */
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  margin-top: -50px;
+  position: relative;
+  background-color: #f0f4ff;
+  display: inline-block;
+}
+
+/* Camera icon on profile picture */
+.profile-picture .camera-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* User name */
+.user-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  margin: 10px 0;
+}
+
+/* Email */
+.user-email {
+  font-size: 16px;
+  color: #888888;
+  margin-bottom: 20px;
+}
+
+/* Profile options */
+.profile-options {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.profile-options ion-item {
+  --background: transparent;
+  --border-width: 0;
+  padding: 10px 0;
+}
+
+.profile-options ion-icon {
+  margin-right: 10px;
+  color: #333333;
+}
+
+.profile-options ion-label {
+  font-size: 16px;
+  color: #333333;
+}
+
+/* Switch Account and Log Out */
+.switch-account,
+.log-out {
+  display: block;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 16px;
+}
+
+.switch-account {
+  color: #007bff;
+}
+
+.log-out {
+  color: #ff3b30;
+}
+
+/* Button navigation */
+.button-navigation {
+  display: flex;
+  justify-content: space-around;
+  background-color: #ffffff;
+  border-top: 1px solid #eaeaea;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.button-navigation ion-button {
+  --background: transparent;
+  --border-width: 0;
+  color: #888888;
+  font-size: 12px;
+  flex-direction: column;
+}
+
+.button-navigation ion-button.activated {
+  color: #6a00ff;
+}
+
+.button-navigation ion-icon {
+  font-size: 24px;
+}
