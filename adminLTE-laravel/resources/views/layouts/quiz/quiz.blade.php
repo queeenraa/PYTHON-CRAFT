@@ -58,6 +58,7 @@
                                       <th>Option C</th>
                                       <th>Option D</th>
                                       <th>Correct Answer</th>
+                                      <th>Image</th>
                                       <th class="col-materi-action">Actions</th>
                                   </tr>
                               </thead>
